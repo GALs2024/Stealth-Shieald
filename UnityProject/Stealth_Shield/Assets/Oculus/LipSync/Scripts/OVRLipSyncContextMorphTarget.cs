@@ -114,7 +114,7 @@ public class OVRLipSyncContextMorphTarget : MonoBehaviour
     /// <summary>
     /// Update this instance.
     /// </summary>
-    void LateUpdate ()
+    void Update ()
     {
         if((lipsyncContext != null) && (skinnedMeshRenderer != null))
         {
