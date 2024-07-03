@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 16772784}
   - component: {fileID: 16772783}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: OVRLIPSYNC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -738,6 +738,55 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 686502524}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &104314459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 104314461}
+  - component: {fileID: 104314460}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &104314460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104314459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc91b1de607ad9458dc5708e0bbfeb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AvatarObject: {fileID: 1584810536}
+  PictureObject1: {fileID: 1589162965}
+  PictureObject2: {fileID: 287703360}
+  PictureObject3: {fileID: 645792782}
+  PictureObject4: {fileID: 1788930175}
+--- !u!4 &104314461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104314459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.112894595, y: 1.0136471, z: 0.19290662}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &118086094
 GameObject:
@@ -1842,7 +1891,7 @@ GameObject:
   - component: {fileID: 287703362}
   - component: {fileID: 287703361}
   m_Layer: 0
-  m_Name: "\u5199\u771F (1)"
+  m_Name: Picture2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4596,7 +4645,7 @@ GameObject:
   - component: {fileID: 645792784}
   - component: {fileID: 645792783}
   m_Layer: 0
-  m_Name: "\u5199\u771F (2)"
+  m_Name: Picture3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13496,12 +13545,12 @@ AudioSource:
   m_GameObject: {fileID: 1584810536}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300001, guid: 03d4f07283ae4307b8c7a2ea7ad08068, type: 2}
   m_audioClip: {fileID: 8300000, guid: e21cea670b0f32c428ee862e590a7108, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -13596,7 +13645,7 @@ GameObject:
   - component: {fileID: 1589162967}
   - component: {fileID: 1589162966}
   m_Layer: 0
-  m_Name: "\u5199\u771F"
+  m_Name: Picture1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13909,7 +13958,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1323387542138207004, guid: 390e623ff2f148948b8a1ba99e28f837, type: 3}
       propertyPath: m_Name
-      value: AvatarSample_A
+      value: AvatarObject
       objectReference: {fileID: 0}
     - target: {fileID: 1366151194137528307, guid: 390e623ff2f148948b8a1ba99e28f837, type: 3}
       propertyPath: m_DirtyAABB
@@ -14537,6 +14586,7 @@ GameObject:
   - component: {fileID: 1641827101}
   - component: {fileID: 1641827100}
   - component: {fileID: 1641827099}
+  - component: {fileID: 1641827104}
   m_Layer: 0
   m_Name: '[BuildingBlock] Camera Rig'
   m_TagString: Untagged
@@ -14687,6 +14737,14 @@ Transform:
   - {fileID: 1488719377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1641827104
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641827098}
+  m_Enabled: 1
 --- !u!1 &1644240151
 GameObject:
   m_ObjectHideFlags: 0
@@ -16410,7 +16468,7 @@ GameObject:
   - component: {fileID: 1788930177}
   - component: {fileID: 1788930176}
   m_Layer: 0
-  m_Name: "\u5199\u771F (3)"
+  m_Name: Picture4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19105,3 +19163,4 @@ SceneRoots:
   - {fileID: 426073436}
   - {fileID: 1641827103}
   - {fileID: 146639447}
+  - {fileID: 104314461}
