@@ -907,7 +907,7 @@ MonoBehaviour:
   - {fileID: 287703360}
   - {fileID: 645792782}
   - {fileID: 1788930175}
-  SmartPhone: {fileID: 1305016084}
+  SmartPhone: {fileID: 343655409}
   PowerOffButton: {fileID: 1920383463}
   ContinueButton: {fileID: 73381051}
 --- !u!4 &104314461
@@ -2657,7 +2657,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 1}
+  m_Size: {x: 0.1, y: 0.2, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &343655411
 Rigidbody:
@@ -11056,11 +11056,6 @@ Transform:
   - {fileID: 1825812342}
   m_Father: {fileID: 1105513965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1305016084 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5560905291789515636, guid: 4b658ae02ca4e154f80cea2d74db1ef1, type: 3}
-  m_PrefabInstance: {fileID: 1886673051}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1305016087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3032176635680216034, guid: 4b658ae02ca4e154f80cea2d74db1ef1, type: 3}

@@ -32,31 +32,46 @@ public class ObjectManager : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= 30f && timer < 50f)
+        if (timer >= 30f && timer < 35f)
         {
-            ShowPictures();
+            ShowPicture1();
         }
+        else if(timer >= 35f && timer < 40f)
+        {
+            ShowPicture2();
+        }
+        else if (timer >= 40f && timer < 45f)
+        {
+            ShowPicture3();
+        }
+        else if (timer >= 45f && timer < 50f)
+        {
+            ShowPicture4();
+        }
+
         else if (timer >= 50f && timer < 55f)
         {
             HidePicturesAndAvatar();
-        }
-        else if (timer >= 55f && timer < 60f)
-        {
             ShowSmartPhone();
         }
+        
     }
 
-    void ShowPictures()
+    void ShowPicture1()
     {
-        int index = (int)((timer - 30f) / 5f);
-        if (index < PictureObjects.Length && !picturesShown)
-        {
-            for (int i = 0; i <= index; i++)
-            {
-                PictureObjects[i].SetActive(true);
-            }
-            picturesShown = true;
-        }
+        PictureObjects[0].SetActive(true);
+    }
+    void ShowPicture2()
+    {
+        PictureObjects[1].SetActive(true);
+    }
+    void ShowPicture3()
+    {
+        PictureObjects[2].SetActive(true);
+    }
+    void ShowPicture4()
+    {
+        PictureObjects[3].SetActive(true);
     }
 
     void HidePicturesAndAvatar()
