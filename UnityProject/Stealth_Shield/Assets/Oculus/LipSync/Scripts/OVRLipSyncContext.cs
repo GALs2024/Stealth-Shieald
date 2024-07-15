@@ -285,7 +285,9 @@ public class OVRLipSyncContext : OVRLipSyncContextBase
     {
         if (!skipAudioSource)
         {
-            ProcessAudioSamples(data, channels);
+     
+                ProcessAudioSamples(data, channels);
+            
         }
     }
 

@@ -907,7 +907,7 @@ MonoBehaviour:
   - {fileID: 287703360}
   - {fileID: 645792782}
   - {fileID: 1788930175}
-  SmartPhone: {fileID: 343655409}
+  SmartPhone: {fileID: 1305016084}
   PowerOffButton: {fileID: 1920383463}
   ContinueButton: {fileID: 73381051}
 --- !u!4 &104314461
@@ -11056,6 +11056,11 @@ Transform:
   - {fileID: 1825812342}
   m_Father: {fileID: 1105513965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1305016084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5560905291789515636, guid: 4b658ae02ca4e154f80cea2d74db1ef1, type: 3}
+  m_PrefabInstance: {fileID: 1886673051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1305016087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3032176635680216034, guid: 4b658ae02ca4e154f80cea2d74db1ef1, type: 3}
@@ -14812,6 +14817,7 @@ GameObject:
   - component: {fileID: 1641827101}
   - component: {fileID: 1641827100}
   - component: {fileID: 1641827099}
+  - component: {fileID: 1641827104}
   m_Layer: 0
   m_Name: '[BuildingBlock] Camera Rig'
   m_TagString: Untagged
@@ -14859,7 +14865,7 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
-  expandMixedRealityCapturePropertySheet: 0
+  expandMixedRealityCapturePropertySheet: 1
   enableMixedReality: 0
   compositionMethod: 0
   extraHiddenLayers:
@@ -14962,6 +14968,69 @@ Transform:
   - {fileID: 1488719377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1641827104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641827098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555725d48e9051a4bb6b8d45178c2fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectionSurfaceType: 0
+  overlayType: 2
+  compositionDepth: 0
+  hidden: 0
+  overridePerLayerColorScaleAndOffset: 0
+  colorScale: {x: 1, y: 1, z: 1, w: 1}
+  colorOffset: {x: 0, y: 0, z: 0, w: 0}
+  colorMapEditorType_: 0
+  colorMapEditorGradient:
+    serializedVersion: 2
+    key0: {r: 0, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  colorMapEditorContrast: 0
+  colorMapEditorBrightness: 0
+  colorMapEditorPosterize: 0
+  colorMapEditorSaturation: 0
+  _colorLutSourceTexture: {fileID: 0}
+  _colorLutTargetTexture: {fileID: 0}
+  _lutWeight: 1
+  _flipLutY: 1
+  serializedSurfaceGeometry: []
+  textureOpacity_: 1
+  edgeRenderingEnabled_: 0
+  edgeColor_: {r: 1, g: 1, b: 1, a: 1}
+  colorMapType: 0
 --- !u!1 &1644240151
 GameObject:
   m_ObjectHideFlags: 0
