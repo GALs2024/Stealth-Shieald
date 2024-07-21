@@ -92,6 +92,8 @@ public class ObjectManager : MonoBehaviour
         if (!phoneShown)
         {
             SmartPhone.SetActive(true);
+            PowerOffButton.SetActive(true);
+            ContinueButton.SetActive(true);
             phoneShown = true;
         }
     }
