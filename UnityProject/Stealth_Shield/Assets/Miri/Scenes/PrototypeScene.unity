@@ -5886,7 +5886,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734529099}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &735433390
 GameObject:
   m_ObjectHideFlags: 0
@@ -14432,6 +14432,7 @@ GameObject:
   - component: {fileID: 1641827100}
   - component: {fileID: 1641827099}
   - component: {fileID: 1641827104}
+  - component: {fileID: 1641827105}
   m_Layer: 0
   m_Name: '[BuildingBlock] Camera Rig'
   m_TagString: Untagged
@@ -14574,7 +14575,7 @@ Transform:
   m_GameObject: {fileID: 1641827098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14645,6 +14646,14 @@ MonoBehaviour:
   edgeRenderingEnabled_: 0
   edgeColor_: {r: 1, g: 1, b: 1, a: 1}
   colorMapType: 0
+--- !u!81 &1641827105
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641827098}
+  m_Enabled: 0
 --- !u!1 &1644240151
 GameObject:
   m_ObjectHideFlags: 0
