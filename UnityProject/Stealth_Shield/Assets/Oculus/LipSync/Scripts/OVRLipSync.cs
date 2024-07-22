@@ -264,7 +264,8 @@ public class OVRLipSync : MonoBehaviour
         ("OvrLipSync Awake: Queried SampleRate: {0:F0} BufferSize: {1:F0}", sampleRate, bufferSize);
         Debug.LogWarning(str);
 
-        sInitialized = (Result)ovrLipSyncDll_Initialize(sampleRate, bufferSize);
+        Result result = (Result)ovrLipSyncDll_Initialize(sampleRate, bufferSize);
+        sInitialized = result;
         return sInitialized;
     }
 
