@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-8675020100678770745
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 67bcb73089a70a24f960dc9205fabf8f
+  m_EffectName: Attenuation
+  m_MixLevel: 99c8990d9ffa9e04686dfeade5b15816
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-1967466273432752726
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 493fc24698c986746a124e1b44e41ac4
+  m_EffectName: Attenuation
+  m_MixLevel: 7ba92666d3342a7408d3e634695f2961
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-533331295526056391
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chair_Backsdie
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: fce9a8ac41ecfcb45bbf72abd1d9b205
+  m_Children: []
+  m_Volume: 56d22902f6e28744ea40c4ab1487e719
+  m_Pitch: 843f939bab0026341b23da264c732a00
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -1967466273432752726}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: IVRC
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters: []
+  m_AudioMixerGroupViews:
+  - guids:
+    - 1923dc566405fed49a32287fb318f3ca
+    - fce9a8ac41ecfcb45bbf72abd1d9b205
+    - fe4e6f4e092a34346aa9f37f384a49e7
+    - c6de54c59ed2c0d45856bd842b57b816
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500006}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 1923dc566405fed49a32287fb318f3ca
+  m_Children:
+  - {fileID: -533331295526056391}
+  - {fileID: 9086499616247596460}
+  - {fileID: 7398577993031829022}
+  m_Volume: 74a8671c8dac2c641a22c754a671dede
+  m_Pitch: 42ce0d25b88ed864d90cc28937feaef1
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400004}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: dda3b9f5a5e11e5419c52277f7d60433
+  m_EffectName: Attenuation
+  m_MixLevel: bbe1d0044f259784db7e5dd2f8c5f1fa
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: cd797b3b983481743b296aa128efa884
+  m_FloatValues: {}
+  m_TransitionOverrides: {}
+--- !u!244 &4871131481999602502
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 46f2407ca30ca5440b8bde83439be481
+  m_EffectName: Attenuation
+  m_MixLevel: 796299d38f2fd424e81d2a4c82c21de6
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &7398577993031829022
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Oculus
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: c6de54c59ed2c0d45856bd842b57b816
+  m_Children: []
+  m_Volume: b0cef529c5e46f444a289a3c53a364cf
+  m_Pitch: 89e68dac6798d6e4d9e4f82cc30a658a
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -8675020100678770745}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &9086499616247596460
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chair_Hipside
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: fe4e6f4e092a34346aa9f37f384a49e7
+  m_Children: []
+  m_Volume: a57fc0f5be181914b938844f91982968
+  m_Pitch: ad285fb63024a7b44ae1c6a356bfe2de
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 4871131481999602502}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
