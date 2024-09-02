@@ -12,7 +12,7 @@ public class OpenAITTS
     private string saveDirectory;
     private string ttsUrl = "https://api.openai.com/v1/audio/speech";
 
-    public OpenAITTS(string apiKey, string ttsModel = "tts-1", string voice = "alloy", string saveDirectory = "Audios/AIOutput")
+    public OpenAITTS(string apiKey, string ttsModel = "tts-1", string voice = "alloy", string saveDirectory = "Audio/AIOutput")
     {
         this.apiKey = apiKey;
         this.ttsModel = ttsModel;

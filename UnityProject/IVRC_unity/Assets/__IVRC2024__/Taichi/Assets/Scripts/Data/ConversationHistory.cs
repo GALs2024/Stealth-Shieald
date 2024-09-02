@@ -20,7 +20,7 @@ public class ConversationHistoryManager
     }
 
     private ConversationHistory conversationHistory = new ConversationHistory();
-    private string conversationHistoryPath = @"Assets\Data\conversation_history.json";
+    private string conversationHistoryPath = @"Assets/__IVRC2024__/Taichi/Assets/Data/conversation_history.json";
 
     public ConversationHistoryManager()
     {

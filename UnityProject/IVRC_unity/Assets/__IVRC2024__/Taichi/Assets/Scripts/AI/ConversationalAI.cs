@@ -27,27 +27,31 @@ public class ConversationalAI : MonoBehaviour
 
     private bool isWaitingForUserResponse = false;
 
-    private AudioSource audioSource;
+    // private AudioSource audioSource;
 
-    private string savedTranscriptionsPath = @"Assets\Scripts\speak_contents.txt";
+    private string savedTranscriptionsPath = @"Assets/__IVRC2024__/Taichi/Assets/Data/speak_contents.txt";
     private AIConversationManager aiConversationManager;
     private ConversationHistoryManager conversationHistoryManager;
+    public GameObject avatarObject;
+    private AudioSource targetAudioSource;
 
     public void Initialize()
     {
         var apiKey = ApiKeyLoader.LoadApiKey();
 
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
+        // if (audioSource == null)
+        // {
+        //     audioSource = gameObject.AddComponent<AudioSource>();
+        // }
 
         // AIConversationManagerを探して設定
         aiConversationManager = FindObjectOfType<AIConversationManager>();
 
+        this.targetAudioSource = avatarObject.GetComponent<AudioSource>();
+
         whisperService = new OpenAIWhisper(apiKey, "whisper-1");
         chatService = new OpenAIChat(apiKey, "gpt-4o-mini", systemMessage, maxTokens);
-        ttsService = new OpenAITTS(apiKey, "tts-1", "alloy", "Audios/AIOutput");
+        ttsService = new OpenAITTS(apiKey, "tts-1", "alloy", "__IVRC2024__/Taichi/Assets/Audio/AIOutput");
         
         _microphoneRecorder = GetComponent<MicrophoneRecorder>();
         _microphoneRecorder.OnRecordingStopped += OnRecordingStopped;
@@ -72,8 +76,8 @@ public class ConversationalAI : MonoBehaviour
     {
         if (startAudioClip != null)
         {
-            audioSource.clip = startAudioClip;
-            audioSource.Play();
+            this.targetAudioSource.clip = startAudioClip;
+            this.targetAudioSource.Play();
             StartCoroutine(WaitForAudioToEnd()); // 音声が終わるのを待つ
         }
         else
@@ -84,7 +88,7 @@ public class ConversationalAI : MonoBehaviour
 
     private IEnumerator WaitForAudioToEnd()
     {
-        while (audioSource.isPlaying)
+        while (this.targetAudioSource.isPlaying)
         {
             yield return null;
         }
@@ -173,15 +177,15 @@ public class ConversationalAI : MonoBehaviour
 
                 if (clip != null)
                 {
-                    audioSource.clip = clip;
-                    audioSource.Play();
+                    this.targetAudioSource.clip = clip;
+                    this.targetAudioSource.Play();
 
-                    while (audioSource.isPlaying)
+                    while (this.targetAudioSource.isPlaying)
                     {
                         yield return null;
                     }
 
-                    audioSource.clip = null;
+                    this.targetAudioSource.clip = null;
                 }
                 else
                 {

@@ -8,8 +8,8 @@ public static class WavUtility
     {
         try
         {
-            // 保存パスを設定（"Assets/Audios/User/任意の名前.wav"）
-            string directoryPath = Path.Combine(Application.dataPath, "Audios/User");
+            // 保存パスを設定（"Assets/Audio/User/任意の名前.wav"）
+            string directoryPath = Path.Combine(Application.dataPath, "__IVRC2024__/Taichi/Assets/Audio/User");
             string filePath = Path.Combine(directoryPath, filename + ".wav");
 
             // ディレクトリが存在しない場合は作成する

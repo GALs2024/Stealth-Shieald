@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ApiKeyLoader
 {
-    private static string apiKeyFile = "Assets/API/openai_api_key.txt";
+    private static string apiKeyFile = "Assets/__IVRC2024__/Taichi/Assets/API/openai_api_key.txt";
 
     public static string LoadApiKey()
     {
