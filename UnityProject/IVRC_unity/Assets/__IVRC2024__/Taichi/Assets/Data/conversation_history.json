@@ -1,0 +1,14 @@
+{
+    "Entries": [
+        {
+            "Timestamp": "20240831_193956",
+            "UserInput": "こんにちは",
+            "AIResponse": "AI: こんにちは！今日はどうですか？"
+        },
+        {
+            "Timestamp": "20240831_194106",
+            "UserInput": "こんにちは",
+            "AIResponse": "AI: こんにちは！何か話したいことはありますか？"
+        }
+    ]
+}
