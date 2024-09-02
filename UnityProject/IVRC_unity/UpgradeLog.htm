@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+ <html xmlns:msxsl="urn:schemas-microsoft-com:xslt"><head><meta content="en-us" http-equiv="Content-Language" /><meta content="text/html; charset=utf-16" http-equiv="Content-Type" /><title _locID="ConversionReport0">
+          移行レポート
+        </title><style> 
+                    /* Body style, for the entire document */
+                    body
+                    {
+                        background: #F3F3F4;
+                        color: #1E1E1F;
+                        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    /* Header1 style, used for the main title */
+                    h1
+                    {
+                        padding: 10px 0px 10px 10px;
+                        font-size: 21pt;
+                        background-color: #E2E2E2;
+                        border-bottom: 1px #C1C1C2 solid; 
+                        color: #201F20;
+                        margin: 0;
+                        font-weight: normal;
+                    }
+
+                    /* Header2 style, used for "Overview" and other sections */
+                    h2
+                    {
+                        font-size: 18pt;
+                        font-weight: normal;
+                        padding: 15px 0 5px 0;
+                        margin: 0;
+                    }
+
+                    /* Header3 style, used for sub-sections, such as project name */
+                    h3
+                    {
+                        font-weight: normal;
+                        font-size: 15pt;
+                        margin: 0;
+                        padding: 15px 0 5px 0;
+                        background-color: transparent;
+                    }
+
+                    /* Color all hyperlinks one color */
+                    a
+                    {
+                        color: #1382CE;
+                    }
+
+                    /* Table styles */ 
+                    table
+                    {
+                        border-spacing: 0 0;
+                        border-collapse: collapse;
+                        font-size: 10pt;
+                    }
+
+                    table th
+                    {
+                        background: #E7E7E8;
+                        text-align: left;
+                        text-decoration: none;
+                        font-weight: normal;
+                        padding: 3px 6px 3px 6px;
+                    }
+
+                    table td
+                    {
+                        vertical-align: top;
+                        padding: 3px 6px 5px 5px;
+                        margin: 0px;
+                        border: 1px solid #E7E7E8;
+                        background: #F7F7F8;
+                    }
+
+                    /* Local link is a style for hyperlinks that link to file:/// content, there are lots so color them as 'normal' text until the user mouse overs */
+                    .localLink
+                    {
+                        color: #1E1E1F;
+                        background: #EEEEED;
+                        text-decoration: none;
+                    }
+
+                    .localLink:hover
+                    {
+                        color: #1382CE;
+                        background: #FFFF99;
+                        text-decoration: none;
+                    }
+
+                    /* Center text, used in the over views cells that contain message level counts */ 
+                    .textCentered
+                    {
+                        text-align: center;
+                    }
+
+                    /* The message cells in message tables should take up all avaliable space */
+                    .messageCell
+                    {
+                        width: 100%;
+                    }
+
+                    /* Padding around the content after the h1 */ 
+                    #content 
+                    {
+	                    padding: 0px 12px 12px 12px; 
+                    }
+
+                    /* The overview table expands to width, with a max width of 97% */ 
+                    #overview table
+                    {
+                        width: auto;
+                        max-width: 75%; 
+                    }
+
+                    /* The messages tables are always 97% width */
+                    #messages table
+                    {
+                        width: 97%;
+                    }
+
+                    /* All Icons */
+                    .IconSuccessEncoded, .IconInfoEncoded, .IconWarningEncoded, .IconErrorEncoded
+                    {
+                        min-width:18px;
+                        min-height:18px; 
+                        background-repeat:no-repeat;
+                        background-position:center;
+                    }
+
+                    /* Success icon encoded */
+                    .IconSuccessEncoded
+                    {
+                        /* Note: Do not delete the comment below. It is used to verify the correctness of the encoded image resource below before the product is released */
+                        /* [---XsltValidateInternal-Base64EncodedImage:IconSuccess#Begin#background-image: url(data:image/png;base64,#Separator#);#End#] */
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABcElEQVR4Xq2TsUsCURzHv15g8ZJcBWlyiYYgCIWcb9DFRRwMW5TA2c0/QEFwFkxxUQdxVlBwCYWOi6IhWgQhBLHJUCkhLr/BW8S7gvrAg+N+v8/v+x68Z8MGy+XSCyABQAXgBgHGALoASkIIDWSLeLBetdHryMjd5IxQPWT4rn1c/P7+xxp72Cs9m5SZ0Bq2vPnbPFafK2zDvmNHypdC0BPkLlQhxJsCAhQoZwdZU5mwxh720qGo8MzTxTTKZDPCx2HoVzp6lz0Q9tKhyx0kGs8Ny+TkWRKk8lCROwEduhyg9l/6lunOPSfmH3NUH6uQ0KHLAe7JYvJjevm+DAMGJHToKtigE+vwvIidxLamb8IBY9e+C5LiXREkfho3TSd06HJA13/oh6T51MTsfQbHrsMynQ5dDihFjiK8JJAU9AKIWTp76dCVN7HWHrajmUEGvyF9nkbAE6gLIS7kTUyuf2gscLoJrElZo/Mvj+nPz/kLTmfnEwP3tB0AAAAASUVORK5CYII=);
+                    }
+
+                    /* Information icon encoded */
+                    .IconInfoEncoded
+                    {
+                        /* Note: Do not delete the comment below. It is used to verify the correctness of the encoded image resource below before the product is released */
+                        /* [---XsltValidateInternal-Base64EncodedImage:IconInformation#Begin#background-image: url(data:image/png;base64,#Separator#);#End#] */
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHElEQVR4Xs2TsUoDQRRF7wwoziokjZUKadInhdhukR9YP8DMX1hYW+QvdsXa/QHBbcXC7W0CamWTQnclFutceIQJwwaWNLlwm5k5d94M76mmaeCrrmsLYOocY12FcxZFUeozCqKqqgYA8uevv1H6VuPxcwlfk5N92KHBxfFeCSAxxswlYAW/Xr989x/mv9gkhtyMDhcAxgzRsp7flj8B/HF1RsMXq+NZMkopaHe7lbKxQUEIGbKsYNoGn969060hZBkQex/W8oRQwsQaW2o3Ago2SVcJUzAgY3N0lTCZZm+zPS8HB51gMmS1DEYyOz9acKO1D8JWTlafKIMxdhvlfdyT94Vv5h7P8Ky7nQzACmhvKq3zk3PjW9asz9D/1oigecsioooAAAAASUVORK5CYII=);
+                    }
+
+                    /* Warning icon encoded */
+                    .IconWarningEncoded
+                    {
+                        /* Note: Do not delete the comment below. It is used to verify the correctness of the encoded image resource below before the product is released */
+                        /* [---XsltValidateInternal-Base64EncodedImage:IconWarning#Begin#background-image: url(data:image/png;base64,#Separator#);#End#] */
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAx0lEQVR4XpWSMQ7CMAxFf4xAyBMLCxMrO8dhaBcuwdCJS3RJBw7SA/QGTCxdWJgiQYWKXJWKIXHIlyw5lqr34tQgEOdcBsCOx5yZK3hCCKdYXneQkh4pEfqzLfu+wVDSyyzFoJjfz9NB+pAF+eizx2Vruts0k15mPgvS6GYvpVtQhB61IB/dk6AF6fS4Ben0uIX5odtFe8Q/eW1KvFeH4e8khT6+gm5B+t3juyDt7n0jpe+CANTd+oTUjN/U3yVaABnSUjFz/gFq44JaVSCXeQAAAABJRU5ErkJggg==);
+                    }
+
+                    /* Error icon encoded */
+                    .IconErrorEncoded
+                    {
+                        /* Note: Do not delete the comment below. It is used to verify the correctness of the encoded image resource below before the product is released */
+                        /* [---XsltValidateInternal-Base64EncodedImage:IconError#Begin#background-image: url(data:image/png;base64,#Separator#);#End#] */
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABQElEQVR4XqWTvUoEQRCE6wYPZUA80AfwAQz23uCMjA7MDRQEIzPBVEyNTQUFIw00vcQTTMzuAh/AxEQQT8HF/3G/oGGnEUGuoNnd6qoZuqltyKEsyzVJq5I6rnUp6SjGeGhESikzzlc1eL7opfuVbrqbU1Zw9NCgtQMaZpY0eNnaaL2fHusvTK5vKu7sjSS1Y4y3QUA6K3e3Mau5UFDyMP7tYF9o8cAHZv68vipoIJg971PZIZ5HiwdvYGGvFVFHmGmZ2MxwmQYPXubPl9Up0tfoMQGetXd6mRbvhBw+boZ6WF7Mbv1+GsHRk0fQmPAH1GfmZirbCfDJ61tw3Px8/8pZsPAG4jlVhcPgZ7adwNWBB68lkRQWFiTgFlbnLY3DGGM7izIJIyT/jjIvEJw6fdJTc6krDzh6aMwMP9bvDH4ADSsa9uSWVJkAAAAASUVORK5CYII=);
+                    }
+                 </style><script type="text/javascript" language="javascript"> 
+          
+            // Startup 
+            // Hook up the the loaded event for the document/window, to linkify the document content
+            var startupFunction = function() { linkifyElement("messages"); };
+            
+            if(window.attachEvent)
+            {
+              window.attachEvent('onload', startupFunction);
+            }
+            else if (window.addEventListener) 
+            {
+              window.addEventListener('load', startupFunction, false);
+            }
+            else 
+            {
+              document.addEventListener('load', startupFunction, false);
+            } 
+            
+            // Toggles the visibility of table rows with the specified name 
+            function toggleTableRowsByName(name)
+            {
+               var allRows = document.getElementsByTagName('tr');
+               for (i=0; i < allRows.length; i++)
+               {
+                  var currentName = allRows[i].getAttribute('name');
+                  if(!!currentName && currentName.indexOf(name) == 0)
+                  {
+                      var isVisible = allRows[i].style.display == ''; 
+                      isVisible ? allRows[i].style.display = 'none' : allRows[i].style.display = '';
+                  }
+               }
+            }
+            
+            function scrollToFirstVisibleRow(name) 
+            {
+               var allRows = document.getElementsByTagName('tr');
+               for (i=0; i < allRows.length; i++)
+               {
+                  var currentName = allRows[i].getAttribute('name');
+                  var isVisible = allRows[i].style.display == ''; 
+                  if(!!currentName && currentName.indexOf(name) == 0 && isVisible)
+                  {
+                     allRows[i].scrollIntoView(true); 
+                     return true; 
+                  }
+               }
+               
+               return false;
+            }
+            
+            // Linkifies the specified text content, replaces candidate links with html links 
+            function linkify(text)
+            {
+                 if(!text || 0 === text.length)
+                 {
+                     return text; 
+                 }
+
+                 // Find http, https and ftp links and replace them with hyper links 
+                 var urlLink = /(http|https|ftp)\:\/\/[a-zA-Z0-9\-\.]+(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\/\\\+&%\$#\=~;\{\}])*/gi;
+                 
+                 return text.replace(urlLink, '<a href="$&">$&</a>') ;
+            }
+            
+            // Linkifies the specified element by ID
+            function linkifyElement(id)
+            {
+                var element = document.getElementById(id);
+                if(!!element)
+                {
+                  element.innerHTML = linkify(element.innerHTML); 
+                }
+            }
+            
+            function ToggleMessageVisibility(projectName)
+            {
+              if(!projectName || 0 === projectName.length)
+              {
+                return; 
+              }
+              
+              toggleTableRowsByName("MessageRowClass" + projectName);
+              toggleTableRowsByName('MessageRowHeaderShow' + projectName);
+              toggleTableRowsByName('MessageRowHeaderHide' + projectName); 
+            }
+            
+            function ScrollToFirstVisibleMessage(projectName)
+            {
+              if(!projectName || 0 === projectName.length)
+              {
+                return; 
+              }
+              
+              // First try the 'Show messages' row
+              if(!scrollToFirstVisibleRow('MessageRowHeaderShow' + projectName))
+              {
+                // Failed to find a visible row for 'Show messages', try an actual message row 
+                scrollToFirstVisibleRow('MessageRowClass' + projectName); 
+              }
+            }
+           </script></head><body><h1 _locID="ConversionReport">
+          変換レポート - </h1><div id="content"><h2 _locID="OverviewTitle">概要</h2><div id="overview"><table><tr><th></th><th _locID="ProjectTableHeader">プロジェクト</th><th _locID="PathTableHeader">パス</th><th _locID="ErrorsTableHeader">エラー</th><th _locID="WarningsTableHeader">警告</th><th _locID="MessagesTableHeader">メッセージ</th></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Assembly-CSharp">Assembly-CSharp</a></strong></td><td>Assembly-CSharp.csproj</td><td class="textCentered"><a href="#Assembly-CSharpError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Assembly-CSharp-Editor">Assembly-CSharp-Editor</a></strong></td><td>Assembly-CSharp-Editor.csproj</td><td class="textCentered"><a href="#Assembly-CSharp-EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Assembly-CSharp-Editor-firstpass">Assembly-CSharp-Editor-firstpass</a></strong></td><td>Assembly-CSharp-Editor-firstpass.csproj</td><td class="textCentered"><a href="#Assembly-CSharp-Editor-firstpassError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Assembly-CSharp-firstpass">Assembly-CSharp-firstpass</a></strong></td><td>Assembly-CSharp-firstpass.csproj</td><td class="textCentered"><a href="#Assembly-CSharp-firstpassError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#AudioStream">AudioStream</a></strong></td><td>AudioStream.csproj</td><td class="textCentered"><a href="#AudioStreamError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#AudioStreamEditor">AudioStreamEditor</a></strong></td><td>AudioStreamEditor.csproj</td><td class="textCentered"><a href="#AudioStreamEditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#AudioStreamSupport">AudioStreamSupport</a></strong></td><td>AudioStreamSupport.csproj</td><td class="textCentered"><a href="#AudioStreamSupportError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#AudioStreamSupportEditor">AudioStreamSupportEditor</a></strong></td><td>AudioStreamSupportEditor.csproj</td><td class="textCentered"><a href="#AudioStreamSupportEditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#BlobHandles.Runtime">BlobHandles.Runtime</a></strong></td><td>BlobHandles.Runtime.csproj</td><td class="textCentered"><a href="#BlobHandles.RuntimeError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#BlobHandles.Tests.Editor">BlobHandles.Tests.Editor</a></strong></td><td>BlobHandles.Tests.Editor.csproj</td><td class="textCentered"><a href="#BlobHandles.Tests.EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#BlobHandles.Tests.Runtime">BlobHandles.Tests.Runtime</a></strong></td><td>BlobHandles.Tests.Runtime.csproj</td><td class="textCentered"><a href="#BlobHandles.Tests.RuntimeError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#FMODUnity">FMODUnity</a></strong></td><td>FMODUnity.csproj</td><td class="textCentered"><a href="#FMODUnityError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#FMODUnityEditor">FMODUnityEditor</a></strong></td><td>FMODUnityEditor.csproj</td><td class="textCentered"><a href="#FMODUnityEditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#FMODUnityResonance">FMODUnityResonance</a></strong></td><td>FMODUnityResonance.csproj</td><td class="textCentered"><a href="#FMODUnityResonanceError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#FMODUnityResonanceEditor">FMODUnityResonanceEditor</a></strong></td><td>FMODUnityResonanceEditor.csproj</td><td class="textCentered"><a href="#FMODUnityResonanceEditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#NtpTimestamp">NtpTimestamp</a></strong></td><td>NtpTimestamp.csproj</td><td class="textCentered"><a href="#NtpTimestampError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#OscCore.Editor">OscCore.Editor</a></strong></td><td>OscCore.Editor.csproj</td><td class="textCentered"><a href="#OscCore.EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#OscCore.Runtime">OscCore.Runtime</a></strong></td><td>OscCore.Runtime.csproj</td><td class="textCentered"><a href="#OscCore.RuntimeError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.AvatarCreator">ReadyPlayerMe.AvatarCreator</a></strong></td><td>ReadyPlayerMe.AvatarCreator.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.AvatarCreatorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.AvatarCreator.Editor">ReadyPlayerMe.AvatarCreator.Editor</a></strong></td><td>ReadyPlayerMe.AvatarCreator.Editor.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.AvatarCreator.EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Core">ReadyPlayerMe.Core</a></strong></td><td>ReadyPlayerMe.Core.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.CoreError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Core.Editor">ReadyPlayerMe.Core.Editor</a></strong></td><td>ReadyPlayerMe.Core.Editor.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.Core.EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Core.WebGLSample.Editor">ReadyPlayerMe.Core.WebGLSample.Editor</a></strong></td><td>ReadyPlayerMe.Core.WebGLSample.Editor.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.Core.WebGLSample.EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Samples.AvatarCreatorElements">ReadyPlayerMe.Samples.AvatarCreatorElements</a></strong></td><td>ReadyPlayerMe.Samples.AvatarCreatorElements.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.Samples.AvatarCreatorElementsError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Samples.AvatarCreatorWizard">ReadyPlayerMe.Samples.AvatarCreatorWizard</a></strong></td><td>ReadyPlayerMe.Samples.AvatarCreatorWizard.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.Samples.AvatarCreatorWizardError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Samples.AvatarLoading">ReadyPlayerMe.Samples.AvatarLoading</a></strong></td><td>ReadyPlayerMe.Samples.AvatarLoading.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.Samples.AvatarLoadingError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Samples.AvatarRenders">ReadyPlayerMe.Samples.AvatarRenders</a></strong></td><td>ReadyPlayerMe.Samples.AvatarRenders.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.Samples.AvatarRendersError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Samples.QuickStart">ReadyPlayerMe.Samples.QuickStart</a></strong></td><td>ReadyPlayerMe.Samples.QuickStart.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.Samples.QuickStartError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#ReadyPlayerMe.Samples.WebGLSample">ReadyPlayerMe.Samples.WebGLSample</a></strong></td><td>ReadyPlayerMe.Samples.WebGLSample.csproj</td><td class="textCentered"><a href="#ReadyPlayerMe.Samples.WebGLSampleError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Zenject">Zenject</a></strong></td><td>Zenject.csproj</td><td class="textCentered"><a href="#ZenjectError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Zenject-Editor">Zenject-Editor</a></strong></td><td>Zenject-Editor.csproj</td><td class="textCentered"><a href="#Zenject-EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Zenject-IntegrationTests">Zenject-IntegrationTests</a></strong></td><td>Zenject-IntegrationTests.csproj</td><td class="textCentered"><a href="#Zenject-IntegrationTestsError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Zenject-IntegrationTests-Editor">Zenject-IntegrationTests-Editor</a></strong></td><td>Zenject-IntegrationTests-Editor.csproj</td><td class="textCentered"><a href="#Zenject-IntegrationTests-EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Zenject-PoolMonitor-Editor">Zenject-PoolMonitor-Editor</a></strong></td><td>Zenject-PoolMonitor-Editor.csproj</td><td class="textCentered"><a href="#Zenject-PoolMonitor-EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Zenject-ReflectionBaking-Editor">Zenject-ReflectionBaking-Editor</a></strong></td><td>Zenject-ReflectionBaking-Editor.csproj</td><td class="textCentered"><a href="#Zenject-ReflectionBaking-EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Zenject-TestFramework">Zenject-TestFramework</a></strong></td><td>Zenject-TestFramework.csproj</td><td class="textCentered"><a href="#Zenject-TestFrameworkError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconErrorEncoded" /><td><strong><a href="#Zenject-UnitTests-Editor">Zenject-UnitTests-Editor</a></strong></td><td>Zenject-UnitTests-Editor.csproj</td><td class="textCentered"><a href="#Zenject-UnitTests-EditorError">1</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#Solution"><span _locID="OverviewSolutionSpan">ソリューション</span></a></strong></td><td>IVRC_unity.sln</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('Solution'); return false;">1</a></td></tr></table></div><h2 _locID="SolutionAndProjectsTitle">ソリューションおよびプロジェクト</h2><div id="messages"><a name="Assembly-CSharp" /><h3>Assembly-CSharp</h3><table><tr id="Assembly-CSharpHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassAssembly-CSharp"><td class="IconErrorEncoded"><a name="Assembly-CSharpError" /></td><td class="messageCell"><strong>Assembly-CSharp.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Assembly-CSharp-Editor" /><h3>Assembly-CSharp-Editor</h3><table><tr id="Assembly-CSharp-EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassAssembly-CSharp-Editor"><td class="IconErrorEncoded"><a name="Assembly-CSharp-EditorError" /></td><td class="messageCell"><strong>Assembly-CSharp-Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Assembly-CSharp-Editor-firstpass" /><h3>Assembly-CSharp-Editor-firstpass</h3><table><tr id="Assembly-CSharp-Editor-firstpassHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassAssembly-CSharp-Editor-firstpass"><td class="IconErrorEncoded"><a name="Assembly-CSharp-Editor-firstpassError" /></td><td class="messageCell"><strong>Assembly-CSharp-Editor-firstpass.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Assembly-CSharp-firstpass" /><h3>Assembly-CSharp-firstpass</h3><table><tr id="Assembly-CSharp-firstpassHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassAssembly-CSharp-firstpass"><td class="IconErrorEncoded"><a name="Assembly-CSharp-firstpassError" /></td><td class="messageCell"><strong>Assembly-CSharp-firstpass.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="AudioStream" /><h3>AudioStream</h3><table><tr id="AudioStreamHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassAudioStream"><td class="IconErrorEncoded"><a name="AudioStreamError" /></td><td class="messageCell"><strong>AudioStream.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="AudioStreamEditor" /><h3>AudioStreamEditor</h3><table><tr id="AudioStreamEditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassAudioStreamEditor"><td class="IconErrorEncoded"><a name="AudioStreamEditorError" /></td><td class="messageCell"><strong>AudioStreamEditor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="AudioStreamSupport" /><h3>AudioStreamSupport</h3><table><tr id="AudioStreamSupportHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassAudioStreamSupport"><td class="IconErrorEncoded"><a name="AudioStreamSupportError" /></td><td class="messageCell"><strong>AudioStreamSupport.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="AudioStreamSupportEditor" /><h3>AudioStreamSupportEditor</h3><table><tr id="AudioStreamSupportEditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassAudioStreamSupportEditor"><td class="IconErrorEncoded"><a name="AudioStreamSupportEditorError" /></td><td class="messageCell"><strong>AudioStreamSupportEditor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="BlobHandles.Runtime" /><h3>BlobHandles.Runtime</h3><table><tr id="BlobHandles.RuntimeHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassBlobHandles.Runtime"><td class="IconErrorEncoded"><a name="BlobHandles.RuntimeError" /></td><td class="messageCell"><strong>BlobHandles.Runtime.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="BlobHandles.Tests.Editor" /><h3>BlobHandles.Tests.Editor</h3><table><tr id="BlobHandles.Tests.EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassBlobHandles.Tests.Editor"><td class="IconErrorEncoded"><a name="BlobHandles.Tests.EditorError" /></td><td class="messageCell"><strong>BlobHandles.Tests.Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="BlobHandles.Tests.Runtime" /><h3>BlobHandles.Tests.Runtime</h3><table><tr id="BlobHandles.Tests.RuntimeHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassBlobHandles.Tests.Runtime"><td class="IconErrorEncoded"><a name="BlobHandles.Tests.RuntimeError" /></td><td class="messageCell"><strong>BlobHandles.Tests.Runtime.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="FMODUnity" /><h3>FMODUnity</h3><table><tr id="FMODUnityHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassFMODUnity"><td class="IconErrorEncoded"><a name="FMODUnityError" /></td><td class="messageCell"><strong>FMODUnity.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="FMODUnityEditor" /><h3>FMODUnityEditor</h3><table><tr id="FMODUnityEditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassFMODUnityEditor"><td class="IconErrorEncoded"><a name="FMODUnityEditorError" /></td><td class="messageCell"><strong>FMODUnityEditor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="FMODUnityResonance" /><h3>FMODUnityResonance</h3><table><tr id="FMODUnityResonanceHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassFMODUnityResonance"><td class="IconErrorEncoded"><a name="FMODUnityResonanceError" /></td><td class="messageCell"><strong>FMODUnityResonance.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="FMODUnityResonanceEditor" /><h3>FMODUnityResonanceEditor</h3><table><tr id="FMODUnityResonanceEditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassFMODUnityResonanceEditor"><td class="IconErrorEncoded"><a name="FMODUnityResonanceEditorError" /></td><td class="messageCell"><strong>FMODUnityResonanceEditor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="NtpTimestamp" /><h3>NtpTimestamp</h3><table><tr id="NtpTimestampHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassNtpTimestamp"><td class="IconErrorEncoded"><a name="NtpTimestampError" /></td><td class="messageCell"><strong>NtpTimestamp.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="OscCore.Editor" /><h3>OscCore.Editor</h3><table><tr id="OscCore.EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassOscCore.Editor"><td class="IconErrorEncoded"><a name="OscCore.EditorError" /></td><td class="messageCell"><strong>OscCore.Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="OscCore.Runtime" /><h3>OscCore.Runtime</h3><table><tr id="OscCore.RuntimeHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassOscCore.Runtime"><td class="IconErrorEncoded"><a name="OscCore.RuntimeError" /></td><td class="messageCell"><strong>OscCore.Runtime.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.AvatarCreator" /><h3>ReadyPlayerMe.AvatarCreator</h3><table><tr id="ReadyPlayerMe.AvatarCreatorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.AvatarCreator"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.AvatarCreatorError" /></td><td class="messageCell"><strong>ReadyPlayerMe.AvatarCreator.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.AvatarCreator.Editor" /><h3>ReadyPlayerMe.AvatarCreator.Editor</h3><table><tr id="ReadyPlayerMe.AvatarCreator.EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.AvatarCreator.Editor"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.AvatarCreator.EditorError" /></td><td class="messageCell"><strong>ReadyPlayerMe.AvatarCreator.Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Core" /><h3>ReadyPlayerMe.Core</h3><table><tr id="ReadyPlayerMe.CoreHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Core"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.CoreError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Core.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Core.Editor" /><h3>ReadyPlayerMe.Core.Editor</h3><table><tr id="ReadyPlayerMe.Core.EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Core.Editor"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.Core.EditorError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Core.Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Core.WebGLSample.Editor" /><h3>ReadyPlayerMe.Core.WebGLSample.Editor</h3><table><tr id="ReadyPlayerMe.Core.WebGLSample.EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Core.WebGLSample.Editor"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.Core.WebGLSample.EditorError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Core.WebGLSample.Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Samples.AvatarCreatorElements" /><h3>ReadyPlayerMe.Samples.AvatarCreatorElements</h3><table><tr id="ReadyPlayerMe.Samples.AvatarCreatorElementsHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Samples.AvatarCreatorElements"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.Samples.AvatarCreatorElementsError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Samples.AvatarCreatorElements.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Samples.AvatarCreatorWizard" /><h3>ReadyPlayerMe.Samples.AvatarCreatorWizard</h3><table><tr id="ReadyPlayerMe.Samples.AvatarCreatorWizardHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Samples.AvatarCreatorWizard"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.Samples.AvatarCreatorWizardError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Samples.AvatarCreatorWizard.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Samples.AvatarLoading" /><h3>ReadyPlayerMe.Samples.AvatarLoading</h3><table><tr id="ReadyPlayerMe.Samples.AvatarLoadingHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Samples.AvatarLoading"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.Samples.AvatarLoadingError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Samples.AvatarLoading.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Samples.AvatarRenders" /><h3>ReadyPlayerMe.Samples.AvatarRenders</h3><table><tr id="ReadyPlayerMe.Samples.AvatarRendersHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Samples.AvatarRenders"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.Samples.AvatarRendersError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Samples.AvatarRenders.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Samples.QuickStart" /><h3>ReadyPlayerMe.Samples.QuickStart</h3><table><tr id="ReadyPlayerMe.Samples.QuickStartHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Samples.QuickStart"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.Samples.QuickStartError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Samples.QuickStart.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="ReadyPlayerMe.Samples.WebGLSample" /><h3>ReadyPlayerMe.Samples.WebGLSample</h3><table><tr id="ReadyPlayerMe.Samples.WebGLSampleHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassReadyPlayerMe.Samples.WebGLSample"><td class="IconErrorEncoded"><a name="ReadyPlayerMe.Samples.WebGLSampleError" /></td><td class="messageCell"><strong>ReadyPlayerMe.Samples.WebGLSample.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Zenject" /><h3>Zenject</h3><table><tr id="ZenjectHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassZenject"><td class="IconErrorEncoded"><a name="ZenjectError" /></td><td class="messageCell"><strong>Zenject.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Zenject-Editor" /><h3>Zenject-Editor</h3><table><tr id="Zenject-EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassZenject-Editor"><td class="IconErrorEncoded"><a name="Zenject-EditorError" /></td><td class="messageCell"><strong>Zenject-Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Zenject-IntegrationTests" /><h3>Zenject-IntegrationTests</h3><table><tr id="Zenject-IntegrationTestsHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassZenject-IntegrationTests"><td class="IconErrorEncoded"><a name="Zenject-IntegrationTestsError" /></td><td class="messageCell"><strong>Zenject-IntegrationTests.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Zenject-IntegrationTests-Editor" /><h3>Zenject-IntegrationTests-Editor</h3><table><tr id="Zenject-IntegrationTests-EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassZenject-IntegrationTests-Editor"><td class="IconErrorEncoded"><a name="Zenject-IntegrationTests-EditorError" /></td><td class="messageCell"><strong>Zenject-IntegrationTests-Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Zenject-PoolMonitor-Editor" /><h3>Zenject-PoolMonitor-Editor</h3><table><tr id="Zenject-PoolMonitor-EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassZenject-PoolMonitor-Editor"><td class="IconErrorEncoded"><a name="Zenject-PoolMonitor-EditorError" /></td><td class="messageCell"><strong>Zenject-PoolMonitor-Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Zenject-ReflectionBaking-Editor" /><h3>Zenject-ReflectionBaking-Editor</h3><table><tr id="Zenject-ReflectionBaking-EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassZenject-ReflectionBaking-Editor"><td class="IconErrorEncoded"><a name="Zenject-ReflectionBaking-EditorError" /></td><td class="messageCell"><strong>Zenject-ReflectionBaking-Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Zenject-TestFramework" /><h3>Zenject-TestFramework</h3><table><tr id="Zenject-TestFrameworkHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassZenject-TestFramework"><td class="IconErrorEncoded"><a name="Zenject-TestFrameworkError" /></td><td class="messageCell"><strong>Zenject-TestFramework.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Zenject-UnitTests-Editor" /><h3>Zenject-UnitTests-Editor</h3><table><tr id="Zenject-UnitTests-EditorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="ErrorRowClassZenject-UnitTests-Editor"><td class="IconErrorEncoded"><a name="Zenject-UnitTests-EditorError" /></td><td class="messageCell"><strong>Zenject-UnitTests-Editor.csproj:
+        </strong><span>このプロジェクトの種類の基になるアプリケーションが見つかりませんでした。詳細については、このリンクを参照してください:http://go.microsoft.com/fwlink/?LinkID=299083&amp;projecttype=E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1</span></td></tr></table><a name="Solution" /><h3 _locID="ProjectDisplayNameHeader">ソリューション</h3><table><tr id="SolutionHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">メッセージ</th></tr><tr name="MessageRowHeaderShowSolution"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="SolutionMessage" onclick="ToggleMessageVisibility('Solution'); return false;">
+          その他の1 メッセージを表示する
+        </a></td></tr><tr name="MessageRowClassSolution" style="display: none"><td class="IconInfoEncoded"><a name="SolutionMessage" /></td><td class="messageCell"><strong>IVRC_unity.sln:
+        </strong><span>ソリューション ファイルは移行の必要がありません。</span></td></tr><tr style="display: none" name="MessageRowHeaderHideSolution"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="SolutionMessage" onclick="ToggleMessageVisibility('Solution'); return false;">
+          その他の1 メッセージを隠す
+        </a></td></tr></table></div></div></body></html>
