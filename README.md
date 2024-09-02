@@ -29,4 +29,4 @@ git clone []
 
 ### Unity Hubの設定
 
-- Build Settings > Android > install?
+- Build Settings > Android > Install with Unity Hub
