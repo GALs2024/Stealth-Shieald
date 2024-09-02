@@ -49,6 +49,11 @@
             "Timestamp": "20240902_175449",
             "UserInput": "User: こんにちは。",
             "AIResponse": "こんにちは！"
+        },
+        {
+            "Timestamp": "20240902_184933",
+            "UserInput": "User: こんにちは",
+            "AIResponse": "こんにちは！"
         }
     ]
 }
