@@ -21,8 +21,12 @@ Stealth-Shieald/
 
 それぞれのディレクトリ（`UnityProject` と `AIProject`）には、特定のセットアップおよび貢献ガイドラインを含むREADME.mdが含まれています。
 
-<!--
-## ライセンス
+## インストトール
 
-このプロジェクトはMITライセンスの下でライセンスされています - 詳細は[LICENSE](LICENSE)ファイルを参照してください。
--->
+``` cmd
+git clone []
+```
+
+### Unity Hubの設定
+
+- Build Settings > Android > install?
