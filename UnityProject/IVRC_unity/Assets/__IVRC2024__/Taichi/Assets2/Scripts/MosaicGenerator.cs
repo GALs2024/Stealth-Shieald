@@ -107,6 +107,10 @@ public class MosaicGenerator : MonoBehaviour
                 Vector3 position = new Vector3(x * worldTileWidth, y * worldTileHeight, 0) + startPosition;
                 GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity, tileParent);
                 SpriteRenderer renderer = tile.GetComponent<SpriteRenderer>();
+                tile.AddComponent<BoxCollider>();
+                tile.AddComponent<Rigidbody>();
+                var rb = tile.GetComponent<Rigidbody>();
+                rb.useGravity = false;
 
                 // フォルダからランダムに画像を選択
                 Texture2D tileTexture = tileImages[Random.Range(0, tileImages.Length)];
