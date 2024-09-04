@@ -4,32 +4,32 @@ using TMPro;
 
 public class TextMeshTyper : MonoBehaviour
 {
-    // 3DƒIƒuƒWƒFƒNƒg—p‚ÌTextMeshPro
+    // 3Dã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”¨ã®TextMeshPro
     public TextMeshPro textObject;
 
-    // •¶š‚ğ•\¦‚·‚éŠÔŠui•bj
+    // æ–‡å­—ã‚’è¡¨ç¤ºã™ã‚‹é–“éš”ï¼ˆç§’ï¼‰
     public float typingSpeed = 0.05f;
 
-    // •\¦‚·‚éƒeƒLƒXƒg‚Ì“à—e
-    private string textToDisplay = "‚±‚ê‚Í 3D TextMesh example‚Å‚·!?.BA‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·‚±‚ê‚Í 3D TextMesh example‚Å‚·";
+    // è¡¨ç¤ºã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆã®å†…å®¹
+    private string textToDisplay = "ã“ã‚Œã¯ 3D TextMesh exampleã§ã™!?.ã€‚ã€ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™ã“ã‚Œã¯ 3D TextMesh exampleã§ã™";
 
     void Start()
     {
-        // ƒRƒ‹[ƒ`ƒ“‚ğg‚Á‚ÄƒeƒLƒXƒg‚ğˆê•¶š‚¸‚Â•\¦
+        // ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’ä½¿ã£ã¦ãƒ†ã‚­ã‚¹ãƒˆã‚’ä¸€æ–‡å­—ãšã¤è¡¨ç¤º
         if (textObject != null)
         {
             StartCoroutine(TypeText(textObject, textToDisplay));
         }
     }
 
-    // ƒeƒLƒXƒg‚ğˆê•¶š‚¸‚Â•\¦‚·‚éƒRƒ‹[ƒ`ƒ“
+    // ãƒ†ã‚­ã‚¹ãƒˆã‚’ä¸€æ–‡å­—ãšã¤è¡¨ç¤ºã™ã‚‹ã‚³ãƒ«ãƒ¼ãƒãƒ³
     IEnumerator TypeText(TextMeshPro textObject, string textToDisplay)
     {
-        textObject.text = ""; // Å‰‚ÉƒeƒLƒXƒg‚ğƒNƒŠƒA
+        textObject.text = ""; // æœ€åˆã«ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢
         foreach (char letter in textToDisplay.ToCharArray())
         {
-            textObject.text += letter; // ˆê•¶š‚¸‚Â’Ç‰Á
-            yield return new WaitForSeconds(typingSpeed); // w’è‚µ‚½ŠÔ‘Ò‚Â
+            textObject.text += letter; // ä¸€æ–‡å­—ãšã¤è¿½åŠ 
+            yield return new WaitForSeconds(typingSpeed); // æŒ‡å®šã—ãŸæ™‚é–“å¾…ã¤
         }
     }
 }
