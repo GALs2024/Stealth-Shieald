@@ -3,7 +3,8 @@ using System.IO;
 
 public class MosaicGenerator : MonoBehaviour
 {
-    public Texture2D targetImage;  // モザイクアートにする対象画像
+    private string filePath = "Assets/__IVRC2024__/Taichi/Assets2/Textures/Mosaic/background_removed.png"; // ターゲット画像のファイルパス
+    private Texture2D targetImage;  // モザイクアートにする対象画像
     public string imagesFolderPath;  // 画像が格納されているフォルダのパス
     public Vector2 outputResolution = new Vector2(1024, 1024); // リサイズ後のターゲット画像の幅と高さ 
     public Vector2 gridTable = new Vector2(10, 10); // モザイクの横方向のタイル数と縦方向のタイル数
@@ -17,6 +18,7 @@ public class MosaicGenerator : MonoBehaviour
 
     void Start()
     {
+        targetImage = LoadTextureFromFile(filePath);
         tileParent = new GameObject("TileParent").transform;
 
         if (targetImage != null)
@@ -45,6 +47,32 @@ public class MosaicGenerator : MonoBehaviour
         }
     }
 
+    public Texture2D LoadTextureFromFile(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            // ファイルをバイト配列として読み込む
+            byte[] fileData = File.ReadAllBytes(filePath);
+            
+            // 新しいTexture2Dオブジェクトを作成し、画像データをロード
+            Texture2D texture = new Texture2D(2, 2);
+            if (texture.LoadImage(fileData))
+            {
+                return texture;
+            }
+            else
+            {
+                Debug.LogError("Failed to load image data.");
+                return null;
+            }
+        }
+        else
+        {
+            Debug.LogError("File not found at: " + filePath);
+            return null;
+        }
+    }
+
     void PreprocessTileImages()
     {
         string[] filePaths = Directory.GetFiles(imagesFolderPath, "*.png"); // ここではPNG画像を対象とする
@@ -56,14 +84,11 @@ public class MosaicGenerator : MonoBehaviour
             Texture2D texture = new Texture2D(2, 2);
             texture.LoadImage(fileData);
 
-            // 画像をグレースケールに変換
-            ConvertToGrayscale(texture);
+            // ConvertToGrayscale(texture);
+            // Texture2D resizedTileTexture = ResizeTexture(texture, tileResolution, tileResolution);
+            // tileImages[i] = resizedTileTexture;
 
-            // タイルに使用する画像をリサイズ
-            Texture2D resizedTileTexture = ResizeTexture(texture, tileResolution, tileResolution);
-
-            // 事前処理済みの画像を保存
-            tileImages[i] = resizedTileTexture;
+            tileImages[i] = texture;
         }
     }
 

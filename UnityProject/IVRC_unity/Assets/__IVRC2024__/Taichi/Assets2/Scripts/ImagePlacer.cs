@@ -1,8 +1,11 @@
 using UnityEngine;
+using System.IO;
 
 public class ImagePlacer : MonoBehaviour
 {
-    public Texture2D imageTexture;  // 設定する画像
+    private string imagesFolderPath = "Assets/__IVRC2024__/Taichi/Assets2/Textures/Mosaic/Originals"; // ターゲット画像のファイルパス
+
+    private Texture2D imageTexture;  // 設定する画像
     public float zPosition = 0f;    // 奥行きの位置
     public float imageScale = 1f;   // 画像のスケール
     public float appearDistance = 10f; // 表示される距離
@@ -20,6 +23,9 @@ public class ImagePlacer : MonoBehaviour
         imagePlane = GameObject.CreatePrimitive(PrimitiveType.Quad);
         imagePlane.transform.position = new Vector3(cameraCenter.x, cameraCenter.y, zPosition);
 
+        string[] filePaths = Directory.GetFiles(imagesFolderPath, "*.png");
+        this.imageTexture = LoadTextureFromFile(filePaths[0]);
+
         // 画像のスケールを設定
         float imageWidth = imageTexture.width / 100f * imageScale;
         float imageHeight = imageTexture.height / 100f * imageScale;
@@ -33,6 +39,33 @@ public class ImagePlacer : MonoBehaviour
         // 初期状態では画像を非表示にする
         imagePlane.SetActive(false);
     }
+
+    public Texture2D LoadTextureFromFile(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            // ファイルをバイト配列として読み込む
+            byte[] fileData = File.ReadAllBytes(filePath);
+            
+            // 新しいTexture2Dオブジェクトを作成し、画像データをロード
+            Texture2D texture = new Texture2D(2, 2);
+            if (texture.LoadImage(fileData))
+            {
+                return texture;
+            }
+            else
+            {
+                Debug.LogError("Failed to load image data.");
+                return null;
+            }
+        }
+        else
+        {
+            Debug.LogError("File not found at: " + filePath);
+            return null;
+        }
+    }
+
 
     void Update()
     {
