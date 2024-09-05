@@ -84,7 +84,7 @@ public class ConversationalAI_self : MonoBehaviour
     private void OnChatResponseSuccess(string chatResponse)
     {
         Debug.Log("Chat Response: " + chatResponse);
-        this.aiConversationManager.Display3DText(true, chatResponse);
+        this.aiConversationManager.Set3DText(true, chatResponse);
 
         this.conversationHistoryManager.SaveConversationHistory(this.lastUserInput, chatResponse);
 
@@ -123,6 +123,7 @@ public class ConversationalAI_self : MonoBehaviour
                 {
                     this.targetAudioSource.clip = clip;
                     this.targetAudioSource.Play();
+                    this.aiConversationManager.Display3DText(false);
 
                     while (this.targetAudioSource.isPlaying)
                     {
@@ -179,7 +180,8 @@ public class ConversationalAI_self : MonoBehaviour
     private void OnTranscriptionSuccess(string transcription)
     {
         Debug.Log("Transcription: " + transcription);
-        this.aiConversationManager.Display3DText(false, transcription);
+        this.aiConversationManager.Set3DText(false, transcription);
+        this.aiConversationManager.Display3DText(false);
         SaveTranscription(transcription);
         StartConversation(null, transcription);
     }

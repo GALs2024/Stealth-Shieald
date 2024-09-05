@@ -44,15 +44,27 @@ public class AIConversationManager_self : MonoBehaviour
         NextConversation(); // 次の音声ファイルを再生
     }
 
-    public void Display3DText(bool is_ai, string text)
+    public void Set3DText(bool is_ai, string text)
     {
         if (is_ai)
         {
-            this.AITextMeshTyper.StartTyping(text);
+            this.AITextMeshTyper.SetText(text);
         }
         else
         {
-            this.UserTextMeshTyper.StartTyping(text);
+            this.UserTextMeshTyper.SetText(text);
+        }
+    }
+
+    public void Display3DText(bool is_ai)
+    {
+        if (is_ai)
+        {
+            this.AITextMeshTyper.StartTyping();
+        }
+        else
+        {
+            this.UserTextMeshTyper.StartTyping();
         }
     }
 }
