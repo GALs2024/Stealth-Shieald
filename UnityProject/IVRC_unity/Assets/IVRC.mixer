@@ -247,7 +247,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Oculus
+  m_Name: Headphone
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c6de54c59ed2c0d45856bd842b57b816
   m_Children: []
