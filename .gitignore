@@ -58,3 +58,10 @@ UnityProject/IVRC_unity/.vsconfig
 UnityProject/IVRC_unity/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta
 UnityProject/IVRC_unity/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta
 UnityProject/IVRC_unity/Assets/Plugins/Zenject/Source/Zenject.csproj.meta
+
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/API/*
+
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/AIOutput/*
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/User/*
+
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Data/*
