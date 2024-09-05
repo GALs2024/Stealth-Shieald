@@ -12,6 +12,9 @@ public class AIConversationManager : MonoBehaviour
 
     private int currentClipIndex = 0;
 
+    public TextMeshTyper AITextMeshTyper;
+    public TextMeshTyper UserTextMeshTyper; 
+
     void Start()
     {
         if (audioClips.Length == 0)
@@ -57,5 +60,17 @@ public class AIConversationManager : MonoBehaviour
     public void OnAudioFinished()
     {
         PlayNextAudioClip(); // 次の音声ファイルを再生
+    }
+
+    public void Display3DText(bool is_ai, string text)
+    {
+        if (is_ai)
+        {
+            this.AITextMeshTyper.StartTyping(text);
+        }
+        else
+        {
+            this.UserTextMeshTyper.StartTyping(text);
+        }
     }
 }

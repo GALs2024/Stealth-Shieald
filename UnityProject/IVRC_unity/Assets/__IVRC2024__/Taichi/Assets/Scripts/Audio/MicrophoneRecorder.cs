@@ -36,6 +36,7 @@ public class MicrophoneRecorder : MonoBehaviour
             StopCoroutine(_monitoringCoroutine);
             _monitoringCoroutine = null;
         }
+        Debug.Log("MicrophoneRecorder: Monitoring stopped.");
         Microphone.End(null);  // マイク入力を停止
     }
 

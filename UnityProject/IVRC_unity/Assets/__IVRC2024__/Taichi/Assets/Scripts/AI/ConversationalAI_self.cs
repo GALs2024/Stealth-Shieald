@@ -5,21 +5,21 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class ConversationalAI : MonoBehaviour
+public class ConversationalAI_self : MonoBehaviour
 {
-    private string lastUserInput;
-
     private OpenAIChat chatService;
     private OpenAIWhisper whisperService;
     private OpenAITTS ttsService;
     private MicrophoneRecorder _microphoneRecorder;
+    private AIConversationManager_self aiConversationManager;
+    private ConversationHistoryManager conversationHistoryManager;
+    public GameObject avatarObject;
+    private AudioSource targetAudioSource;
 
     [SerializeField]
     private string systemMessage = "質問しながら短く答えてください";
     [SerializeField]
     private int maxTokens = 20;
-    [SerializeField]
-    private AudioClip startAudioClip; // 最初に再生する音声ファイル
     [SerializeField]
     private int maxMicInputs = 1; // 指定された回数のマイク入力
     private int currentMicInputCount = 0; // 現在のマイク入力回数
@@ -28,106 +28,56 @@ public class ConversationalAI : MonoBehaviour
     private bool isWaitingForUserResponse = false;
 
     private string savedTranscriptionsPath = @"Assets/__IVRC2024__/Taichi/Assets/Data/speak_contents.txt";
-    private AIConversationManager aiConversationManager;
-    private ConversationHistoryManager conversationHistoryManager;
-    public GameObject avatarObject;
-    private AudioSource targetAudioSource;
+
+    private string lastUserInput;
 
     public void Initialize()
     {
         var apiKey = ApiKeyLoader.LoadApiKey();
 
-        // AIConversationManagerを探して設定
-        aiConversationManager = FindObjectOfType<AIConversationManager>();
+        this.aiConversationManager = FindObjectOfType<AIConversationManager_self>();
 
         this.targetAudioSource = avatarObject.GetComponent<AudioSource>();
 
-        whisperService = new OpenAIWhisper(apiKey, "whisper-1");
-        chatService = new OpenAIChat(apiKey, "gpt-4o-mini", systemMessage, maxTokens);
-        ttsService = new OpenAITTS(apiKey, "tts-1", "alloy", "__IVRC2024__/Taichi/Assets/Audio/AIOutput");
+        this.whisperService = new OpenAIWhisper(apiKey, "whisper-1");
+        this.chatService = new OpenAIChat(apiKey, "gpt-4o-mini", systemMessage, maxTokens);
+        this.ttsService = new OpenAITTS(apiKey, "tts-1", "alloy", "__IVRC2024__/Taichi/Assets/Audio/AIOutput");
+
+        this.conversationHistoryManager = new ConversationHistoryManager();
         
-        _microphoneRecorder = GetComponent<MicrophoneRecorder>();
-        _microphoneRecorder.OnRecordingStopped += OnRecordingStopped;
-
-        // savedTranscriptionsPath = Path.Combine(Application.persistentDataPath, "transcriptions.txt");
-
-        conversationHistoryManager = new ConversationHistoryManager();
+        this._microphoneRecorder = GetComponent<MicrophoneRecorder>();
+        this._microphoneRecorder.OnRecordingStopped += OnRecordingStopped;
     }
 
     void OnDestroy()
     {
-        _microphoneRecorder.OnRecordingStopped -= OnRecordingStopped;
+        this._microphoneRecorder.OnRecordingStopped -= OnRecordingStopped;
     }
 
-    public void SetStartAudioClip(AudioClip clip)
+    public void StartConversation(string _systemMessage, string userInput)
     {
-        currentMicInputCount = 0; // マイク入力回数をリセット
-        startAudioClip = clip;
-    }
+        // userとAIで保存方法を変えるここで直接保存するようにしたほうが良いかも
+        this.lastUserInput = userInput;
 
-    public void PlayStartAudio()
-    {
-        if (startAudioClip != null)
+        if (_systemMessage == null)
         {
-            this.targetAudioSource.clip = startAudioClip;
-            this.targetAudioSource.Play();
-            StartCoroutine(WaitForAudioToEnd()); // 音声が終わるのを待つ
-        }
-        else
-        {
-            Debug.LogError("Start audio clip is not assigned.");
-        }
-    }
-
-    private IEnumerator WaitForAudioToEnd()
-    {
-        while (this.targetAudioSource.isPlaying)
-        {
-            yield return null;
-        }
-
-        StartMicrophoneInput(); // 音声再生後にマイク入力を開始
-    }
-
-    private void StartMicrophoneInput()
-    {
-        if (currentMicInputCount < maxMicInputs)
-        {
-            isWaitingForUserResponse = true;
-            Debug.Log("あなたの回答を待っています...");
-            _microphoneRecorder.StartMonitoring(threshold: mic_threshold, silenceDuration: 2f, frequency: 44100);
-        }
-        else
-        {
-            Debug.Log("Maximum number of microphone inputs reached. Ending conversation.");
-            // プログラムを終了させる処理をここに追加（例えば、シーンのリロードや終了）
-            if (aiConversationManager != null)
-            {
-                aiConversationManager.OnAudioFinished(); // 次のオーディオクリップに移行
+            this.systemMessage = "質問しながら短く答えてください";
+            // Debug.Log("currentMicInputCount: " + this.currentMicInputCount);
+            if (this.currentMicInputCount == this.maxMicInputs) {
+                this.systemMessage = "楽しくオウム返しをしてください";
             }
+        } else {
+            this.systemMessage = _systemMessage;
+            Debug.Log("systemMessage: " + this.systemMessage);
         }
-    }
-
-    private void StartConversation(string userInput)
-    {
-        // ユーザー入力を保持
-        lastUserInput = userInput;
 
         // 会話履歴の内容をすべて結合し、現在の入力を追加
-        string fullConversation = string.Join(" ", conversationHistoryManager.GetConversationHistoryAsString());
+        // string fullConversation = string.Join(, this.conversationHistoryManager.GetConversationHistoryAsString());
+        string fullConversation = "";
         fullConversation += " User: " + userInput;
 
         Debug.Log("Full Conversation: " + fullConversation);
 
-        // unityの実行を終了する
-        // return;
-        this.systemMessage = "質問しながら短く答えてください";
-        Debug.Log("currentMicInputCount: " + this.currentMicInputCount);
-        if (this.currentMicInputCount == this.maxMicInputs) {
-            this.systemMessage = "楽しくオウム返しをしてください";
-        }
-
-        Debug.Log("systemMessage: " + this.systemMessage);
         StartCoroutine(chatService.RequestChatResponse(this.systemMessage, fullConversation, OnChatResponseSuccess, OnError));
     }
 
@@ -136,9 +86,9 @@ public class ConversationalAI : MonoBehaviour
         Debug.Log("Chat Response: " + chatResponse);
         this.aiConversationManager.Display3DText(true, chatResponse);
 
-        conversationHistoryManager.SaveConversationHistory(lastUserInput, chatResponse);
+        this.conversationHistoryManager.SaveConversationHistory(this.lastUserInput, chatResponse);
 
-        StartCoroutine(ttsService.ConvertTextToSpeech(
+        StartCoroutine(this.ttsService.ConvertTextToSpeech(
             chatResponse, (audioData, filePath) => OnTTSSuccess(audioData, filePath), OnError
         ));    
     }
@@ -189,19 +139,40 @@ public class ConversationalAI : MonoBehaviour
         }
     }
 
+    private void StartMicrophoneInput()
+    {
+        if (this.currentMicInputCount < this.maxMicInputs)
+        {
+            this.isWaitingForUserResponse = true;
+            Debug.Log("あなたの回答を待っています...");
+            this._microphoneRecorder.StartMonitoring(threshold: mic_threshold, silenceDuration: 2f, frequency: 44100);
+        }
+        else
+        {
+            Debug.Log("Maximum number of microphone inputs reached. Ending conversation.");
+            // プログラムを終了させる処理をここに追加（例えば、シーンのリロードや終了）
+            if (this.aiConversationManager != null)
+            {
+                this.aiConversationManager.NextAction();
+            }
+        }
+    }
+
     private void OnRecordingStopped(byte[] audioData, AudioClip recordedClip)
     {
-        if (isWaitingForUserResponse && audioData != null)
+        if (this.isWaitingForUserResponse && audioData != null)
         {
-            isWaitingForUserResponse = false;
-            currentMicInputCount++; // マイク入力回数をカウント
+            this.isWaitingForUserResponse = false;
+            this.currentMicInputCount++; // マイク入力回数をカウント
 
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             string filename = "RecordedAudio_" + timestamp;
 
             WavUtility.SaveAsWav(filename, recordedClip);
 
-            StartCoroutine(whisperService.RequestTranscription(audioData, OnTranscriptionSuccess, OnError));
+            Debug.Log("Sending audio data to Whisper service...");
+
+            StartCoroutine(this.whisperService.RequestTranscription(audioData, OnTranscriptionSuccess, OnError));
         }
     }
 
@@ -210,15 +181,25 @@ public class ConversationalAI : MonoBehaviour
         Debug.Log("Transcription: " + transcription);
         this.aiConversationManager.Display3DText(false, transcription);
         SaveTranscription(transcription);
-        StartConversation(transcription);
+        StartConversation(null, transcription);
     }
+
+    // private IEnumerator WaitForAudioToEnd()
+    // {
+    //     while (this.targetAudioSource.isPlaying)
+    //     {
+    //         yield return null;
+    //     }
+
+    //     StartMicrophoneInput();
+    // }
 
     private void SaveTranscription(string transcription)
     {
         try
         {
-            File.AppendAllText(savedTranscriptionsPath, transcription + Environment.NewLine);
-            Debug.Log("Transcription saved to: " + savedTranscriptionsPath);
+            File.AppendAllText(this.savedTranscriptionsPath, transcription + Environment.NewLine);
+            Debug.Log("Transcription saved to: " + this.savedTranscriptionsPath);
         }
         catch (Exception e)
         {
