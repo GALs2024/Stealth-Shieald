@@ -27,8 +27,6 @@ public class ConversationalAI_self : MonoBehaviour
 
     private bool isWaitingForUserResponse = false;
 
-    private string savedTranscriptionsPath = @"Assets/__IVRC2024__/Taichi/Assets/Data/speak_contents.txt";
-
     private string lastUserInput;
 
     public void Initialize()
@@ -61,10 +59,10 @@ public class ConversationalAI_self : MonoBehaviour
 
         if (_systemMessage == null)
         {
-            this.systemMessage = "質問しながら短く答えてください";
-            // Debug.Log("currentMicInputCount: " + this.currentMicInputCount);
+            this.systemMessage = "入力内容を深掘りする質問を1つする。";
+            Debug.Log("currentMicInputCount: " + this.currentMicInputCount);
             if (this.currentMicInputCount == this.maxMicInputs) {
-                this.systemMessage = "楽しくオウム返しをしてください";
+                this.systemMessage = "疑問形の質問をしない。キーワードを含んで相槌する。";
             }
         } else {
             this.systemMessage = _systemMessage;
@@ -74,7 +72,7 @@ public class ConversationalAI_self : MonoBehaviour
         // 会話履歴の内容をすべて結合し、現在の入力を追加
         // string fullConversation = string.Join(, this.conversationHistoryManager.GetConversationHistoryAsString());
         string fullConversation = "";
-        fullConversation += " User: " + userInput;
+        fullConversation += userInput;
 
         Debug.Log("Full Conversation: " + fullConversation);
 
@@ -123,7 +121,7 @@ public class ConversationalAI_self : MonoBehaviour
                 {
                     this.targetAudioSource.clip = clip;
                     this.targetAudioSource.Play();
-                    this.aiConversationManager.Display3DText(false);
+                    this.aiConversationManager.Display3DText(true);
 
                     while (this.targetAudioSource.isPlaying)
                     {
@@ -179,38 +177,29 @@ public class ConversationalAI_self : MonoBehaviour
 
     private void OnTranscriptionSuccess(string transcription)
     {
+        // transcription が空白の場合
+        if (string.IsNullOrWhiteSpace(transcription))
+        {
+            Debug.Log("Transcription is empty. Please try again.");
+            this.currentMicInputCount--; // マイク入力回数を減らす
+            this.aiConversationManager.Reset3DText(false);
+            
+            OnChatResponseSuccess("聞き取れませんでした。");
+            return;
+        }
         Debug.Log("Transcription: " + transcription);
         this.aiConversationManager.Set3DText(false, transcription);
         this.aiConversationManager.Display3DText(false);
-        SaveTranscription(transcription);
         StartConversation(null, transcription);
-    }
-
-    // private IEnumerator WaitForAudioToEnd()
-    // {
-    //     while (this.targetAudioSource.isPlaying)
-    //     {
-    //         yield return null;
-    //     }
-
-    //     StartMicrophoneInput();
-    // }
-
-    private void SaveTranscription(string transcription)
-    {
-        try
-        {
-            File.AppendAllText(this.savedTranscriptionsPath, transcription + Environment.NewLine);
-            Debug.Log("Transcription saved to: " + this.savedTranscriptionsPath);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Failed to save transcription: " + e.Message);
-        }
     }
 
     private void OnError(string error)
     {
         Debug.LogError("Error: " + error);
+    }
+
+    public void ResetConversationHistory()
+    {
+        this.conversationHistoryManager.ClearConversationHistory();
     }
 }

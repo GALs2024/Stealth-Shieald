@@ -13,6 +13,8 @@ public class MicrophoneRecorder : MonoBehaviour
     private float _timeSinceLastSound = 0f;
     private int _frequency = 44100;
     private int _lastMicPosition = 0;
+    private float _maxRecordingTime = 8f; // 最大録音時間
+    private float _autoStartRecordingDelay = 3f; // 3秒待機後に録音開始
 
     private Coroutine _monitoringCoroutine;
 
@@ -46,8 +48,12 @@ public class MicrophoneRecorder : MonoBehaviour
         int sampleSize = 256;
         float[] samples = new float[sampleSize];
 
+        float _timeSinceStartMonitoring = 0f; // 監視開始時間をリセット
+
         while (true)
         {
+            _timeSinceStartMonitoring += Time.deltaTime;
+
             int microphonePosition = Microphone.GetPosition(null);
             if (microphonePosition < _lastMicPosition)
             {
@@ -65,19 +71,29 @@ public class MicrophoneRecorder : MonoBehaviour
                 }
             }
 
-            if (maxLevel > _threshold)
+            // 音声が検知されるか、3秒経過したら録音開始
+            if (maxLevel > _threshold || _timeSinceStartMonitoring >= this._autoStartRecordingDelay)
             {
                 if (!_isRecording)
                 {
+                    _isRecording = true;
                     StartRecording();
                 }
-                _timeSinceLastSound = 0f;
+                if (maxLevel > _threshold)
+                {
+                    _timeSinceLastSound = 0f;
+                }
             }
-            else if (_isRecording)
+
+            // 録音中の場合
+            if (_isRecording)
             {
                 _timeSinceLastSound += Time.deltaTime;
-                if (_timeSinceLastSound > _silenceDuration)
+
+                // 録音を最大10秒までに制限
+                if (_timeSinceStartMonitoring >= this._maxRecordingTime || _timeSinceLastSound > _silenceDuration)
                 {
+                    _isRecording = false;
                     StopRecording();
                 }
             }
@@ -90,13 +106,12 @@ public class MicrophoneRecorder : MonoBehaviour
     private void StartRecording()
     {
         Debug.Log("Recording started.");
-        _isRecording = true;
+        _timeSinceLastSound = 0f; // 録音開始時に時間をリセット
     }
 
     private void StopRecording()
     {
         Debug.Log("Recording stopped.");
-        _isRecording = false;
 
         if (Microphone.IsRecording(null))
         {

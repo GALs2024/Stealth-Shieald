@@ -15,7 +15,6 @@ public class TextMeshTyper : MonoBehaviour
 
     public void StartTyping()
     {
-        this.textToDisplay = text;
         StartCoroutine(TypeText(textObject, this.textToDisplay));
     }
 
@@ -33,5 +32,10 @@ public class TextMeshTyper : MonoBehaviour
             textObject.text += letter; // 一文字ずつ追加
             yield return new WaitForSeconds(typingSpeed); // 指定した時間待つ
         }
+    }
+
+    public void ResetText()
+    {
+        this.textObject.text = "";
     }
 }

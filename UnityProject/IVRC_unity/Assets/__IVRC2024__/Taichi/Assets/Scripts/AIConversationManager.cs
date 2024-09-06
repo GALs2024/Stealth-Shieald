@@ -62,15 +62,15 @@ public class AIConversationManager : MonoBehaviour
         PlayNextAudioClip(); // 次の音声ファイルを再生
     }
 
-    public void Display3DText(bool is_ai, string text)
-    {
-        if (is_ai)
-        {
-            this.AITextMeshTyper.StartTyping(text);
-        }
-        else
-        {
-            this.UserTextMeshTyper.StartTyping(text);
-        }
-    }
+    // public void Display3DText(bool is_ai, string text)
+    // {
+    //     if (is_ai)
+    //     {
+    //         this.AITextMeshTyper.StartTyping(text);
+    //     }
+    //     else
+    //     {
+    //         this.UserTextMeshTyper.StartTyping(text);
+    //     }
+    // }
 }

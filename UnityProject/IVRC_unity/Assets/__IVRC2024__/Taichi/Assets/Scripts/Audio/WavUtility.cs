@@ -74,4 +74,56 @@ public static class WavUtility
             }
         }
     }
+
+    public static AudioClip ToAudioClip(byte[] wavFile)
+    {
+        // WAVファイルのヘッダーを解析
+        int channels = BitConverter.ToInt16(wavFile, 22);
+        int sampleRate = BitConverter.ToInt32(wavFile, 24);
+        int dataSize = BitConverter.ToInt32(wavFile, 40);
+        
+        // サンプルデータのスタート位置（44バイト目から）
+        int startIndex = 44;
+
+        // サンプル数の計算
+        int sampleCount = dataSize / 2; // 16ビットの場合、2バイト = 1サンプル
+
+        // サンプルデータをfloat配列に変換
+        float[] samples = new float[sampleCount];
+        for (int i = 0; i < sampleCount; i++)
+        {
+            short sample = BitConverter.ToInt16(wavFile, startIndex + i * 2);
+            samples[i] = sample / 32768f; // 16ビットPCMなので、-32768〜32767を-1〜1に正規化
+        }
+
+        // AudioClipを生成
+        AudioClip audioClip = AudioClip.Create("WavAudio", sampleCount, channels, sampleRate, false);
+        audioClip.SetData(samples, 0);
+
+        return audioClip;
+    }
+
+    private static float[] ConvertWavToSamples(byte[] audioData)
+    {
+        AudioClip audioClip = ToAudioClip(audioData); // 仮のメソッド
+        float[] samples = new float[audioClip.samples];
+        audioClip.GetData(samples, 0);
+        return samples;
+    }
+
+    public static bool IsSilent(byte[] audioData)
+    {
+        float[] samples = ConvertWavToSamples(audioData);
+        
+        // しきい値の設定（0.01以下の振幅を無音とみなす）
+        float silenceThreshold = 0.01f;
+        foreach (float sample in samples)
+        {
+            if (Mathf.Abs(sample) > silenceThreshold)
+            {
+                return false; // 音がある
+            }
+        }
+        return true; // 無音
+    }
 }

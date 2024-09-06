@@ -9,7 +9,7 @@ public class AIConversationManager_self : MonoBehaviour
     public string[] AISystemMessage;
     private int currentMassageIndex = 0;
     public TextMeshTyper AITextMeshTyper;
-    public TextMeshTyper UserTextMeshTyper; 
+    public TextMeshTyper UserTextMeshTyper;
 
     void Start()
     {
@@ -20,6 +20,7 @@ public class AIConversationManager_self : MonoBehaviour
         }
 
         this.conversationalAI.Initialize();
+        this.conversationalAI.ResetConversationHistory();
         NextConversation();
     }
 
@@ -42,6 +43,18 @@ public class AIConversationManager_self : MonoBehaviour
     public void NextAction()
     {
         NextConversation(); // 次の音声ファイルを再生
+    }
+
+    public void Reset3DText(bool is_ai)
+    {
+        if (is_ai)
+        {
+            this.AITextMeshTyper.ResetText();
+        }
+        else
+        {
+            this.UserTextMeshTyper.ResetText();
+        }
     }
 
     public void Set3DText(bool is_ai, string text)

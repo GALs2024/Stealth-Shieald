@@ -32,7 +32,7 @@ public class ConversationHistoryManager
         var conversation = new ConversationEntry
         {
             Timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss"),
-            UserInput = "User: " + userInput,
+            UserInput = userInput,
             AIResponse = aiResponse
         };
 
@@ -73,6 +73,25 @@ public class ConversationHistoryManager
         catch (Exception e)
         {
             Debug.LogError("Failed to load conversation history: " + e.Message);
+        }
+    }
+
+    public void ClearConversationHistory()
+    {
+        // 会話履歴を空にする
+        conversationHistory.Entries.Clear();
+
+        // 空の会話履歴をJSONとして保存
+        string conversationJson = JsonUtility.ToJson(conversationHistory, true);
+
+        try
+        {
+            File.WriteAllText(conversationHistoryPath, conversationJson);
+            Debug.Log("Conversation history cleared.");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to clear conversation history: " + e.Message);
         }
     }
 

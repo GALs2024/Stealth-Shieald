@@ -121,10 +121,10 @@ public class ConversationalAI : MonoBehaviour
 
         // unityの実行を終了する
         // return;
-        this.systemMessage = "質問しながら短く答えてください";
+        this.systemMessage = "質問しながら返答してください";
         Debug.Log("currentMicInputCount: " + this.currentMicInputCount);
         if (this.currentMicInputCount == this.maxMicInputs) {
-            this.systemMessage = "楽しくオウム返しをしてください";
+            this.systemMessage = "キーワードを含んで楽しく返答してください";
         }
 
         Debug.Log("systemMessage: " + this.systemMessage);
@@ -134,7 +134,7 @@ public class ConversationalAI : MonoBehaviour
     private void OnChatResponseSuccess(string chatResponse)
     {
         Debug.Log("Chat Response: " + chatResponse);
-        this.aiConversationManager.Display3DText(true, chatResponse);
+        // this.aiConversationManager.Display3DText(true, chatResponse);
 
         conversationHistoryManager.SaveConversationHistory(lastUserInput, chatResponse);
 
@@ -208,7 +208,7 @@ public class ConversationalAI : MonoBehaviour
     private void OnTranscriptionSuccess(string transcription)
     {
         Debug.Log("Transcription: " + transcription);
-        this.aiConversationManager.Display3DText(false, transcription);
+        // this.aiConversationManager.Display3DText(false, transcription);
         SaveTranscription(transcription);
         StartConversation(transcription);
     }
