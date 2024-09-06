@@ -10,6 +10,9 @@ public class HandWaveDetectManager : MonoBehaviour
     public AudioClip clip1;  // 音声ファイル1
     public AudioClip clip2;  // 音声ファイル2
 
+    private string pythonPath = @"Assets/__IVRC2024__/Taichi/Assets/PythonScripts/for_unity.py";  // Pythonのパスを指定
+    public AIConversationManager_self aiConversationManager; 
+
     private Process pythonProcess;
     private bool waveDetected = false;
     private bool shouldPlayClip2 = false;  // 追加: クリップ2を再生するためのフラグ
@@ -21,6 +24,12 @@ public class HandWaveDetectManager : MonoBehaviour
         if (audioSource == null)
         {
             UnityEngine.Debug.LogError("AudioSource コンポーネントが見つかりません。この GameObject に AudioSource をアタッチしてください。");
+            return;
+        }
+
+        if (this.aiConversationManager == null)
+        {
+            UnityEngine.Debug.LogError("AIConversationManager がアタッチされていません。");
             return;
         }
 
@@ -66,7 +75,7 @@ public class HandWaveDetectManager : MonoBehaviour
     {
         pythonProcess = new Process();
         pythonProcess.StartInfo.FileName = @"python";  // Pythonのパスを指定
-        pythonProcess.StartInfo.Arguments = @"Assets/PythonScripts/for_unity.py";  // スクリプトのパスを指定
+        pythonProcess.StartInfo.Arguments = this.pythonPath;  // スクリプトのパスを指定
         pythonProcess.StartInfo.UseShellExecute = false;
         pythonProcess.StartInfo.RedirectStandardOutput = true;
         pythonProcess.StartInfo.RedirectStandardError = true;  // エラーメッセージもリダイレクト
@@ -107,6 +116,17 @@ public class HandWaveDetectManager : MonoBehaviour
                     UnityEngine.Debug.Log("Pythonプロセスを終了しました。");
                 }
             }
+
+            // 他のメッセージを受信した場合の処理をここに追加
+            if (filteredMessage.Contains("Timeout!"))
+            {
+                UnityEngine.Debug.Log("Unity: タイムアウトしました。");
+                if (pythonProcess != null && !pythonProcess.HasExited)
+                {
+                    pythonProcess.Kill();
+                    UnityEngine.Debug.Log("Pythonプロセスを終了しました。");
+                }
+            }
         }
     }
 
@@ -120,6 +140,7 @@ public class HandWaveDetectManager : MonoBehaviour
             UnityEngine.Debug.Log("clip2 を再生しています。");
         }
         shouldPlayClip2 = false;  // フラグをリセット
+        this.aiConversationManager.StartConversation();  // AIとの会話を開始
     }
 
     void OnApplicationQuit()

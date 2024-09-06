@@ -17,7 +17,8 @@ if cap.isOpened():
 
 prev_x = None
 wave_count = 0
-
+timeout_duration = 10  # タイムアウト時間（秒）
+start_time = time.time()  # 開始時間を記録
 
 try:
     while True:
@@ -46,11 +47,14 @@ try:
 
                 prev_x = current_x
 
+        # タイムアウトまたは手を振る動作が検出された場合
         if wave_count > 1:
             print("UNITY: Waving motion detected!")
             sys.stdout.flush()  # 出力を即座にUnityに送る
             break
-
+        if (time.time() - start_time) > timeout_duration:
+            print("UNITY: Timeout!")
+            sys.stdout.flush()  # 出力を即座にUnityに送る
         time.sleep(0.1)
 
 finally:

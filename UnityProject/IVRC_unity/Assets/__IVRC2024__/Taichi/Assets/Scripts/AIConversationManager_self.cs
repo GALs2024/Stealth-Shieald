@@ -11,7 +11,7 @@ public class AIConversationManager_self : MonoBehaviour
     public TextMeshTyper AITextMeshTyper;
     public TextMeshTyper UserTextMeshTyper;
 
-    void Start()
+    public void StartConversation()
     {
         if (this.conversationalAI == null)
         {
