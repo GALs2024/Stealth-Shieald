@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json; // Newtonsoft.Json package をインポートしてください
@@ -19,40 +18,31 @@ public class ChatData
     public List<ChatEntry> Entries;
 }
 
-public class ChatHistoryLoader : MonoBehaviour
+public class ChatHistoryLoader
 {
-    public string jsonFileName = "chatHistory.json";  // JSONファイル名
+    private string jsonFileName = "Assets/__IVRC2024__/Taichi/Assets/Data/conversation_history.json";  // JSONファイル名
     private string fullChatHistory;  // 会話履歴を保持する変数
 
     private ChatData chatData;  // デシリアライズされたデータを保持する変数
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // JSONデータをロード
-        LoadChatHistory();
-        // 会話履歴を文字列にまとめる
-        StoreChatHistory();
-    }
-
     // JSONファイルを読み込み、デシリアライズする関数
-    void LoadChatHistory()
+    public void LoadChatHistory()
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, jsonFileName);
-
-        if (File.Exists(filePath))
+        if (File.Exists(this.jsonFileName))
         {
-            string jsonContent = File.ReadAllText(filePath);
+            string jsonContent = File.ReadAllText(this.jsonFileName);
             chatData = JsonConvert.DeserializeObject<ChatData>(jsonContent);
+            StoreChatHistory(); // デシリアライズが成功した場合に履歴を格納
         }
         else
         {
-            Debug.LogError("JSONファイルが見つかりません: " + filePath);
+            Debug.LogError("JSONファイルが見つかりません: " + this.jsonFileName);
+            fullChatHistory = "会話データがありません。";  // エラーが発生した場合にデフォルトのメッセージ
         }
     }
 
     // 会話履歴を1つの文字列にまとめて保持する関数
-    void StoreChatHistory()
+    private void StoreChatHistory()
     {
         if (chatData == null)
         {
@@ -64,16 +54,18 @@ public class ChatHistoryLoader : MonoBehaviour
 
         foreach (ChatEntry entry in chatData.Entries)
         {
-            fullChatHistory += $"{entry.UserInput} {entry.AIResponse} ";
+            fullChatHistory += $"User: {entry.UserInput} AI: {entry.AIResponse} ";
         }
-
-        // ここで `fullChatHistory` に全ての会話履歴が保存されています
-        Debug.Log(fullChatHistory);  // デバッグログに出力（オプション）
     }
 
-    // 会話履歴を取得する関数（外部からアクセス可能にする場合）
+    // 会話履歴を取得する関数（外部からアクセス可能）
     public string GetChatHistory()
     {
+        // 履歴がない場合はロードする
+        if (string.IsNullOrEmpty(fullChatHistory))
+        {
+            LoadChatHistory();  // 会話履歴がまだロードされていない場合はロード
+        }
         return fullChatHistory;
     }
 }
