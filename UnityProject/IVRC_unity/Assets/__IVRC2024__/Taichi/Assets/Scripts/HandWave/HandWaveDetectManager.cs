@@ -35,6 +35,8 @@ public class HandWaveDetectManager : MonoBehaviour
 
         // 音声ファイル1を再生しながらPythonを呼び出す
         StartCoroutine(PlayAudioAndStartPython(clip1));
+        this.aiConversationManager.Set3DText(true, "こんにちはAIアシスタントのnovaです。手を振ってみてください。");
+        this.aiConversationManager.Display3DText(true);
     }
 
     IEnumerator PlayAudioAndStartPython(AudioClip clip)
@@ -137,6 +139,8 @@ public class HandWaveDetectManager : MonoBehaviour
         {
             audioSource.clip = clip2;
             audioSource.Play();
+            this.aiConversationManager.Set3DText(true, "ありがとうございます。");
+            this.aiConversationManager.Display3DText(true);
             UnityEngine.Debug.Log("clip2 を再生しています。");
         }
         shouldPlayClip2 = false;  // フラグをリセット

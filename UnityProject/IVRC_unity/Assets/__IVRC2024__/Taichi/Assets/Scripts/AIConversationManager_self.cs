@@ -29,6 +29,7 @@ public class AIConversationManager_self : MonoBehaviour
         if (this.currentMassageIndex < this.AISystemMessage.Length)
         {   
             this.conversationalAI.StartConversation(this.AISystemMessage[this.currentMassageIndex], "");
+            this.conversationalAI.ResetMicInputCount();
             this.currentMassageIndex++;
         }
         else

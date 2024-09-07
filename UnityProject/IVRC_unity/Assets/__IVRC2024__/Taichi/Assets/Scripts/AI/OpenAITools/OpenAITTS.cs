@@ -9,18 +9,16 @@ public class OpenAITTS
     private string apiKey;
     private string ttsModel;
     private string voice;
-    private string saveDirectory;
     private string ttsUrl = "https://api.openai.com/v1/audio/speech";
 
-    public OpenAITTS(string apiKey, string ttsModel = "tts-1", string voice = "alloy", string saveDirectory = "Audio/AIOutput")
+    public OpenAITTS(string apiKey, string ttsModel = "tts-1", string voice = "alloy")
     {
         this.apiKey = apiKey;
         this.ttsModel = ttsModel;
         this.voice = voice;
-        this.saveDirectory = saveDirectory;
     }
 
-    public IEnumerator ConvertTextToSpeech(string text, Action<byte[], string> onSuccess, Action<string> onError)
+    public IEnumerator ConvertTextToSpeech(string text, string outputFile, Action<byte[], string> onSuccess, Action<string> onError)
     {
         string jsonBody = $"{{\"model\": \"{ttsModel}\", \"voice\": \"{voice}\", \"input\": \"{text}\", \"response_format\": \"mp3\"}}";
 
@@ -41,7 +39,7 @@ public class OpenAITTS
         {
             byte[] audioData = request.downloadHandler.data;
 
-            string filePath = Path.Combine(Application.dataPath, saveDirectory, "output.mp3");
+            string filePath = Path.Combine(Application.dataPath, outputFile);
             SaveWavFile(audioData, filePath);
             onSuccess?.Invoke(audioData, filePath);
         }

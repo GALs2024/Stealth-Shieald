@@ -33,6 +33,8 @@ public class ConversationalAI : MonoBehaviour
     public GameObject avatarObject;
     private AudioSource targetAudioSource;
 
+    private string AIOutputFile = "__IVRC2024__/Taichi/Assets/Audio/AIOutput/output.mp3";
+
     public void Initialize()
     {
         var apiKey = ApiKeyLoader.LoadApiKey();
@@ -44,7 +46,7 @@ public class ConversationalAI : MonoBehaviour
 
         whisperService = new OpenAIWhisper(apiKey, "whisper-1");
         chatService = new OpenAIChat(apiKey, "gpt-4o-mini", systemMessage, maxTokens);
-        ttsService = new OpenAITTS(apiKey, "tts-1", "alloy", "__IVRC2024__/Taichi/Assets/Audio/AIOutput");
+        ttsService = new OpenAITTS(apiKey, "tts-1", "alloy");
         
         _microphoneRecorder = GetComponent<MicrophoneRecorder>();
         _microphoneRecorder.OnRecordingStopped += OnRecordingStopped;
@@ -138,9 +140,9 @@ public class ConversationalAI : MonoBehaviour
 
         conversationHistoryManager.SaveConversationHistory(lastUserInput, chatResponse);
 
-        StartCoroutine(ttsService.ConvertTextToSpeech(
-            chatResponse, (audioData, filePath) => OnTTSSuccess(audioData, filePath), OnError
-        ));    
+        StartCoroutine(this.ttsService.ConvertTextToSpeech(
+            chatResponse, this.AIOutputFile, (audioData, filePath) => OnTTSSuccess(audioData, filePath), OnError
+        ));
     }
 
     private void OnTTSSuccess(byte[] audioData, string filePath)
