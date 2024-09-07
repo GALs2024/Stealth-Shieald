@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class TileCollisionHandler : MonoBehaviour
 {
-    // 衝突時の処理
+    // 陦晉ｪ∵凾縺ｮ蜃ｦ逅�
     private void OnCollisionEnter(Collision collision)
     {
-        // 2秒後にタイルを削除
-        Debug.Log("Collision detected with: " + collision.gameObject.name); // デバッグ用
+        // 2遘貞ｾ後↓繧ｿ繧､繝ｫ繧貞炎髯､
+        Debug.Log("Collision detected with: " + collision.gameObject.name); // 繝�繝舌ャ繧ｰ逕ｨ
         Destroy(gameObject, 2f);
     }
 }

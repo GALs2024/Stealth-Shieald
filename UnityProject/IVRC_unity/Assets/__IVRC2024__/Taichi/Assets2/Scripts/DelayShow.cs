@@ -3,25 +3,25 @@ using UnityEngine;
 
 public class DelayedShow : MonoBehaviour
 {
-    public GameObject targetObject;  // •\¦‚³‚¹‚é‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-    public float delayTime = 5f;     // ’x‰„ŠÔ (•b)
+    public GameObject targetObject;  // è¡¨ç¤ºã•ã›ã‚‹å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+    public float delayTime = 5f;     // é…å»¶æ™‚é–“ (ç§’)
 
     void Start()
     {
-        // ‰‚ß‚ÉƒIƒuƒWƒFƒNƒg‚ğ”ñ•\¦‚É‚·‚é
+        // åˆã‚ã«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’éè¡¨ç¤ºã«ã™ã‚‹
         targetObject.SetActive(false);
 
-        // ƒRƒ‹[ƒ`ƒ“‚ğŠJn‚µ‚ÄAw’èŠÔŒã‚ÉƒIƒuƒWƒFƒNƒg‚ğ•\¦
+        // ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’é–‹å§‹ã—ã¦ã€æŒ‡å®šæ™‚é–“å¾Œã«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º
         StartCoroutine(ShowObjectAfterDelay());
     }
 
-    // w’èŠÔŒã‚ÉƒIƒuƒWƒFƒNƒg‚ğ•\¦‚·‚éƒRƒ‹[ƒ`ƒ“
+    // æŒ‡å®šæ™‚é–“å¾Œã«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ã‚³ãƒ«ãƒ¼ãƒãƒ³
     IEnumerator ShowObjectAfterDelay()
     {
-        // w’è‚³‚ê‚½•b”‘Ò‚Â
+        // æŒ‡å®šã•ã‚ŒãŸç§’æ•°å¾…ã¤
         yield return new WaitForSeconds(delayTime);
 
-        // ƒIƒuƒWƒFƒNƒg‚ğ•\¦‚·‚é
+        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹
         targetObject.SetActive(true);
     }
 }

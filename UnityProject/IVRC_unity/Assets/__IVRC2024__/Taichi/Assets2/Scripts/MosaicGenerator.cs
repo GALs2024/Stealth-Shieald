@@ -3,10 +3,10 @@ using System.IO;
 
 public class MosaicGenerator : MonoBehaviour
 {
-    private string filePath = "Assets/__IVRC2024__/Taichi/Assets2/Textures/Mosaic/background_removed.png"; // ターゲット画像のファイルパス
+    private string filePath = @"Assets/__IVRC2024__/Taichi/Assets2/Textures/Mosaic/background_removed.png"; // ターゲット画像のファイルパス
     private Texture2D targetImage;  // モザイクアートにする対象画像
-    public string imagesFolderPath;  // 画像が格納されているフォルダのパス
-    public Vector2 outputResolution = new Vector2(1024, 1024); // リサイズ後のターゲット画像の幅と高さ 
+    private string imagesFolderPath = @"Assets/__IVRC2024__/Taichi/Assets2/Textures/Mosaic/Tiles";  // 画像が格納されているフォルダのパス
+    private Vector2 outputResolution = new Vector2(1024, 1024); // リサイズ後のターゲット画像の幅と高さ 
     public Vector2 gridTable = new Vector2(10, 10); // モザイクの横方向のタイル数と縦方向のタイル数
     public int tileResolution = 50; // 各タイルの幅と高さ（ピクセル）
     public GameObject tilePrefab;  // タイルを表現するプレハブ
@@ -25,16 +25,12 @@ public class MosaicGenerator : MonoBehaviour
         {
             if (Directory.Exists(imagesFolderPath))
             {
-                // フォルダ内の画像を事前に処理
                 PreprocessTileImages();
-
-                // targetImageを指定された解像度にリサイズ
-                Texture2D resizedImage = ResizeTexture(targetImage, (int)outputResolution.x, (int)outputResolution.y);
-
-                Debug.Log("resized");
-
-                // 各タイルの色を変更し、モザイクアートを作成
-                PlaceGridTiles(resizedImage, (int)gridTable.x, (int)gridTable.y);
+                this.tileResolution = tileImages[0].width;
+                // Texture2D resizedImage = ResizeTexture(targetImage, (int)outputResolution.x, (int)outputResolution.y);
+                // Debug.Log("resized");
+                // PlaceGridTiles(resizedImage, (int)gridTable.x, (int)gridTable.y);
+                PlaceGridTiles(this.targetImage, (int)gridTable.x, (int)gridTable.y);
             }
             else
             {
@@ -45,6 +41,11 @@ public class MosaicGenerator : MonoBehaviour
         {
             Debug.LogError("ターゲット画像が設定されていません。");
         }
+    }
+
+    void Update()
+    {
+        ManageTileLoading();
     }
 
     public Texture2D LoadTextureFromFile(string filePath)
@@ -93,9 +94,11 @@ public class MosaicGenerator : MonoBehaviour
         float totalWidth = columns * worldTileWidth;
         float totalHeight = rows * worldTileHeight;
         Vector3 cameraPosition = Camera.main.transform.position;
-        Vector3 startPosition = new Vector3(cameraPosition.x - totalWidth / 2f + worldTileWidth / 2f,
-                                            cameraPosition.y - totalHeight / 2f + worldTileHeight / 2f,
-                                            0);
+        Vector3 startPosition = new Vector3(
+            cameraPosition.x - totalWidth / 2f + worldTileWidth / 2f,
+            cameraPosition.y - totalHeight / 2f + worldTileHeight / 2f,
+            0
+        );
 
         for (int y = 0; y < rows; y++)
         {
@@ -206,6 +209,4 @@ public class MosaicGenerator : MonoBehaviour
             }
         }
     }
-    // OnCollisionEnter: 衝突時の処理
-    
 }
