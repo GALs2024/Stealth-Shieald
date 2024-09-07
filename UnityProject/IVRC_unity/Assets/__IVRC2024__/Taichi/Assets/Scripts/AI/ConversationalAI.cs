@@ -201,7 +201,7 @@ public class ConversationalAI : MonoBehaviour
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             string filename = "RecordedAudio_" + timestamp;
 
-            WavUtility.SaveAsWav(filename, recordedClip);
+            WavUtility.SaveAsWav(filename, "__IVRC2024__/Taichi/Assets/Audio/User", recordedClip);
 
             StartCoroutine(whisperService.RequestTranscription(audioData, OnTranscriptionSuccess, OnError));
         }

@@ -4,12 +4,12 @@ using System;
 
 public static class WavUtility
 {
-    public static void SaveAsWav(string filename, AudioClip clip)
+    public static void SaveAsWav(string filename, string relDirPath, AudioClip clip)
     {
         try
         {
             // 保存パスを設定（"Assets/Audio/User/任意の名前.wav"）
-            string directoryPath = Path.Combine(Application.dataPath, "__IVRC2024__/Taichi/Assets/Audio/User");
+            string directoryPath = Path.Combine(Application.dataPath, relDirPath);
             string filePath = Path.Combine(directoryPath, filename + ".wav");
 
             // ディレクトリが存在しない場合は作成する
@@ -29,6 +29,19 @@ public static class WavUtility
         catch (Exception e)
         {
             Debug.LogError("Error saving WAV file: " + e.Message);
+        }
+    }
+
+    public static void DeleteAllFilesInDirectory(string relDirPath)
+    {
+        string directoryPath = Path.Combine(Application.dataPath, relDirPath);
+        if (Directory.Exists(directoryPath))
+        {
+            string[] files = Directory.GetFiles(directoryPath);
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
         }
     }
 

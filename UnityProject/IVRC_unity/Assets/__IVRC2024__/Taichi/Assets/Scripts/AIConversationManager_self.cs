@@ -10,6 +10,13 @@ public class AIConversationManager_self : MonoBehaviour
     private int currentMassageIndex = 0;
     public TextMeshTyper AITextMeshTyper;
     public TextMeshTyper UserTextMeshTyper;
+    public GenFakeNews genFakeNews;
+    public GenImgFromConversation genImgFromConversation;
+
+    void Start()
+    {
+        // WavUtility.DeleteAllFilesInDirectory("/__IVRC2024__/Taichi/Assets/Audio/AIOutput");
+    }
 
     public void StartConversation()
     {
@@ -36,7 +43,8 @@ public class AIConversationManager_self : MonoBehaviour
         {
             Debug.Log("All audio clips have been played. Ending conversation.");
             // 必要なら会話終了後の処理をここに追加
-            // sample.play();
+            this.genFakeNews.Generate();
+            this.genImgFromConversation.Generate();
         }
     }
 

@@ -8,24 +8,27 @@ public class GenImgFromConversation : MonoBehaviour
     private string prompt; // 画像生成のプロンプトを設定
     private OpenAIDalle openAIDalle; // OpenAIDalleクラスのインスタンス
     private ChatHistoryLoader chatHistoryLoader; // ChatHistoryLoaderクラスのインスタンス
-    public RawImage displayImage; // UIで表示するためのRawImageコンポーネント
+    private string outputPath = @"Assets/__IVRC2024__/Taichi/Assets/Textures/"; // 画像の保存先のパス
 
     void Start()
     {
         string apiKey = ApiKeyLoader.LoadApiKey();
         
         // OpenAIDalleクラスのインスタンスを初期化
-        openAIDalle = new OpenAIDalle(apiKey, "dall-e-2", 1024);
+        this.openAIDalle = new OpenAIDalle(apiKey, "dall-e-3", 1024);
         
-        chatHistoryLoader = new ChatHistoryLoader();
+        this.chatHistoryLoader = new ChatHistoryLoader();
+    }
 
-        prompt = "この文章に関連した画像を生成して: " + chatHistoryLoader.GetChatHistory();
-        Debug.Log("Prompt: " + prompt);
+    public void Generate()
+    {
+        this.prompt = "このAIとの会話からキーワードだけ抜き出して画像を生成して: " + this.chatHistoryLoader.GetChatHistory();
+        Debug.Log("Img generating prompt: " + this.prompt);
 
-        string savePath = @"C:\Users\EM\Desktop\Stealth-Shieald\UnityProject\IVRC_unity\Assets\__IVRC2024__\Taichi\Assets\" + "generated_img.jpg"; // 保存先のパスを設定
+        string savePath = this.outputPath + "generated_img.jpg"; // 保存先のパスを設定
 
         // 画像生成プロセスを開始
-        StartCoroutine(openAIDalle.RequestDalleImage(prompt, savePath, OnImageReceived, OnError));
+        StartCoroutine(openAIDalle.RequestDalleImage(this.prompt, savePath, OnImageReceived, OnError));
     }
 
     private void OnImageReceived(string message) // string型の引数を取るようにする
