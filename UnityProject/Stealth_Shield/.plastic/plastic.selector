@@ -1,4 +1,0 @@
-repository "Stealth_Shield@Millie_s@cloud"
-  path "/"
-    br "/main"
-    co "/main"
