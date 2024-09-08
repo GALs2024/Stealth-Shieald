@@ -16,7 +16,7 @@ public class AIConversationManager_self : MonoBehaviour
 
     void Start()
     {
-        WavUtility.DeleteAllFilesInDirectory("/__IVRC2024__/Taichi/Assets/Audio/AIOutput");
+        WavUtility.DeleteAllFilesInDirectory("__IVRC2024__/Taichi/Assets/Audio/User");
     }
 
     public void StartConversation()

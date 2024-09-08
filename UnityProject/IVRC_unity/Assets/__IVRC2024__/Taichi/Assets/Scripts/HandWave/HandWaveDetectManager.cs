@@ -19,8 +19,6 @@ public class HandWaveDetectManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
         if (audioSource == null)
         {
             UnityEngine.Debug.LogError("AudioSource コンポーネントが見つかりません。この GameObject に AudioSource をアタッチしてください。");
