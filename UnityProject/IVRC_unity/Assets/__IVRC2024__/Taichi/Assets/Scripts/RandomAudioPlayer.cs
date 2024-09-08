@@ -8,6 +8,7 @@ public class RandomAudioPlayer : MonoBehaviour
 {
     public string folderPath = @"Assets\Audios\User"; // WAVファイルが格納されているフォルダのパス
     public float maxRandomDelay = 3.0f; // ランダムなディレイの最大値（秒）
+    public float initDelay = 5.0f; // Init()を実行するまでの遅延時間（秒）
 
     private List<AudioClip> audioClips = new List<AudioClip>();
     private AudioSource audioSource;
@@ -21,13 +22,17 @@ public class RandomAudioPlayer : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        if (playStart) {
-            Init();
+        if (playStart)
+        {
+            // 指定された時間後にInit()を実行
+            StartCoroutine(DelayedInit(initDelay));
         }
     }
 
-    public void Init()
+    // 指定時間の遅延後にInitを呼び出すコルーチン
+    public IEnumerator DelayedInit(float delay)
     {
+        yield return new WaitForSeconds(delay);
         StartCoroutine(LoadAudioClips());
     }
 

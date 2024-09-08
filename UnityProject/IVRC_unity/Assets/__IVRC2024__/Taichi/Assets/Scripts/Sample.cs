@@ -42,7 +42,7 @@ public class Sample : MonoBehaviour
         yield return new WaitForSeconds(audioClips[0].length);
 
         // Now call Init() on randomAudioPlayer
-        randomAudioPlayer.Init();
+        // randomAudioPlayer.DelayedInit();
     }
 
     // Update is called once per frame
