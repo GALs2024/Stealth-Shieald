@@ -12,11 +12,12 @@ public class GenFakeNews : MonoBehaviour
     private string systemMessage;
     private string targetContent;
 
-    private string outputPath = @"__IVRC2024__/Taichi/Assets/Audio/AIOutput";
+    private string outputPath = @"__IVRC2024__/Taichi/Assets/Audio/FakeNews";
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         this.apiKey = ApiKeyLoader.LoadApiKey();
         this.chatHistoryLoader = new ChatHistoryLoader();
         this.targetContent = FileReaderUtil.ReadFileSync(this.filePath);

@@ -15,6 +15,7 @@ public class ConversationalAI_self : MonoBehaviour
     private ConversationHistoryManager conversationHistoryManager;
     public GameObject avatarObject;
     private AudioSource targetAudioSource;
+    public ThinkingDotsTyper thinkingDotsTyper;
 
     [SerializeField]
     private string systemMessage = "質問しながら短く答えてください";
@@ -49,6 +50,15 @@ public class ConversationalAI_self : MonoBehaviour
         this._microphoneRecorder.OnRecordingStopped += OnRecordingStopped;
     }
 
+    void Update()
+    {
+        if (this.isWaitingForUserResponse){
+            this.thinkingDotsTyper.StartTyping();
+        } else {
+            this.thinkingDotsTyper.StopTyping();
+        }
+    }
+
     void OnDestroy()
     {
         this._microphoneRecorder.OnRecordingStopped -= OnRecordingStopped;
@@ -78,6 +88,7 @@ public class ConversationalAI_self : MonoBehaviour
 
         Debug.Log("Full Conversation: " + fullConversation);
 
+        this.thinkingDotsTyper.StartTyping();
         StartCoroutine(chatService.RequestChatResponse(this.systemMessage, fullConversation, OnChatResponseSuccess, OnError));
     }
 

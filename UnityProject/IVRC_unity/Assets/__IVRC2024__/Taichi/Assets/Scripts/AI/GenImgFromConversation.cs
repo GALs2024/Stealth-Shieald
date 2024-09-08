@@ -12,8 +12,8 @@ public class GenImgFromConversation : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         string apiKey = ApiKeyLoader.LoadApiKey();
-        
         // OpenAIDalleクラスのインスタンスを初期化
         this.openAIDalle = new OpenAIDalle(apiKey, "dall-e-3", 1024);
         
