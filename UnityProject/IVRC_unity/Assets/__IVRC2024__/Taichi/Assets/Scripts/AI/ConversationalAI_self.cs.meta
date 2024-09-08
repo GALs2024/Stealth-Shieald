@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets2/Scripts/MosaicGenerator.cs.meta
-guid: e55e31a572eecd84b8a2de2eb36d215d
-========
 guid: 7438d67218c7f9843bb966713948f1bb
->>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Scripts/AI/ConversationalAI_self.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

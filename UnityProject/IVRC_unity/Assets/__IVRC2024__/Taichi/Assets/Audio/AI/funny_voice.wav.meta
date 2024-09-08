@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/User/RecordedAudio_20240907_211201.wav.meta
-guid: ac56a7f336bd1c343837299cd3adc2a2
-========
 guid: 44122ec9e8c119640bbdf9c5c453f367
->>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/AI/funny_voice.wav.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7

@@ -13,20 +13,17 @@ public class RandomAudioPlayer : MonoBehaviour
     private AudioSource audioSource;
 
     public float audioClipsVolume = 1.0f;
-    public float fadeDuration = 2.0f; // フェードアウトの持続時間
-    public float delayBeforeFade = 5.0f; // フェードアウトを開始する前の遅延時間
+    public float fadeDuration = 5.0f; // フェードアウトの持続時間
+    public float delayBeforeFade = 10.0f; // フェードアウトを開始する前の遅延時間
 
-    public bool palyStart = true;
+    public bool playStart = false;
 
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        // もしスタート時に実行するがtrueならinit()を呼ぶ
-        if (this.palyStart)
-        {
+        if (playStart) {
             Init();
         }
-
     }
 
     public void Init()
@@ -37,7 +34,7 @@ public class RandomAudioPlayer : MonoBehaviour
     IEnumerator LoadAudioClips()
     {
         // フォルダ内のすべてのWAVファイルパスを取得
-        string[] files = Directory.GetFiles(folderPath);
+        string[] files = Directory.GetFiles(folderPath, "*.wav");
 
         foreach (string file in files)
         {
@@ -54,6 +51,7 @@ public class RandomAudioPlayer : MonoBehaviour
         // ファイルの拡張子を取得し、小文字に変換
         string extension = Path.GetExtension(path).ToLower();
 
+        // .meta ファイルは無視する
         if (extension == ".meta")
         {
             yield break; // .meta ファイルなら処理を中断

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AIConversationManager_self : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class AIConversationManager_self : MonoBehaviour
             // 必要なら会話終了後の処理をここに追加
             this.genFakeNews.Generate();
             this.genImgFromConversation.Generate();
+            ChangeScene();
         }
     }
 
@@ -88,5 +90,10 @@ public class AIConversationManager_self : MonoBehaviour
         {
             this.UserTextMeshTyper.StartTyping();
         }
+    }
+
+    void ChangeScene()
+    {
+        SceneManager.LoadScene("1_VRCamEffects");
     }
 }
