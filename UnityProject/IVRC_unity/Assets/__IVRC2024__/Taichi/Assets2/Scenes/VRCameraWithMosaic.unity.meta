@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets2/Scenes/VRCameraWithMosaic.unity.meta
 guid: a74af83aba2538b4a96b13972be99069
+========
+guid: 7e9856a5cbdff714a9c4ffdfab74322d
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/Oculus/VR/Editor/Tools/ovr-platform-util.exe.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

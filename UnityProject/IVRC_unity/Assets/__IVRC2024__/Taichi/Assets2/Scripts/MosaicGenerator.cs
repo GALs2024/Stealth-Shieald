@@ -3,9 +3,9 @@ using System.IO;
 
 public class MosaicGenerator : MonoBehaviour
 {
-    private string filePath = @"Assets/__IVRC2024__/Taichi/Assets2/Textures/Mosaic/background_removed.png"; // ターゲット画像のファイルパス
+    private string filePath = @"Assets/__IVRC2024__/Taichi/Assets/Textures/Mosaic/background_removed.png"; // ターゲット画像のファイルパス
     private Texture2D targetImage;  // モザイクアートにする対象画像
-    private string imagesFolderPath = @"Assets/__IVRC2024__/Taichi/Assets2/Textures/Mosaic/Tiles";  // 画像が格納されているフォルダのパス
+    private string imagesFolderPath = @"Assets/__IVRC2024__/Taichi/Assets/Textures/Mosaic/Tiles";  // 画像が格納されているフォルダのパス
     private Vector2 outputResolution = new Vector2(1024, 1024); // リサイズ後のターゲット画像の幅と高さ 
     public Vector2 gridTable = new Vector2(10, 10); // モザイクの横方向のタイル数と縦方向のタイル数
     public int tileResolution = 50; // 各タイルの幅と高さ（ピクセル）

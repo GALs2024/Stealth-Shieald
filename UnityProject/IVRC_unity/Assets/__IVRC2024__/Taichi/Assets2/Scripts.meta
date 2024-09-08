@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets2/Scripts.meta
 guid: 26536c683d1bd8140a3531ec89f70c49
+========
+guid: ff1f91aa5e3ab254c8f780f5f2c2c69d
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Scripts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

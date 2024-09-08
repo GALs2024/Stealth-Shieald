@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/User/RecordedAudio_20240907_194409.wav.meta
 guid: f3b220521bdb2af4dbf5007a4ed5c20b
+========
+guid: 758f635134c5e8945bb6f15a11a5615c
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/AI/ahaha.mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7

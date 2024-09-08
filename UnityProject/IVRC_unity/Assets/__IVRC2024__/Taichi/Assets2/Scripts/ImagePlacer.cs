@@ -3,7 +3,7 @@ using System.IO;
 
 public class ImagePlacer : MonoBehaviour
 {
-    private string imagesFolderPath = @"Assets/__IVRC2024__/Taichi/Assets2/Textures/Mosaic/Originals"; // ターゲット画像のファイルパス
+    private string imagesFolderPath = @"Assets/__IVRC2024__/Taichi/Assets/Textures/Mosaic/Originals"; // ターゲット画像のファイルパス
 
     private Texture2D[] imageTextures;  // 設定する画像配列
     public float zPosition = 0f;    // 奥行きの位置

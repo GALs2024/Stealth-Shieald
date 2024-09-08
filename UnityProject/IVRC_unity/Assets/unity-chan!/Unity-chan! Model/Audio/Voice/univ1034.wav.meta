@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/unity-chan!/Unity-chan! Model/Audio/Voice/univ1034.wav.meta
 guid: 363e2b159caf641369a408c0427894f8
+========
+guid: e03833cb4ed7d4fea97d580ce1be24da
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/unity-chan!/Unity-chan! Model/Audio/Voice/univ1037.wav.meta
 AudioImporter:
   serializedVersion: 6
   defaultSettings:

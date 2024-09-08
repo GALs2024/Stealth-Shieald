@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/User/RecordedAudio_20240907_194350.wav.meta
 guid: b3a4441cd5ad5b645b1e5a0b67e3b635
+========
+guid: 86bfb998a222a4446a6ebca2bdc520a8
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/__IVRC2024__/かえるのピアノ.mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7

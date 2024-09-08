@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: de7da0edc3bdea347b7568ff01708761
+=======
+guid: cf2c7a086caf61a49969fc6f73231a05
+>>>>>>> merge-AI-avatar3dtext
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Data/conversation_history.json.meta
 guid: c87eaf018cc4efc41a497906608af8af
+========
+guid: 370389de6efd9824c8b4b521326369e7
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Resources/BillingMode.json.meta
 TextScriptImporter:
   externalObjects: {}
   userData: 

@@ -1,8 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets2/Prefabs.meta
 guid: 9bfd17771f34e154dbd09370c3de4f70
+========
+guid: f875c0a860fab1c498f1ed5edcee2b47
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/unity-chan!/Unity-chan! Model/Prefabs.meta
 folderAsset: yes
+timeCreated: 1547238592
+licenseType: Store
 DefaultImporter:
-  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/API.meta
 guid: a87f7e6f2a360824b85287c8221a376a
+========
+guid: fa2d55e1c4efea04b8b9e7922ed560d7
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/Oculus/VR.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,7 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Data/target_output.txt.meta
 guid: e1169970c63fbe94080e97b5235b26c3
+========
+guid: f9b76365a56ab41f4b65323ef05d3821
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/unity-chan!/Unity-chan! Model/Audio/Voice/unity-chan_voice_list.txt.meta
 TextScriptImporter:
-  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

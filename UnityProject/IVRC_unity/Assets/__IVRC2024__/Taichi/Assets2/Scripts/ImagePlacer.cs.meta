@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets2/Scripts/ImagePlacer.cs.meta
 guid: b5fbf0d65fbea24419a425e52ad155ec
+========
+guid: c4ef3f19f1174b9408919b428d77b8be
+>>>>>>>> merge-AI-avatar3dtext:UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Scripts/AI/ConversationalAI.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
