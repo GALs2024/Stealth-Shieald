@@ -83,7 +83,7 @@ public class ImagePlacer : MonoBehaviour
         {
             GameObject imageObject = imageObjects[i];
             float imageWidth = images[i].bounds.size.x;
-            imageObject.transform.position = new Vector3(currentX, centerPosition.y + 10, zPosition);
+            imageObject.transform.position = new Vector3(currentX + 10, centerPosition.y + 10, zPosition);
             currentX += imageWidth; // 次の画像の位置へ移動
         }
     }
