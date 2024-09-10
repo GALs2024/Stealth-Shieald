@@ -33,10 +33,10 @@ public class MosaicGenerator : MonoBehaviour
         }
     }
 
-    // void Start()
-    // {
-    //     StartCoroutine(GenerateMosaicAsync());
-    // }
+    void Start()
+    {
+        StartCoroutine(GenerateMosaicAsync());
+    }
     
     public IEnumerator GenerateMosaicAsync()
     {

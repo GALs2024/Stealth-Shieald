@@ -8,23 +8,7 @@ public class VoicePlayer : MonoBehaviour
     public float[] afterWaitTimes;        // 再生後の待機時間の配列
     public float[] volumes;               // 各クリップの音量の配列
     public int continuePlayingClipIndex = -1;  // 次のシーンでも再生を続けたいクリップのインデックス (-1は指定なし)
-
-    private static VoicePlayer instance;  // シングルトンのインスタンス
     private AudioSource persistentAudioSource; // 次のシーンでも再生されるAudioSource
-
-    private void Awake()
-    {
-        // シングルトンパターンでこのオブジェクトが重複しないようにする
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);  // このオブジェクトを次のシーンでも破棄しない
-        }
-    }
 
     private void Start()
     {

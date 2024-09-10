@@ -9,6 +9,7 @@ public class ImagePlacer : MonoBehaviour
     public float zPosition = 0f; // 画像を配置するz軸の値
     private Camera mainCamera; // メインカメラ
 
+    public GameObject imagePrefab; // 画像を表示するためのプレハブ
     private List<Sprite> images = new List<Sprite>(); // 画像のスプライトリスト
 
     void Start()
@@ -59,16 +60,10 @@ public class ImagePlacer : MonoBehaviour
         float totalWidth = 0;
         List<GameObject> imageObjects = new List<GameObject>();
 
-        // 画像をGameObjectとして生成し、そのサイズを取得
+        // 画像の横幅を計算
         foreach (Sprite sprite in images)
         {
-            GameObject imageObject = new GameObject(sprite.name);
-            SpriteRenderer renderer = imageObject.AddComponent<SpriteRenderer>();
-            renderer.sprite = sprite;
-
-            imageObjects.Add(imageObject);
-
-            totalWidth += sprite.bounds.size.x; // 横幅を計算
+            totalWidth += sprite.bounds.size.x;
         }
 
         // 2番目の画像の中心をカメラの中心に配置
@@ -81,9 +76,20 @@ public class ImagePlacer : MonoBehaviour
         float currentX = startX;
         for (int i = 0; i < images.Count; i++)
         {
-            GameObject imageObject = imageObjects[i];
-            float imageWidth = images[i].bounds.size.x;
+            Sprite sprite = images[i];
+
+            // プレハブをインスタンス化
+            GameObject imageObject = Instantiate(imagePrefab);
+            imageObject.name = sprite.name;
+
+            // スプライトを設定
+            SpriteRenderer renderer = imageObject.GetComponent<SpriteRenderer>();
+            renderer.sprite = sprite;
+
+            // 位置を設定
+            float imageWidth = sprite.bounds.size.x;
             imageObject.transform.position = new Vector3(currentX + 10, centerPosition.y + 10, zPosition);
+
             currentX += imageWidth; // 次の画像の位置へ移動
         }
     }

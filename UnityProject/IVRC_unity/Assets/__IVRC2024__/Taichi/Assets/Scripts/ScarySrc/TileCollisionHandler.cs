@@ -3,19 +3,19 @@ using UnityEngine;
 public class TileCollisionHandler : MonoBehaviour
 {
     private static bool hasPlayedAudio = false; // 全てのタイルで一度だけ再生するために静的変数を使用
-    private AudioSource vabrationAudioSource;
+    private AudioSource vibrationAudioSource;
 
     void Start()
     {
-        // シーンの "Vabration" オブジェクトを探して AudioSource を取得
-        GameObject vabrationObject = GameObject.Find("Vabration");
-        if (vabrationObject != null)
+        // シーンの "Vibration" オブジェクトを探して AudioSource を取得
+        GameObject vibrationObject = GameObject.Find("Vibration");
+        if (vibrationObject != null)
         {
-            vabrationAudioSource = vabrationObject.GetComponent<AudioSource>();
+            vibrationAudioSource = vibrationObject.GetComponent<AudioSource>();
         }
         else
         {
-            Debug.LogError("Vabration オブジェクトが見つかりません！");
+            Debug.LogError("Vibration オブジェクトが見つかりません！");
         }
     }
 
@@ -25,9 +25,9 @@ public class TileCollisionHandler : MonoBehaviour
         Debug.Log("Collision detected with: " + collision.gameObject.name); // デバッグ用
 
         // AudioSourceが存在し、まだ再生されていない場合に音声を再生
-        if (vabrationAudioSource != null && !hasPlayedAudio && !vabrationAudioSource.isPlaying)
+        if (vibrationAudioSource != null && !hasPlayedAudio && !vibrationAudioSource.isPlaying)
         {
-            vabrationAudioSource.Play();
+            vibrationAudioSource.Play();
             hasPlayedAudio = true; // 再生フラグを設定（静的にすることで全タイル共通で管理）
         }
 
