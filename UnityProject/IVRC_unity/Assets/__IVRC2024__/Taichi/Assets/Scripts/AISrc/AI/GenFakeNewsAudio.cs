@@ -23,7 +23,7 @@ public class GenFakeNews : MonoBehaviour
         this.chatHistoryLoader = new ChatHistoryLoader();
         string _targetInfoPath = Path.Combine(Application.dataPath, this.targetInfoPath);
         this.targetContent = FileReaderUtil.ReadFileSync(_targetInfoPath);
-        this.systemMessage = "# 命令  [人物像]の内容を含めて、架空のテロニュースの原稿を1つ（100文字以内）作成してください。  # 出力json形式  [{'details': ''}]";
+        this.systemMessage = "# 命令  [人物像]の内容を含めて、架空のテロニュースの原稿を1つ（50文字以内）作成してください。  # 出力json形式  [{'details': ''}]";
         this.openAIChat = new OpenAIChat(this.apiKey, "gpt-4o-mini", this.systemMessage, 500);
         this.ttsService = new OpenAITTS(this.apiKey, "tts-1", "alloy");
     }
