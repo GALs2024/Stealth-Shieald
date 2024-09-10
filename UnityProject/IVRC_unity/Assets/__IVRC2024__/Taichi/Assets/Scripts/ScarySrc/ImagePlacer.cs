@@ -88,7 +88,7 @@ public class ImagePlacer : MonoBehaviour
 
             // 位置を設定
             float imageWidth = sprite.bounds.size.x;
-            imageObject.transform.position = new Vector3(currentX + 10, centerPosition.y + 10, zPosition);
+            imageObject.transform.position = new Vector3(currentX + 5, centerPosition.y + 5, zPosition);
 
             currentX += imageWidth; // 次の画像の位置へ移動
         }

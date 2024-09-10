@@ -15,15 +15,6 @@ public class SceneSwitcher : MonoBehaviour
         // ScenePreloaderを同じゲームオブジェクトから取得
         this.scenePreloader = GetComponent<ScenePreloader>();
 
-        // if (scenePreloader == null)
-        // {
-        //     Debug.LogError("ScenePreloaderがアタッチされていません！");
-        //     return;
-        // }
-        // this.scenePreloader.PreloadScene(this.sceneName);
-
-        // StartCoroutine(SwitchSceneAfterDelay());
-
         if (this.scenePreloader == null) {
             StartCoroutine(_SwitchSceneAfterDelay());
             Debug.Log("通常の方法でロード");
@@ -42,7 +33,7 @@ public class SceneSwitcher : MonoBehaviour
     }
 
     // 実際にシーンを切り替える処理
-    IEnumerator _SwitchSceneAfterDelay()
+    public IEnumerator _SwitchSceneAfterDelay()
     {
         yield return new WaitForSeconds(this.delay);
         SceneManager.LoadScene(this.sceneName);
