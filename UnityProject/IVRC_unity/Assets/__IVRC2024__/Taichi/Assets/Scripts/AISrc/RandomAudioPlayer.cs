@@ -7,7 +7,7 @@ using System.Linq;
 
 public class RandomAudioPlayer : MonoBehaviour
 {
-    private string inputDirPath = @"__IVRC2024__/Taichi/Assets/Audio/User"; // WAVファイルが格納されているフォルダのパス
+    public string inputDirPath = @"__IVRC2024__/Taichi/Assets/Audio/User"; // WAVファイルが格納されているフォルダのパス
     public float maxRandomDelay = 3.0f; // ランダムなディレイの最大値（秒）
     public float initDelay = 5.0f; // Init()を実行するまでの遅延時間（秒）
 
@@ -19,6 +19,7 @@ public class RandomAudioPlayer : MonoBehaviour
     public float delayBeforeFade = 10.0f; // フェードアウトを開始する前の遅延時間
 
     public bool playStart = false;
+    public bool fadeOutEnabled = true; // フェードアウトの有無を設定するフラグ
 
     void Start()
     {
@@ -145,9 +146,12 @@ public class RandomAudioPlayer : MonoBehaviour
         // AudioSource.PlayOneShot()でクリップを再生
         audioSource.PlayOneShot(clip, audioClipsVolume);
 
-        // 指定した時間待機してからフェードアウトを開始
-        yield return new WaitForSeconds(delayBeforeFade);
-        StartCoroutine(FadeOutVolume());
+        // フェードアウトが有効な場合のみ、指定した時間待機してからフェードアウトを開始
+        if (fadeOutEnabled)
+        {
+            yield return new WaitForSeconds(delayBeforeFade);
+            StartCoroutine(FadeOutVolume());
+        }
     }
 
     IEnumerator FadeOutVolume()

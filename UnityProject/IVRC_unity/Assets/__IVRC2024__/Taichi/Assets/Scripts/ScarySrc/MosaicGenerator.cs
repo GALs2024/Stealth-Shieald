@@ -16,10 +16,27 @@ public class MosaicGenerator : MonoBehaviour
     private Texture2D[] tileImages;
     private Transform tileParent;
 
-    void Start()
-    {
-        StartCoroutine(GenerateMosaicAsync());
+    public bool DontDestroyEnabled = true;
+    public static MosaicGenerator instance = null;
+
+    // AwakeはStartより先に呼ばれる
+    void Awake () {
+        if (instance == null) {
+            instance = this;
+            if (DontDestroyEnabled) {
+                // シーンを遷移してもオブジェクトが消えないようにする
+                DontDestroyOnLoad (this.gameObject);
+            }
+        } else {
+            // すでに存在するインスタンスがあればこのオブジェクトを破棄
+            Destroy (this.gameObject);
+        }
     }
+
+    // void Start()
+    // {
+    //     StartCoroutine(GenerateMosaicAsync());
+    // }
     
     public IEnumerator GenerateMosaicAsync()
     {
@@ -43,10 +60,10 @@ public class MosaicGenerator : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        ManageTileLoading();
-    }
+    // void Update()
+    // {
+    //     ManageTileLoading();
+    // }
 
     public Texture2D LoadTextureFromFile(string filePath)
     {
