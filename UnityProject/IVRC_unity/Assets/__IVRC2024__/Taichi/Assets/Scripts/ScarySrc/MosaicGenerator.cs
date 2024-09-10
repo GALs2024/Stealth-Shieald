@@ -110,7 +110,7 @@ public class MosaicGenerator : MonoBehaviour
     }
 
 
-    IEnumerator PlaceGridTilesAsync(Texture2D image, int columns, int rows)
+   IEnumerator PlaceGridTilesAsync(Texture2D image, int columns, int rows)
     {
         int gridWidth = image.width / columns;
         int gridHeight = image.height / rows;
@@ -128,7 +128,8 @@ public class MosaicGenerator : MonoBehaviour
         int tilesPerFrame = 5;  // 1フレームごとに生成するタイルの数
         int tileCount = 0;      // 現在のフレームで生成したタイルの数
 
-        for (int y = 0; y < rows; y++)
+        // Y軸のループを逆に変更
+        for (int y = rows - 1; y >= 0; y--)
         {
             for (int x = 0; x < columns; x++)
             {

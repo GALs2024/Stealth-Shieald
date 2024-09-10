@@ -5,9 +5,10 @@ public class TileCollisionHandler : MonoBehaviour
     private static bool hasPlayedAudio = false; // 全てのタイルで一度だけ再生するために静的変数を使用
     private AudioSource vibrationAudioSource;
 
-    void Start()
+    // 衝突時の処理
+    private void OnCollisionEnter(Collision collision)
     {
-        // シーンの "Vibration" オブジェクトを探して AudioSource を取得
+            // シーンの "Vibration" オブジェクトを探して AudioSource を取得
         GameObject vibrationObject = GameObject.Find("Vibration");
         if (vibrationObject != null)
         {
@@ -17,11 +18,7 @@ public class TileCollisionHandler : MonoBehaviour
         {
             Debug.LogError("Vibration オブジェクトが見つかりません！");
         }
-    }
-
-    // 衝突時の処理
-    private void OnCollisionEnter(Collision collision)
-    {
+        
         Debug.Log("Collision detected with: " + collision.gameObject.name); // デバッグ用
 
         // AudioSourceが存在し、まだ再生されていない場合に音声を再生
