@@ -1,7 +1,6 @@
 using System.Collections;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AIConversationManager_self : MonoBehaviour
 {
@@ -12,15 +11,14 @@ public class AIConversationManager_self : MonoBehaviour
     private int currentMassageIndex = 0;
     public TextMeshTyper AITextMeshTyper;
     public TextMeshTyper UserTextMeshTyper;
+    public AIMovieManager aiMovieManager;
     public GenFakeNews genFakeNews;
     public GenImgFromConversation genImgFromConversation;
-
-    public string sceneName;
 
     void Start()
     {
         string path = Path.Combine(Application.dataPath, @"__IVRC2024__/Taichi/Assets/Audio/User");
-        WavUtility.DeleteAllFilesInDirectory(path);
+        // WavUtility.DeleteAllFilesInDirectory(path);
     }
 
     public void StartConversation()
@@ -50,7 +48,7 @@ public class AIConversationManager_self : MonoBehaviour
             // 必要なら会話終了後の処理をここに追加
             this.genFakeNews.Generate();
             this.genImgFromConversation.Generate();
-            ChangeScene();
+            this.aiMovieManager.StartMovie();
         }
     }
 
@@ -94,10 +92,5 @@ public class AIConversationManager_self : MonoBehaviour
         {
             this.UserTextMeshTyper.StartTyping();
         }
-    }
-
-    void ChangeScene()
-    {
-        SceneManager.LoadScene(this.sceneName);
     }
 }

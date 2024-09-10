@@ -163,9 +163,9 @@ public class ConversationalAI_self : MonoBehaviour
         {
             this.isWaitingForUserResponse = true;
             Debug.Log("あなたの回答を待っています...");
-            // this._microphoneRecorder.StartMonitoring(threshold: mic_threshold, silenceDuration: 2f, frequency: 44100);
-            this.currentMicInputCount++;
-            OnTranscriptionSuccess("これはサンプルスクリプトです。こんな感じでマイク入力を開始します。");
+            this._microphoneRecorder.StartMonitoring(threshold: mic_threshold, silenceDuration: 2f, frequency: 44100);
+            // this.currentMicInputCount++;
+            // OnTranscriptionSuccess("これはサンプルスクリプトです。こんな感じでマイク入力を開始します。");
         }
         else
         {

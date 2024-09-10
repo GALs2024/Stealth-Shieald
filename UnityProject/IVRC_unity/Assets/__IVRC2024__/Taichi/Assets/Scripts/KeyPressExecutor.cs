@@ -12,12 +12,12 @@ public class KeyPressController : MonoBehaviour
             if (targetObject != null)
             {
                 // 対象のゲームオブジェクトにアタッチされているスクリプトを取得
-                HandWaveDetectManager handWaveDetectManager = targetObject.GetComponent<HandWaveDetectManager>();
+                AIConversationManager_self aiConversationManager_self = targetObject.GetComponent<AIConversationManager_self>();
 
-                if (handWaveDetectManager != null)
+                if (aiConversationManager_self != null)
                 {
                     // ここでスクリプトの機能を呼び出す
-                    handWaveDetectManager.Init(); // 例としてDoSomething()メソッドを呼び出す
+                    aiConversationManager_self.StartConversation(); // 例としてDoSomething()メソッドを呼び出す
                 }
                 else
                 {
