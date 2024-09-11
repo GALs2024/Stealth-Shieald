@@ -15,7 +15,8 @@ public class AIMovieManager : MonoBehaviour
     // 2つの音声クリップ
     public AudioClip newBGMClip;
     public AudioClip audioClip;
-    public float delay = 2.0f;
+    public float delay = 2.0f; // audioClipの再生を待機する時間
+    public float sceneChangeDelay = 5.0f; // シーン切り替えの待機時間
 
     public void StartMovie()
     {
@@ -27,6 +28,14 @@ public class AIMovieManager : MonoBehaviour
         StartCoroutine(PlayAudioClipsWithDelay(newBGMAudioSource, newBGMClip, 0.0f));
         StartCoroutine(PlayAudioClipsWithDelay(audioSource, audioClip, delay));
 
+        // シーンを指定した時間後に切り替える
+        StartCoroutine(ChangeSceneAfterDelay(sceneChangeDelay));
+    }
+
+    // 指定時間後にシーンを切り替えるコルーチン
+    IEnumerator ChangeSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         ChangeScene();
     }
 
