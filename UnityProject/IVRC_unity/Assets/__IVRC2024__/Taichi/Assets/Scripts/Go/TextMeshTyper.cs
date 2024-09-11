@@ -11,7 +11,7 @@ public class TextMeshTyper : MonoBehaviour
     public float typingSpeed = 0.05f;
 
     // 表示するテキストの内容
-    private string textToDisplay = "Sample Text";
+    private string textToDisplay = "スマホのボタンをタッチして";
 
     public void StartTyping()
     {
