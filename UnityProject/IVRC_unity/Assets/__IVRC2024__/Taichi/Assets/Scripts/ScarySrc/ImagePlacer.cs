@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq; // これを追加
 using UnityEngine;
 
 public class ImagePlacer : MonoBehaviour
@@ -30,7 +31,9 @@ public class ImagePlacer : MonoBehaviour
     void LoadImagesFromFolder()
     {
         this.folderPath = Path.Combine(Application.dataPath, this.folderPath);
-        string[] imagePaths = Directory.GetFiles(folderPath, "*.*", SearchOption.TopDirectoryOnly);
+        string[] imagePaths = {Path.Combine(this.folderPath, "2_magazine_style_output.png")};
+        // string[] imagePaths = Directory.GetFiles(folderPath, "*.*", SearchOption.TopDirectoryOnly)
+        //     .Where(path => path.EndsWith(".png") || path.EndsWith(".jpg") || path.EndsWith(".jpeg")).ToArray();
 
         foreach (string path in imagePaths)
         {
@@ -69,7 +72,7 @@ public class ImagePlacer : MonoBehaviour
         }
 
         Vector3 centerPosition = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, mainCamera.nearClipPlane + zPosition));
-        float startX = centerPosition.x - (totalWidth / 2) + (images[1].bounds.size.x / 2);
+        float startX = centerPosition.x - (totalWidth / 2) + (images[0].bounds.size.x / 2);
 
         float currentX = startX;
         for (int i = 0; i < images.Count; i++)
