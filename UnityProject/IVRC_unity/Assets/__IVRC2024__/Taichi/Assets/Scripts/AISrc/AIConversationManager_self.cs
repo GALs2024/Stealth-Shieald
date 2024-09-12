@@ -18,7 +18,7 @@ public class AIConversationManager_self : MonoBehaviour
     void Start()
     {
         string path = Path.Combine(Application.dataPath, @"__IVRC2024__/Taichi/Assets/Audio/User");
-        // WavUtility.DeleteAllFilesInDirectory(path);
+        WavUtility.DeleteAllFilesInDirectory(path);
     }
 
     public void StartConversation()

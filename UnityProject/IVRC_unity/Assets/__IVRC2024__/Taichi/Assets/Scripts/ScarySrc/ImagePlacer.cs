@@ -71,7 +71,7 @@ public class ImagePlacer : MonoBehaviour
             totalWidth += sprite.bounds.size.x;
         }
 
-        Vector3 centerPosition = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, mainCamera.nearClipPlane + zPosition));
+        Vector3 centerPosition = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, mainCamera.nearClipPlane));
         float startX = centerPosition.x - (totalWidth / 2) + (images[0].bounds.size.x / 2);
 
         float currentX = startX;
@@ -85,7 +85,7 @@ public class ImagePlacer : MonoBehaviour
             renderer.sprite = sprite;
 
             float imageWidth = sprite.bounds.size.x;
-            imageObject.transform.position = new Vector3(currentX + 5, centerPosition.y + 5, zPosition);
+            imageObject.transform.position = new Vector3(currentX, centerPosition.y + 2, zPosition);
             currentX += imageWidth;
 
             imageObjects.Add(imageObject); // 生成された画像オブジェクトをリストに追加
