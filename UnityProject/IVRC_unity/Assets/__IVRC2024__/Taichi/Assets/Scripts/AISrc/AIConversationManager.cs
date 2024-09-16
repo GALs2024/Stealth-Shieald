@@ -13,7 +13,7 @@ public class AIConversationManager : MonoBehaviour
     private int currentClipIndex = 0;
 
     public TextMeshTyper AITextMeshTyper;
-    public TextMeshTyper UserTextMeshTyper; 
+    public TextMeshTyper UserTextMeshTyper;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class AIConversationManager : MonoBehaviour
         }
 
         conversationalAI.Initialize();
-        
+
         PlayNextAudioClip();
     }
 
