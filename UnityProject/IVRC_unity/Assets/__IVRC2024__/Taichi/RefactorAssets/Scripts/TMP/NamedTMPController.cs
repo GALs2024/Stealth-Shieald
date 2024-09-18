@@ -4,77 +4,71 @@ using UnityEngine;
 
 public class NamedTextController : MonoBehaviour
 {
-    public Dictionary<string, TMP_Text> textMeshProDictionary;
+    private Dictionary<string, TMP_Text> _textMeshProDictionary;
 
     [System.Serializable]
     public struct TextEntry
     {
-        public string key;
-        public TMP_Text textObject;
+        public string Key;
+        public TMP_Text TextObject;
     }
 
-    public List<TextEntry> textEntries;
+    public List<TextEntry> TextEntries;
 
-    void Awake()
+    private void Awake()
     {
-        textMeshProDictionary = new Dictionary<string, TMP_Text>();
+        this._textMeshProDictionary = new Dictionary<string, TMP_Text>();
 
-        // リストを基にDictionaryにデータを登録
-        foreach (var entry in textEntries)
+        foreach (TextEntry entry in this.TextEntries)
         {
-            if (!textMeshProDictionary.ContainsKey(entry.key))
+            if (!this._textMeshProDictionary.ContainsKey(entry.Key))
             {
-                textMeshProDictionary.Add(entry.key, entry.textObject);
+                this._textMeshProDictionary.Add(entry.Key, entry.TextObject);
             }
         }
     }
 
-    // テキストを設定（名前で指定）
     public void SetText(string key, string newText)
     {
-        if (textMeshProDictionary.ContainsKey(key))
+        if (this._textMeshProDictionary.ContainsKey(key))
         {
-            TMPUtil.SetText(textMeshProDictionary[key], newText);
+            TMPUtil.SetText(this._textMeshProDictionary[key], newText);
         }
         else
         {
-            Debug.LogError($"テキストキー '{key}' が見つかりませんでした。");
+            Debug.LogError($"Text key '{key}' not found.");
         }
     }
 
-    // 何も表示しない
     public void ClearText(string key)
     {
-        if (textMeshProDictionary.ContainsKey(key))
+        if (this._textMeshProDictionary.ContainsKey(key))
         {
-            TMPUtil.SetText(textMeshProDictionary[key], "");
+            TMPUtil.SetText(this._textMeshProDictionary[key], string.Empty);
         }
     }
 
-    // 指定した時間で一文字ずつ表示
     public void SetTextWithDelay(string key, string newText, float delay)
     {
-        if (textMeshProDictionary.ContainsKey(key))
+        if (this._textMeshProDictionary.ContainsKey(key))
         {
-            StartCoroutine(TMPUtil.TypeText(textMeshProDictionary[key], newText, delay));
+            StartCoroutine(TMPUtil.TypeText(this._textMeshProDictionary[key], newText, delay));
         }
     }
 
-    // テキストの色を設定
     public void SetTextColor(string key, Color newColor)
     {
-        if (textMeshProDictionary.ContainsKey(key))
+        if (this._textMeshProDictionary.ContainsKey(key))
         {
-            TMPUtil.SetTextColor(textMeshProDictionary[key], newColor);
+            TMPUtil.SetTextColor(this._textMeshProDictionary[key], newColor);
         }
     }
 
-    // テキストのサイズを設定
     public void SetTextSize(string key, float newSize)
     {
-        if (textMeshProDictionary.ContainsKey(key))
+        if (this._textMeshProDictionary.ContainsKey(key))
         {
-            TMPUtil.SetTextSize(textMeshProDictionary[key], newSize);
+            TMPUtil.SetTextSize(this._textMeshProDictionary[key], newSize);
         }
     }
 }
