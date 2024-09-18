@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneTransitionUtility : MonoBehaviour
 {
     // シングルトンインスタンス
-    public static SceneLoader Instance { get; private set; }
+    public static SceneTransitionUtility Instance { get; private set; }
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class SceneLoader : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // シーンをまたいで保持
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -23,9 +23,8 @@ public class SceneLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// シーンを同期的に読み込む
+    /// 指定したシーンを同期的に読み込む
     /// </summary>
-    /// <param name="sceneName">読み込むシーンの名前</param>
     public void LoadScene(string sceneName)
     {
         if (SceneExists(sceneName))
@@ -39,10 +38,8 @@ public class SceneLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// シーンを非同期的に読み込む
+    /// 指定したシーンを非同期的に読み込む
     /// </summary>
-    /// <param name="sceneName">読み込むシーンの名前</param>
-    /// <param name="onComplete">読み込み完了時のコールバック</param>
     public void LoadSceneAsync(string sceneName, Action onComplete = null)
     {
         if (SceneExists(sceneName))
@@ -55,7 +52,17 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    // 非同期シーン読み込みのコルーチン
+    /// <summary>
+    /// 現在のシーンをリロードする
+    /// </summary>
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    /// <summary>
+    /// 非同期シーン読み込みのコルーチン
+    /// </summary>
     private IEnumerator LoadSceneAsyncCoroutine(string sceneName, Action onComplete = null)
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
@@ -64,7 +71,6 @@ public class SceneLoader : MonoBehaviour
         // 読み込み進捗を表示したり、他の処理を実行可能
         while (!asyncOperation.isDone)
         {
-            // 読み込みが90%以上完了したらシーンを有効化
             if (asyncOperation.progress >= 0.9f)
             {
                 asyncOperation.allowSceneActivation = true;
@@ -80,11 +86,8 @@ public class SceneLoader : MonoBehaviour
     /// <summary>
     /// シーンが存在するか確認する
     /// </summary>
-    /// <param name="sceneName">確認するシーンの名前</param>
-    /// <returns>シーンが存在する場合はtrue</returns>
     private bool SceneExists(string sceneName)
     {
-        // ビルド設定に登録されているシーンがあるかチェック
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
             string path = SceneUtility.GetScenePathByBuildIndex(i);
