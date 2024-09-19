@@ -1,31 +1,9 @@
-using System;
-using System.Collections;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransitionUtility : MonoBehaviour
+public static class SceneTransitionUtility
 {
-    // シングルトンインスタンス
-    public static SceneTransitionUtility Instance { get; private set; }
-
-    private void Awake()
-    {
-        // シングルトンの設定
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    /// <summary>
-    /// 指定したシーンを同期的に読み込む
-    /// </summary>
-    public void LoadScene(string sceneName)
+    // 指定したシーンを同期的に読み込む
+    public static void LoadScene(string sceneName)
     {
         if (SceneExists(sceneName))
         {
@@ -33,60 +11,18 @@ public class SceneTransitionUtility : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"シーン '{sceneName}' は存在しません");
+            UnityEngine.Debug.LogError($"シーン '{sceneName}' は存在しません");
         }
     }
 
-    /// <summary>
-    /// 指定したシーンを非同期的に読み込む
-    /// </summary>
-    public void LoadSceneAsync(string sceneName, Action onComplete = null)
-    {
-        if (SceneExists(sceneName))
-        {
-            StartCoroutine(LoadSceneAsyncCoroutine(sceneName, onComplete));
-        }
-        else
-        {
-            Debug.LogError($"シーン '{sceneName}' は存在しません");
-        }
-    }
-
-    /// <summary>
-    /// 現在のシーンをリロードする
-    /// </summary>
-    public void ReloadScene()
+    // 現在のシーンをリロードする
+    public static void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    /// <summary>
-    /// 非同期シーン読み込みのコルーチン
-    /// </summary>
-    private IEnumerator LoadSceneAsyncCoroutine(string sceneName, Action onComplete = null)
-    {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
-        asyncOperation.allowSceneActivation = false;
-
-        // 読み込み進捗を表示したり、他の処理を実行可能
-        while (!asyncOperation.isDone)
-        {
-            if (asyncOperation.progress >= 0.9f)
-            {
-                asyncOperation.allowSceneActivation = true;
-            }
-
-            yield return null;
-        }
-
-        // 読み込み完了後のコールバック
-        onComplete?.Invoke();
-    }
-
-    /// <summary>
-    /// シーンが存在するか確認する
-    /// </summary>
-    private bool SceneExists(string sceneName)
+    // シーンが存在するか確認する
+    private static bool SceneExists(string sceneName)
     {
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
