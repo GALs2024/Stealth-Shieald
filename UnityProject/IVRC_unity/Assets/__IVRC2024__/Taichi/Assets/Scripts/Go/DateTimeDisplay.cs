@@ -1,33 +1,37 @@
 using System;
 using UnityEngine;
-using TMPro; // TextMeshProを使用するために必要
-using System.Collections; // IEnumeratorを使用するために必要
+using TMPro;
+using System.Collections;
 
+// Displays the current date and time in a TextMeshProUGUI element.
 public class DateTimeDisplay : MonoBehaviour
 {
-    public TextMeshProUGUI dateTimeText;  // TextMeshProのUIオブジェクト
-    private string dateTimeFormat = "yyyy/MM/dd HH:mm:ss";  // フォーマットを指定
+    public TextMeshProUGUI DateTimeText;
 
-    void Start()
+    private string _dateTimeFormat = "yyyy/MM/dd HH:mm:ss";
+
+    // Called when the script instance is being loaded.
+    private void Start()
     {
-        if (dateTimeText == null)
+        if (DateTimeText == null)
         {
             Debug.LogError("TextMeshProUGUIオブジェクトが設定されていません。");
             return;
         }
 
-        // コルーチンで1秒毎に時間を更新
+        // Start coroutine to update the date and time every second
         StartCoroutine(UpdateDateTime());
     }
 
-    IEnumerator UpdateDateTime()
+    // Coroutine that updates the displayed date and time every second.
+    private IEnumerator UpdateDateTime()
     {
         while (true)
         {
-            // 現在の時間と日付を取得し、フォーマット
-            dateTimeText.text = DateTime.Now.ToString(dateTimeFormat);
+            // Update the displayed date and time
+            DateTimeText.text = DateTime.Now.ToString(_dateTimeFormat);
 
-            // 1秒待ってから次に更新
+            // Wait for 1 second before updating again
             yield return new WaitForSeconds(1f);
         }
     }
