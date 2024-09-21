@@ -12,7 +12,7 @@ public class AIConversationManager_self : MonoBehaviour
     public TextMeshTyper AITextMeshTyper;
     public TextMeshTyper UserTextMeshTyper;
     public AIMovieManager aiMovieManager;
-    public GenFakeNews genFakeNews;
+    public FakeNewsGenerator genFakeNews;
     public GenImgFromConversation genImgFromConversation;
 
     void Start()
@@ -37,7 +37,7 @@ public class AIConversationManager_self : MonoBehaviour
     private void NextConversation()
     {
         if (this.currentMassageIndex < this.AISystemMessage.Length)
-        {   
+        {
             this.conversationalAI.StartConversation(this.AISystemMessage[this.currentMassageIndex], "");
             this.conversationalAI.ResetMicInputCount();
             this.currentMassageIndex++;
