@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.meta.movement": "https://github.com/oculus-samples/Unity-Movement.git",
     "com.meta.xr.sdk.core": "68.0.2",
     "com.meta.xr.sdk.interaction.ovr.samples": "65.0.0",
     "com.neuecc.unirx": "https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts",
