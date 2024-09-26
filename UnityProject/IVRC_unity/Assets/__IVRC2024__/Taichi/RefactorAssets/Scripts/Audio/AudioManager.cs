@@ -5,6 +5,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioSource bgmSource;
     public List<AudioClip> bgmClips;
+    public List<float> bgmVolumes;
     [SerializeField] public List<string> bgmInheritedSceneNames = new List<string>();
 
     public static AudioManager instance;
@@ -57,8 +58,9 @@ public class AudioManager : MonoBehaviour
             }
 
             // 新しいBGMを再生（または停止してリセット）
-            bgmSource.clip = selectedBGM;
-            bgmSource.Play();
+            // bgmSource.clip = selectedBGM;
+            // bgmSource.Play();
+            AudioUtils.PlayBGM(bgmSource, selectedBGM, bgmVolumes[sceneIndex], true);
             lastPlayedBGM = selectedBGM;
             currentSceneName = sceneName;
         }

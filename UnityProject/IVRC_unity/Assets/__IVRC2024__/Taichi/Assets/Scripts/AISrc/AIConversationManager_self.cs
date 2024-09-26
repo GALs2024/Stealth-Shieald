@@ -12,7 +12,7 @@ public class AIConversationManager_self : MonoBehaviour
     public TextMeshTyper AITextMeshTyper;
     public TextMeshTyper UserTextMeshTyper;
     public AIMovieManager aiMovieManager;
-    public FakeNewsGenerator genFakeNews;
+    public GenFakeNews genFakeNews;
     public GenImgFromConversation genImgFromConversation;
 
     void Start()
@@ -48,7 +48,7 @@ public class AIConversationManager_self : MonoBehaviour
             Debug.Log("All audio clips have been played. Ending conversation.");
             // 必要なら会話終了後の処理をここに追加
             this.genFakeNews.Generate();
-            this.genImgFromConversation.Generate();
+            // this.genImgFromConversation.Generate();
             this.aiMovieManager.StartMovie();
         }
     }

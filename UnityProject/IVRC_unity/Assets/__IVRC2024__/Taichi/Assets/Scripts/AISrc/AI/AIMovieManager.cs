@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AIMovieManager : MonoBehaviour
 {
-    public string sceneName;
+    public CustomSceneManager customSceneManager;
 
     // 2つのAudioSourceを用意
     public AudioSource newBGMAudioSource;
@@ -17,6 +17,11 @@ public class AIMovieManager : MonoBehaviour
     public AudioClip audioClip;
     public float delay = 2.0f; // audioClipの再生を待機する時間
     public float sceneChangeDelay = 5.0f; // シーン切り替えの待機時間
+
+    void Start()
+    {
+        FindBGMAudioSource();
+    }
 
     public void StartMovie()
     {
@@ -32,16 +37,46 @@ public class AIMovieManager : MonoBehaviour
         StartCoroutine(ChangeSceneAfterDelay(sceneChangeDelay));
     }
 
+    void FindBGMAudioSource()
+    {
+        // シーン内からAudioManagerオブジェクトを探す
+        GameObject audioManager = GameObject.Find("AudioManager");
+
+        if (audioManager != null)
+        {
+            // AudioManagerの子オブジェクトであるBGMを探す
+            Transform bgmTransform = audioManager.transform.Find("BGM");
+
+            if (bgmTransform != null)
+            {
+                // BGMオブジェクトにアタッチされているAudioSourceを取得
+                lastBGMAudioSource = bgmTransform.GetComponent<AudioSource>();
+
+                if (lastBGMAudioSource != null)
+                {
+                    Debug.Log("BGMのAudioSourceを見つけました: " + lastBGMAudioSource.name);
+                }
+                else
+                {
+                    Debug.LogError("BGMオブジェクトにはAudioSourceがアタッチされていません。");
+                }
+            }
+            else
+            {
+                Debug.LogError("BGMオブジェクトが見つかりません。");
+            }
+        }
+        else
+        {
+            Debug.LogError("AudioManagerオブジェクトが見つかりません。");
+        }
+    }
+
     // 指定時間後にシーンを切り替えるコルーチン
     IEnumerator ChangeSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        ChangeScene();
-    }
-
-    void ChangeScene()
-    {
-        SceneManager.LoadScene(this.sceneName);
+        customSceneManager.LoadScene();
     }
 
     // 待機後に2つの音声を同時に再生するメソッド
