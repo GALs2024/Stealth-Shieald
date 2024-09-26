@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 
 public class VibrationControlButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public CustomSceneManager customSceneManager;
     public VibratingObject VibratingObject;
 
-    // public SceneSwitcher SceneSwitcher;
+    public AudioSource audioSource;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -20,9 +21,8 @@ public class VibrationControlButtonHandler : MonoBehaviour, IPointerDownHandler,
         Debug.Log("Button Clicked");
 
         VibratingObject.StopVibration();
+        audioSource.Stop();
 
-        // SceneSwitcher.delay = 2.0f;
-        // SceneSwitcher.sceneName = "5-VRMovie";
-        // StartCoroutine(SceneSwitcher._SwitchSceneAfterDelay());
+        customSceneManager.LoadScene();
     }
 }
