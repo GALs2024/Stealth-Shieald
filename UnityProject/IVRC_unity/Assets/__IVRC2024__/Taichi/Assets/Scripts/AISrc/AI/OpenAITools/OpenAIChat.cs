@@ -11,7 +11,7 @@ public class OpenAIChat
     private int maxTokens;
     private string chatUrl = "https://api.openai.com/v1/chat/completions";
 
-    public OpenAIChat(string apiKey, string chatModel = "gpt-4o-mini", string systemMessage = "キーワードを含んで短く返しをしてください.", int maxTokens = 20)
+    public OpenAIChat(string apiKey, string chatModel = "gpt-4o-mini", string systemMessage = "Please include the keywords and make your return short.", int maxTokens = 20)
     {
         this.apiKey = apiKey;
         this.chatModel = chatModel;

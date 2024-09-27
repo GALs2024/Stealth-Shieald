@@ -26,9 +26,9 @@ public class OpenAIWhisper
         }
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
         formData.Add(new MultipartFormDataSection("model", whisperModel));
-        formData.Add(new MultipartFormDataSection("language", "ja"));
+        formData.Add(new MultipartFormDataSection("language", "en"));
         formData.Add(new MultipartFormFileSection("file", audioData, "audio.wav", "audio/wav"));
-        
+
         UnityWebRequest request = UnityWebRequest.Post(whisperUrl, formData);
         request.SetRequestHeader("Authorization", "Bearer " + apiKey);
 
