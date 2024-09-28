@@ -23,7 +23,7 @@ public class GenFakeNews : MonoBehaviour
         this.chatHistoryLoader = new ChatHistoryLoader();
         string _targetInfoPath = Path.Combine(Application.dataPath, this.targetInfoPath);
         this.targetContent = FileReaderUtil.ReadFileSync(_targetInfoPath);
-        this.systemMessage = "# 命令  [人物像]の内容を含めて、架空のテロニュースの原稿を1つ（50文字以内）作成してください。  # 出力json形式  [{'details': ''}]";
+        this.systemMessage = "# Instructions  Create one fictional terror news manuscript (50 words or less), including the content of [Personality].  # Output  json format [{'details': ''}].";
         this.openAIChat = new OpenAIChat(this.apiKey, "gpt-4o-mini", this.systemMessage, 500);
         this.ttsService = new OpenAITTS(this.apiKey, "tts-1", "alloy");
     }
@@ -32,7 +32,7 @@ public class GenFakeNews : MonoBehaviour
     {
         string conversationHistory = this.chatHistoryLoader.GetChatHistory();
         // string userInput = "# 会話内容  " + conversationHistory + "  # 人物像  " + this.targetContent;
-        string userInput = "  # 人物像  " + this.targetContent;
+        string userInput = "  # Feature  " + this.targetContent;
         Debug.Log(userInput);
         StartCoroutine(this.openAIChat.RequestChatResponse(this.systemMessage, userInput, OnSuccess, OnError));
     }
@@ -45,7 +45,7 @@ public class GenFakeNews : MonoBehaviour
         for (int i = 0; i < json_text.Count; i++)
         {
             Dictionary<string, string> item = json_text[i];
-            
+
             if (item.ContainsKey("details"))
             {
                 string details = item["details"];

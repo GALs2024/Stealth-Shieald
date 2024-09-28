@@ -18,7 +18,7 @@ public class ConversationalAI_self : MonoBehaviour
     public ThinkingDotsTyper thinkingDotsTyper;
 
     [SerializeField]
-    private string systemMessage = "質問しながら短く答えてください";
+    private string systemMessage = "Please answer shortly with a question.";
     [SerializeField]
     private int maxTokens = 20;
     [SerializeField]
@@ -45,16 +45,19 @@ public class ConversationalAI_self : MonoBehaviour
         this.ttsService = new OpenAITTS(apiKey, "tts-1", "nova");
 
         this.conversationHistoryManager = new ConversationHistoryManager();
-        
+
         this._microphoneRecorder = GetComponent<MicrophoneRecorder>();
         this._microphoneRecorder.OnRecordingStopped += OnRecordingStopped;
     }
 
     void Update()
     {
-        if (this.isWaitingForUserResponse){
+        if (this.isWaitingForUserResponse)
+        {
             this.thinkingDotsTyper.StartTyping();
-        } else {
+        }
+        else
+        {
             this.thinkingDotsTyper.StopTyping();
         }
     }
@@ -71,12 +74,15 @@ public class ConversationalAI_self : MonoBehaviour
 
         if (_systemMessage == null)
         {
-            this.systemMessage = "入力内容を深掘りする質問を1つする。";
+            this.systemMessage = "Ask one question that digs deeper into the input.";
             Debug.Log("currentMicInputCount: " + this.currentMicInputCount);
-            if (this.currentMicInputCount == this.maxMicInputs) {
-                this.systemMessage = "疑問形の質問をしない。キーワードを含んで相槌する。";
+            if (this.currentMicInputCount == this.maxMicInputs)
+            {
+                this.systemMessage = "Do not ask questions. Just put in key words and phase them in.";
             }
-        } else {
+        }
+        else
+        {
             this.systemMessage = _systemMessage;
             Debug.Log("systemMessage: " + this.systemMessage);
         }
@@ -102,12 +108,12 @@ public class ConversationalAI_self : MonoBehaviour
         Debug.Log("Chat Response: " + chatResponse);
         this.aiConversationManager.Set3DText(true, chatResponse);
 
-        this.conversationHistoryManager.SaveConversationHistory(this.lastUserInput, chatResponse);
+        // this.conversationHistoryManager.SaveConversationHistory(this.lastUserInput, chatResponse);
 
         string ouputPath = Path.Combine(Application.dataPath, this.AIOutputFile);
         StartCoroutine(this.ttsService.ConvertTextToSpeech(
             chatResponse, ouputPath, (audioData, filePath) => OnTTSSuccess(audioData, filePath), OnError
-        ));    
+        ));
     }
 
     private void OnTTSSuccess(byte[] audioData, string filePath)
@@ -204,8 +210,8 @@ public class ConversationalAI_self : MonoBehaviour
             Debug.Log("Transcription is empty. Please try again.");
             this.currentMicInputCount--; // マイク入力回数を減らす
             this.aiConversationManager.Reset3DText(false);
-            
-            OnChatResponseSuccess("聞き取れませんでした。");
+
+            OnChatResponseSuccess("I did not hear you. Please speak again.");
             return;
         }
         Debug.Log("Transcription: " + transcription);
