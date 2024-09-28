@@ -20,24 +20,29 @@ public class MosaicGenerator : MonoBehaviour
     public static MosaicGenerator instance = null;
 
     // AwakeはStartより先に呼ばれる
-    void Awake () {
-        if (instance == null) {
+    void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
-            if (DontDestroyEnabled) {
+            if (DontDestroyEnabled)
+            {
                 // シーンを遷移してもオブジェクトが消えないようにする
-                DontDestroyOnLoad (this.gameObject);
+                DontDestroyOnLoad(this.gameObject);
             }
-        } else {
+        }
+        else
+        {
             // すでに存在するインスタンスがあればこのオブジェクトを破棄
-            Destroy (this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 
-    // void Start()
-    // {
-    //     StartCoroutine(GenerateMosaicAsync());
-    // }
-    
+    void Start()
+    {
+        StartCoroutine(GenerateMosaicAsync());
+    }
+
     public IEnumerator GenerateMosaicAsync()
     {
         string targetImgPath = Path.Combine(Application.dataPath, this.filePath);
@@ -110,7 +115,7 @@ public class MosaicGenerator : MonoBehaviour
     }
 
 
-   IEnumerator PlaceGridTilesAsync(Texture2D image, int columns, int rows)
+    IEnumerator PlaceGridTilesAsync(Texture2D image, int columns, int rows)
     {
         int gridWidth = image.width / columns;
         int gridHeight = image.height / rows;
