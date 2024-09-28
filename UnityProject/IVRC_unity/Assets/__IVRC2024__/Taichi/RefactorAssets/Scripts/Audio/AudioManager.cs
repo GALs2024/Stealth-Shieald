@@ -1,12 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[System.Serializable]
+public class SceneBGMData
+{
+    public string sceneName;
+    public AudioClip clip;
+    public float volume;
+}
+
 public class AudioManager : MonoBehaviour
 {
     public AudioSource bgmSource;
-    public List<AudioClip> bgmClips;
-    public List<float> bgmVolumes;
-    [SerializeField] public List<string> bgmInheritedSceneNames = new List<string>();
+    [SerializeField] public List<SceneBGMData> sceneBGMDataList = new List<SceneBGMData>();
 
     public static AudioManager instance;
     private string currentSceneName = "";
@@ -28,9 +34,9 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         // 最初のBGMを再生する
-        if (bgmClips.Count > 0)
+        if (sceneBGMDataList.Count > 0)
         {
-            PlayBGMForScene(bgmInheritedSceneNames[0]);
+            PlayBGMForScene(sceneBGMDataList[0].sceneName);
         }
         else
         {
@@ -41,26 +47,22 @@ public class AudioManager : MonoBehaviour
     // シーンに対応したBGMを再生する
     public void PlayBGMForScene(string sceneName)
     {
-        int sceneIndex = bgmInheritedSceneNames.IndexOf(sceneName);
+        SceneBGMData bgmData = sceneBGMDataList.Find(data => data.sceneName == sceneName);
 
         // シーンがリストに含まれている場合
-        if (sceneIndex >= 0 && sceneIndex < bgmClips.Count)
+        if (bgmData != null)
         {
-            AudioClip selectedBGM = bgmClips[sceneIndex];
+            AudioClip selectedBGM = bgmData.clip;
 
             // 再生中のBGMと同じであればリセットしない
-            Debug.Log(bgmSource.clip);
-            Debug.Log(selectedBGM);
             if (bgmSource.clip == selectedBGM && bgmSource.isPlaying)
             {
                 Debug.Log("同じBGMを引き継ぐのでリセットしません: " + selectedBGM.name);
                 return;
             }
 
-            // 新しいBGMを再生（または停止してリセット）
-            // bgmSource.clip = selectedBGM;
-            // bgmSource.Play();
-            AudioUtils.PlayBGM(bgmSource, selectedBGM, bgmVolumes[sceneIndex], true);
+            // 新しいBGMを再生
+            AudioUtils.PlayBGM(bgmSource, selectedBGM, bgmData.volume, true);
             lastPlayedBGM = selectedBGM;
             currentSceneName = sceneName;
         }
