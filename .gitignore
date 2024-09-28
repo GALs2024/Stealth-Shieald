@@ -62,7 +62,11 @@ UnityProject/IVRC_unity/Assets/Plugins/Zenject/Source/Zenject.csproj.meta
 UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/API/*
 
 UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/AIOutput/*
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/FakeNews/*
 UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Audio/User/*
 
 UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Data/*
-UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Textures/*
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Textures/Mosaic/Originals/*
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Textures/Mosaic/Tiles/*
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Textures/Mosaic/*.png
+UnityProject/IVRC_unity/Assets/__IVRC2024__/Taichi/Assets/Textures/Mosaic/*.png.meta
