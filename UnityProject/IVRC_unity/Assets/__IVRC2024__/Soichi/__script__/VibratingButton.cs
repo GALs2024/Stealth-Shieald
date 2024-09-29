@@ -9,7 +9,6 @@ public class VibratingButton : MonoBehaviour
     public float vibrationAmplitude = 0.1f;
     private bool isVibrating = true;
     private Vector3 originalPosition;
-    private Button button;
     private AudioSource audioSource;
 
     void Start()
