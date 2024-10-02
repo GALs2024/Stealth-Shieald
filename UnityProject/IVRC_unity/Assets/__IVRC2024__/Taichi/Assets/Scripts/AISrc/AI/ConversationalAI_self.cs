@@ -32,6 +32,8 @@ public class ConversationalAI_self : MonoBehaviour
 
     private string AIOutputFile = @"__IVRC2024__/Taichi/Assets/Audio/AIOutput/output.mp3";
 
+    public bool englishmode = false;
+
     public void Initialize()
     {
         var apiKey = ApiKeyLoader.LoadApiKey();
@@ -74,11 +76,18 @@ public class ConversationalAI_self : MonoBehaviour
 
         if (_systemMessage == null)
         {
-            this.systemMessage = "Ask one question that digs deeper into the input.";
+            string first_reply = "質問しながら返答してください";
+            string delightful_reply = "キーワードを含んで楽しく返答してください";
+            if (englishmode)
+            {
+                first_reply = "Ask one question that digs deeper into the input.";
+                delightful_reply = "Do not ask questions. Just put in key words and phase them in.";
+            }
+            this.systemMessage = first_reply;
             Debug.Log("currentMicInputCount: " + this.currentMicInputCount);
             if (this.currentMicInputCount == this.maxMicInputs)
             {
-                this.systemMessage = "Do not ask questions. Just put in key words and phase them in.";
+                this.systemMessage = delightful_reply;
             }
         }
         else

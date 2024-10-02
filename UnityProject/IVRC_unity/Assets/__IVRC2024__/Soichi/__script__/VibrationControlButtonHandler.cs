@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class VibrationControlButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public CustomSceneManager customSceneManager;
+    public TimelineController timelineController;
     public VibratingObject VibratingObject;
 
     public AudioSource audioSource;
@@ -23,6 +23,6 @@ public class VibrationControlButtonHandler : MonoBehaviour, IPointerDownHandler,
         VibratingObject.StopVibration();
         audioSource.Stop();
 
-        customSceneManager.LoadScene();
+        timelineController.PlayTimeline();
     }
 }

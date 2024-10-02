@@ -8,7 +8,7 @@ public class AIConversationManager : MonoBehaviour
     [SerializeField]
     private ConversationalAI conversationalAI;
     [SerializeField]
-    private Sample sample;
+    // private Sample sample;
 
     private int currentClipIndex = 0;
 
@@ -52,7 +52,7 @@ public class AIConversationManager : MonoBehaviour
         {
             Debug.Log("All audio clips have been played. Ending conversation.");
             // 必要なら会話終了後の処理をここに追加
-            sample.play();
+            // sample.play();
         }
     }
 
