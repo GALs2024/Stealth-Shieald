@@ -156,7 +156,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     3f95e954ce2fab04aa96694cc3966a12: 0.08327736
     2bfbc7854a91ed54da50f80fe26731b8: 0
-    b0cef529c5e46f444a289a3c53a364cf: 13
+    b0cef529c5e46f444a289a3c53a364cf: 15
     3f5dbbf942ebfe44e8599cf8a33a571d: 2
   m_TransitionOverrides: {}
 --- !u!244 &1156387921564602678
@@ -213,7 +213,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Chair
+  m_Name: Realtek_Chair
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: d5df2175e2ad7a640b2de6055040f71a
   m_Children:
@@ -249,7 +249,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Headphone
+  m_Name: Headphones
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c6de54c59ed2c0d45856bd842b57b816
   m_Children: []

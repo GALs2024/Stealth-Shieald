@@ -1,12 +1,19 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;  // シーン管理のために追加
 using System.Collections.Generic;
+
+[System.Serializable]
+public class SceneBGMData
+{
+    public string sceneName;
+    public AudioClip clip;
+    public float volume;
+}
 
 public class AudioManager : MonoBehaviour
 {
     public AudioSource bgmSource;
-    public List<AudioClip> bgmClips;
-    public List<float> bgmVolumes;
-    [SerializeField] public List<string> bgmInheritedSceneNames = new List<string>();
+    [SerializeField] public List<SceneBGMData> sceneBGMDataList = new List<SceneBGMData>();
 
     public static AudioManager instance;
     private string currentSceneName = "";
@@ -14,59 +21,89 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("AudioManager Awake");
         if (instance == null)
         {
+            Debug.Log("AudioManager instance is null");
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
+            Debug.Log("AudioManager instance is not null");
             Destroy(gameObject);
         }
     }
 
-    void Start()
+    void OnEnable()
     {
-        // 最初のBGMを再生する
-        if (bgmClips.Count > 0)
-        {
-            PlayBGMForScene(bgmInheritedSceneNames[0]);
-        }
-        else
-        {
-            Debug.LogWarning("BGMが設定されていません。");
-        }
+        Debug.Log("AudioManager OnEnable");
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // シーンに対応したBGMを再生する
+    void OnDisable()
+    {
+        Debug.Log("AudioManager OnDisable");
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // シーンがロードされたときに呼び出される
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        PlayBGMForScene(scene.name);
+    }
+
+    void Start()
+    {
+        string startingSceneName = SceneManager.GetActiveScene().name;
+        PlayBGMForScene(startingSceneName);
+    }
+
     public void PlayBGMForScene(string sceneName)
     {
-        int sceneIndex = bgmInheritedSceneNames.IndexOf(sceneName);
+        SceneBGMData bgmData = sceneBGMDataList.Find(data => data.sceneName == sceneName);
 
-        // シーンがリストに含まれている場合
-        if (sceneIndex >= 0 && sceneIndex < bgmClips.Count)
+        if (bgmData != null)
         {
-            AudioClip selectedBGM = bgmClips[sceneIndex];
+            AudioClip selectedBGM = bgmData.clip;
+
+            // BGMが設定されていない（AudioClipがNoneまたはnull）の場合
+            if (selectedBGM == null)
+            {
+                Debug.Log("AudioClipがNoneのため、BGMは再生されません。シーン名: " + sceneName);
+
+                if (bgmSource.isPlaying)
+                {
+                    bgmSource.Stop();
+                    bgmSource.clip = null;
+                }
+
+                return;
+            }
 
             // 再生中のBGMと同じであればリセットしない
-            Debug.Log(bgmSource.clip);
-            Debug.Log(selectedBGM);
             if (bgmSource.clip == selectedBGM && bgmSource.isPlaying)
             {
                 Debug.Log("同じBGMを引き継ぐのでリセットしません: " + selectedBGM.name);
                 return;
             }
 
-            // 新しいBGMを再生（または停止してリセット）
-            // bgmSource.clip = selectedBGM;
-            // bgmSource.Play();
-            AudioUtils.PlayBGM(bgmSource, selectedBGM, bgmVolumes[sceneIndex], true);
+            // 新しいBGMを再生
+            AudioUtils.PlayBGM(bgmSource, selectedBGM, bgmData.volume, true);
             lastPlayedBGM = selectedBGM;
             currentSceneName = sceneName;
         }
         else
         {
             Debug.LogWarning("BGMが設定されていないシーンです: " + sceneName);
+
+            // BGMが設定されていない場合も再生中のBGMを停止する（引き継がない）
+            if (bgmSource.isPlaying)
+            {
+                bgmSource.Stop();
+                bgmSource.clip = null; // 現在のBGMクリップをクリアする
+            }
         }
     }
 }

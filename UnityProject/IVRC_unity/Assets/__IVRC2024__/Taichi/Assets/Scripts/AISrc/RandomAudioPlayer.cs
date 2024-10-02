@@ -23,8 +23,7 @@ public class RandomAudioPlayer : MonoBehaviour
 
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
-        // audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         if (playStart)
         {
             // 指定された時間後にInit()を実行

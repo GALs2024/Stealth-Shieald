@@ -5,13 +5,13 @@ using System.Linq;
 [CustomEditor(typeof(AudioManager))]
 public class AudioManagerEditor : Editor
 {
-    private SerializedProperty bgmInheritedSceneNamesProperty;
+    private SerializedProperty sceneBGMDataListProperty;
     private string[] sceneNames;
 
     void OnEnable()
     {
         // SerializedObjectのプロパティを取得
-        bgmInheritedSceneNamesProperty = serializedObject.FindProperty("bgmInheritedSceneNames");
+        sceneBGMDataListProperty = serializedObject.FindProperty("sceneBGMDataList");
 
         // ビルド設定からシーン名を取得
         sceneNames = GetSceneNamesFromBuildSettings();
@@ -25,37 +25,45 @@ public class AudioManagerEditor : Editor
         // デフォルトのインスペクタを描画
         DrawDefaultInspector();
 
-        // BGMを引き継ぐシーンの選択リストを表示
-        EditorGUILayout.LabelField("BGM Inherited Scenes");
+        // シーンごとのBGMデータの設定を表示
+        EditorGUILayout.LabelField("Scene BGM Data");
 
-        for (int i = 0; i < bgmInheritedSceneNamesProperty.arraySize; i++)
+        for (int i = 0; i < sceneBGMDataListProperty.arraySize; i++)
         {
-            SerializedProperty sceneNameProperty = bgmInheritedSceneNamesProperty.GetArrayElementAtIndex(i);
+            SerializedProperty bgmDataProperty = sceneBGMDataListProperty.GetArrayElementAtIndex(i);
+            SerializedProperty sceneNameProperty = bgmDataProperty.FindPropertyRelative("sceneName");
+            SerializedProperty clipProperty = bgmDataProperty.FindPropertyRelative("clip");
+            SerializedProperty volumeProperty = bgmDataProperty.FindPropertyRelative("volume");
+
+            // シーン名のプルダウンメニュー
             int selectedIndex = System.Array.IndexOf(sceneNames, sceneNameProperty.stringValue);
+            if (selectedIndex == -1) selectedIndex = 0;
 
-            if (selectedIndex == -1) selectedIndex = 0;  // 無効なインデックスは0に設定
-
-            // プルダウンメニューを表示
             selectedIndex = EditorGUILayout.Popup("Scene " + (i + 1), selectedIndex, sceneNames);
-
-            // 選択されたシーン名を更新
             sceneNameProperty.stringValue = sceneNames[selectedIndex];
+
+            // BGMクリップのフィールド
+            EditorGUILayout.PropertyField(clipProperty, new GUIContent("BGM Clip"));
+
+            // 音量のスライダー
+            volumeProperty.floatValue = EditorGUILayout.Slider("Volume", volumeProperty.floatValue, 0f, 1f);
         }
 
         // ボタンの表示を横並びにするためにHorizontalGroupを使用
         EditorGUILayout.BeginHorizontal();
 
-        // Add Sceneボタン
-        if (GUILayout.Button("Add Scene", GUILayout.MaxWidth(100)))  // 横幅を制限
+        // Add BGM Dataボタン
+        if (GUILayout.Button("Add Scene BGM Data", GUILayout.MaxWidth(150)))
         {
-            bgmInheritedSceneNamesProperty.InsertArrayElementAtIndex(bgmInheritedSceneNamesProperty.arraySize);
-            bgmInheritedSceneNamesProperty.GetArrayElementAtIndex(bgmInheritedSceneNamesProperty.arraySize - 1).stringValue = sceneNames[0]; // 初期値として最初のシーン名を設定
+            sceneBGMDataListProperty.InsertArrayElementAtIndex(sceneBGMDataListProperty.arraySize);
+            SerializedProperty newElement = sceneBGMDataListProperty.GetArrayElementAtIndex(sceneBGMDataListProperty.arraySize - 1);
+            newElement.FindPropertyRelative("sceneName").stringValue = sceneNames[0]; // 初期値として最初のシーン名を設定
         }
 
-        // Remove Last Sceneボタン
-        if (bgmInheritedSceneNamesProperty.arraySize > 0 && GUILayout.Button("Remove Last Scene", GUILayout.MaxWidth(150)))  // 横幅を制限
+        // Remove Last Scene BGM Dataボタン
+        if (sceneBGMDataListProperty.arraySize > 0 && GUILayout.Button("Remove Last Scene BGM Data", GUILayout.MaxWidth(200)))
         {
-            bgmInheritedSceneNamesProperty.DeleteArrayElementAtIndex(bgmInheritedSceneNamesProperty.arraySize - 1);
+            sceneBGMDataListProperty.DeleteArrayElementAtIndex(sceneBGMDataListProperty.arraySize - 1);
         }
 
         EditorGUILayout.EndHorizontal();  // 横並びの終了
