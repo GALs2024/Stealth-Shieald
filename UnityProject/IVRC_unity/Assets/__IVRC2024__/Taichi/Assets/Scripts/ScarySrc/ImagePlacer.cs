@@ -31,7 +31,7 @@ public class ImagePlacer : MonoBehaviour
     void LoadImagesFromFolder()
     {
         this.folderPath = Path.Combine(Application.dataPath, this.folderPath);
-        string[] imagePaths = {Path.Combine(this.folderPath, "2_magazine_style_output.png")};
+        string[] imagePaths = { Path.Combine(this.folderPath, "2_magazine_style_output.png") };
         // string[] imagePaths = Directory.GetFiles(folderPath, "*.*", SearchOption.TopDirectoryOnly)
         //     .Where(path => path.EndsWith(".png") || path.EndsWith(".jpg") || path.EndsWith(".jpeg")).ToArray();
 
@@ -98,7 +98,7 @@ public class ImagePlacer : MonoBehaviour
         foreach (GameObject imageObject in imageObjects)
         {
             float distance = Vector3.Distance(mainCamera.transform.position, imageObject.transform.position);
-            
+
             // 距離が最大距離を超えたら非表示にする
             if (distance > maxDistance)
             {

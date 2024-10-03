@@ -5,9 +5,10 @@ using System.IO;
 using UnityEngine.Networking;
 using System.Linq;
 
-public class Teat_RandomAudioPlayer : MonoBehaviour
+public class MultiAudioManager : MonoBehaviour
 {
-    public string inputDirPath = @"__IVRC2024__/Taichi/Assets/Audio/User"; // WAVファイルが格納されているフォルダのパス
+    [FolderPath]
+    public string inputDirPath = @"__IVRC2024__/Assets/Audio/User"; // WAVファイルが格納されているフォルダのパス 
 
     private List<AudioClip> audioClips = new List<AudioClip>();
     public AudioSource audioSource;
@@ -18,6 +19,7 @@ public class Teat_RandomAudioPlayer : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+        this.inputDirPath = this.inputDirPath.Substring("Assets/".Length);
         LoadAudioClips();
     }
 
@@ -124,21 +126,6 @@ public class Teat_RandomAudioPlayer : MonoBehaviour
     // フェードアウトを関数化して任意のタイミングで呼び出せるようにする
     public void StartFadeOut(float fadeDuration)
     {
-        StartCoroutine(FadeOutVolume(fadeDuration));
-    }
-
-    IEnumerator FadeOutVolume(float fadeDuration)
-    {
-        float startVolume = audioSource.volume;
-
-        float elapsedTime = 0f;
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime / fadeDuration);
-            yield return null;
-        }
-
-        audioSource.volume = 0f;
+        StartCoroutine(AudioFaderUtils.FadeOut(audioSource, fadeDuration));
     }
 }

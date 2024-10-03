@@ -5,6 +5,7 @@ using System.IO;
 
 public class ImageSpawner : MonoBehaviour
 {
+    [FolderPath]
     public string imagesFolderPath = "Assets/__IVRC2024__/go/Images/"; // 画像フォルダへのパス
     public GameObject centralObject; // VRカメラ (中央のオブジェクト)
     public float spawnRadius = 15f; // 中央オブジェクトからの半径
@@ -17,6 +18,7 @@ public class ImageSpawner : MonoBehaviour
 
     void Start()
     {
+        this.imagesFolderPath = this.imagesFolderPath.Substring("Assets/".Length);
         SpawnImages();
     }
 
