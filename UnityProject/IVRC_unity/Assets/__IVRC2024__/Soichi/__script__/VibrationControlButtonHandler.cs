@@ -14,15 +14,14 @@ public class VibrationControlButtonHandler : MonoBehaviour, IPointerDownHandler,
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("Button Pressed");
+        VibratingObject.StopVibration();
+        audioSource.Stop();
+
+        timelineController.PlayTimeline();
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         Debug.Log("Button Clicked");
-
-        VibratingObject.StopVibration();
-        audioSource.Stop();
-
-        timelineController.PlayTimeline();
     }
 }
