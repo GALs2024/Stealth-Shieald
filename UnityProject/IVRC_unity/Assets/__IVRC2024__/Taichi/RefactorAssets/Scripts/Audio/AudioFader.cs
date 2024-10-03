@@ -1,45 +1,45 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public static class AudioFader
+public class AudioFader : MonoBehaviour
 {
-    /// <summary>
-    /// フェードイン
-    /// </summary>
-    public static IEnumerator FadeIn(AudioSource audioSource, AudioClip clip, float maxVolume, float fadeTime)
+    private AudioSource audioSource;
+    private GameObject bgmManager;
+
+    void Start()
     {
-        if (audioSource == null || clip == null) yield break;
-
-        audioSource.volume = 0f;
-
-        // PlayOneShotで指定されたclipを再生
-        audioSource.PlayOneShot(clip);
-
-        while (audioSource.volume < maxVolume)
-        {
-            audioSource.volume += Time.deltaTime / fadeTime;
-            yield return null;
-        }
-
-        audioSource.volume = maxVolume;  // maxVolumeで固定
+        FindBGMAudioSource();
     }
 
-    /// <summary>
-    /// フェードアウト
-    /// </summary>
-    public static IEnumerator FadeOut(AudioSource audioSource, float fadeTime)
+    public void FadeOut(float fadeTime)
     {
-        if (audioSource == null) yield break;
-
-        float startVolume = audioSource.volume;
-
-        while (audioSource.volume > 0f)
+        if (bgmManager != null)
         {
-            audioSource.volume -= Time.deltaTime / fadeTime;
-            yield return null;
+            StartCoroutine(AudioFaderUtils.FadeOut(audioSource, fadeTime));
         }
+    }
 
-        audioSource.Stop();  // 再生を停止
-        audioSource.volume = startVolume;  // 元のボリュームに戻す
+    void FindBGMAudioSource()
+    {
+        bgmManager = GameObject.Find("BGMManager");
+
+        if (bgmManager != null)
+        {
+            audioSource = bgmManager.GetComponent<AudioSource>();
+
+            if (audioSource != null)
+            {
+                Debug.Log("BGMManagerのAudioSourceを見つけました: " + audioSource.name);
+            }
+            else
+            {
+                Debug.LogError("BGMManagerオブジェクトにはAudioSourceがアタッチされていません。");
+            }
+        }
+        else
+        {
+            Debug.LogError("BGMManagerオブジェクトが見つかりません。");
+        }
     }
 }
