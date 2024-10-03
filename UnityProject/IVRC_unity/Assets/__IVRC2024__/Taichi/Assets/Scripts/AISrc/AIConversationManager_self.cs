@@ -11,15 +11,18 @@ public class AIConversationManager_self : MonoBehaviour
     private int currentMassageIndex = 0;
     public TextMeshTyper AITextMeshTyper;
     public TextMeshTyper UserTextMeshTyper;
-    public AIMovieManager aiMovieManager;
-    public GenFakeNews genFakeNews;
-    public GenImgFromConversation genImgFromConversation;
+    // public AIMovieManager aiMovieManager;
+    // public GenFakeNews genFakeNews;
+    // public GenImgFromConversation genImgFromConversation;
+
+    public TimelineController timelineController;
 
     void Start()
     {
-        string path = Path.Combine(Application.dataPath, @"__IVRC2024__/Taichi/Assets/Audio/User");
-        WavUtility.DeleteAllFilesInDirectory(path);
-        StartConversation();
+        // string path = Path.Combine(Application.dataPath, @"__IVRC2024__/Taichi/Assets/Audio/User");
+        // WavUtility.DeleteAllFilesInDirectory(path);
+        // StartConversation();
+        this.timelineController.PlayTimeline();
     }
 
     public void StartConversation()
@@ -47,9 +50,18 @@ public class AIConversationManager_self : MonoBehaviour
         {
             Debug.Log("All audio clips have been played. Ending conversation.");
             // 必要なら会話終了後の処理をここに追加
-            this.genFakeNews.Generate();
+            // this.genFakeNews.Generate();
             // this.genImgFromConversation.Generate();
-            this.aiMovieManager.StartMovie();
+            // this.aiMovieManager.StartMovie();
+
+            if (this.timelineController)
+            {
+                this.timelineController.PlayTimeline();
+            }
+            else
+            {
+                Debug.LogError("TimelineController is null.");
+            }
         }
     }
 
