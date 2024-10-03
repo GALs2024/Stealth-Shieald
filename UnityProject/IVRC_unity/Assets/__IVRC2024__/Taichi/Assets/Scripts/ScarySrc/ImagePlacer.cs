@@ -85,7 +85,7 @@ public class ImagePlacer : MonoBehaviour
             renderer.sprite = sprite;
 
             float imageWidth = sprite.bounds.size.x;
-            imageObject.transform.position = new Vector3(currentX, centerPosition.y + 2, zPosition);
+            imageObject.transform.position = new Vector3(currentX, centerPosition.y + 20, zPosition);
             currentX += imageWidth;
 
             imageObjects.Add(imageObject); // 生成された画像オブジェクトをリストに追加
