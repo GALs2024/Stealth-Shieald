@@ -10,14 +10,12 @@ public class SceneBGMData
     public float volume;
 }
 
-public class AudioManager : MonoBehaviour
+public class BGMManager : MonoBehaviour
 {
     public AudioSource bgmSource;
     [SerializeField] public List<SceneBGMData> sceneBGMDataList = new List<SceneBGMData>();
 
-    public static AudioManager instance;
-    private string currentSceneName = "";
-    private AudioClip lastPlayedBGM;
+    public static BGMManager instance;
 
     void Awake()
     {
@@ -91,8 +89,6 @@ public class AudioManager : MonoBehaviour
 
             // 新しいBGMを再生
             AudioUtils.PlayBGM(bgmSource, selectedBGM, bgmData.volume, true);
-            lastPlayedBGM = selectedBGM;
-            currentSceneName = sceneName;
         }
         else
         {

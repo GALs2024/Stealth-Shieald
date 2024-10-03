@@ -2,8 +2,8 @@ using UnityEditor;
 using UnityEngine;
 using System.Linq;
 
-[CustomEditor(typeof(AudioManager))]
-public class AudioManagerEditor : Editor
+[CustomEditor(typeof(BGMManager))]
+public class BGMManagerEditor : Editor
 {
     private SerializedProperty sceneBGMDataListProperty;
     private string[] sceneNames;

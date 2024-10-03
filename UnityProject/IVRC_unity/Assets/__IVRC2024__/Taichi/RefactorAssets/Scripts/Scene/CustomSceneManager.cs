@@ -22,9 +22,9 @@ public class CustomSceneManager : MonoBehaviour
     {
         SceneTransitionUtility.LoadScene(sceneName);
 
-        if (AudioManager.instance != null)
+        if (BGMManager.instance != null)
         {
-            AudioManager.instance.PlayBGMForScene(sceneName);
+            BGMManager.instance.PlayBGMForScene(sceneName);
         }
         else
         {
