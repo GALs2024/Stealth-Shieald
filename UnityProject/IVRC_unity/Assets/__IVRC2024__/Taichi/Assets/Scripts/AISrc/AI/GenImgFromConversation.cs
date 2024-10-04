@@ -16,8 +16,8 @@ public class GenImgFromConversation : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         string apiKey = ApiKeyLoader.LoadApiKey();
         // OpenAIDalleクラスのインスタンスを初期化
-        this.openAIDalle = new OpenAIDalle(apiKey, "dall-e-3", 1024);
-        
+        this.openAIDalle = new OpenAIDalle(apiKey, "dall-e-2", 1024);
+
         this.chatHistoryLoader = new ChatHistoryLoader();
     }
 
@@ -32,12 +32,12 @@ public class GenImgFromConversation : MonoBehaviour
         StartCoroutine(openAIDalle.RequestDalleImage(this.prompt, savePath, OnImageReceived, OnError));
     }
 
-    private void OnImageReceived(string message) // string型の引数を取るようにする
+    private void OnImageReceived(string message)
     {
         Debug.Log("Success: " + message);
     }
 
-    private void OnError(string error) // string型の引数を取るようにする
+    private void OnError(string error)
     {
         Debug.LogError("Error: " + error);
     }
