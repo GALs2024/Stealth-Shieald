@@ -74,20 +74,22 @@ public class AIConversationManager_self : MonoBehaviour
 
     public void Set3DText(bool is_ai, string text)
     {
-        if (is_ai)
-        {
-            this.AITextMeshTyper.SetColor(Color.blue);
-        }
-        else
-        {
-            this.AITextMeshTyper.SetColor(Color.red);
-        }
         this.AITextMeshTyper.SetText(text);
     }
 
     public void Display3DText(bool is_ai)
     {
         Reset3DText(is_ai);
+        if (is_ai)
+        {
+            this.AITextMeshTyper.SetColor(Color.blue);
+            Debug.Log("Change color to blue");
+        }
+        else
+        {
+            this.AITextMeshTyper.SetColor(Color.red);
+            Debug.Log("Change color to red");
+        }
         this.AITextMeshTyper.StartTyping();
     }
 }

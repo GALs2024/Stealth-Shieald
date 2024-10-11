@@ -11,7 +11,7 @@ public class ThinkingDotsTyper : MonoBehaviour
     public float typingSpeed = 0.5f;
 
     public bool isEnglishMode = false;
-    private string baseText = "もう一度話してください。";
+    private string baseText = "マイクに向かって話してください。";
 
     private int dotCount = 0;  // 現在のドットの数
 

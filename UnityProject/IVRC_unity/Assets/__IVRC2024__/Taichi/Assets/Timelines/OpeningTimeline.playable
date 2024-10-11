@@ -29,7 +29,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 19
+  m_Time: 17.33333333333333
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 59fe4c9279c328247815feabb7e1350d, type: 2}
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 27.900000000000013
+    m_Start: 26.23333333333334
     m_ClipIn: 2.283333333333335
     m_Asset: {fileID: 4454238260645424838}
     m_Duration: 1.5
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 27
+  m_Time: 25.33333333333333
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: e28b9ba823a7c40439bb7929651ab298, type: 2}
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 15
+  m_Time: 13.333333333333334
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 59fe4c9279c328247815feabb7e1350d, type: 2}
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
   m_Name: AudioPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 2aca4a62f177d4a4c99a6443f904fed8, type: 3}
+  m_Clip: {fileID: 8300000, guid: a5b4a43c81fb86e48b2245902c3b89e8, type: 3}
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 30
+  m_Time: 28.33333333333333
   m_Retroactive: 0
   m_EmitOnce: 1
   m_Asset: {fileID: 11400000, guid: 612ea3cd22d17e6498760c76ff3d5826, type: 2}
@@ -427,11 +427,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
   m_Name: AudioPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 7a29fd8a98b621845a87eac4198b5a87, type: 3}
+  m_Clip: {fileID: 8300000, guid: 2c9426f171fecb8489a0a5eb2cdb71ca, type: 3}
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
-    volume: 1
+    volume: 0.8
 --- !u!114 &845091288091008694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 19.400000000000006
+    m_Start: 17.733333333333334
     m_ClipIn: 0
     m_Asset: {fileID: 735710904655631250}
     m_Duration: 0.48
@@ -554,7 +554,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: nova_hey
   - m_Version: 1
-    m_Start: 23.400000000000006
+    m_Start: 21.733333333333334
     m_ClipIn: 0
     m_Asset: {fileID: 4103585398601307810}
     m_Duration: 0.48
@@ -605,7 +605,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: nova_hey
   - m_Version: 1
-    m_Start: 27.900000000000013
+    m_Start: 26.23333333333334
     m_ClipIn: 0
     m_Asset: {fileID: -4540489907830079587}
     m_Duration: 2.136
@@ -896,7 +896,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Looking_forward_to
   - m_Version: 1
-    m_Start: 9.821179346938775
+    m_Start: 10.82118
     m_ClipIn: 0
     m_Asset: {fileID: 648574147506622399}
     m_Duration: 1.474421768707483
@@ -982,11 +982,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
   m_Name: AudioPlayableAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 7a29fd8a98b621845a87eac4198b5a87, type: 3}
+  m_Clip: {fileID: 8300000, guid: d53de40f0e12e1f46b2463072c9eeab0, type: 3}
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
-    volume: 1
+    volume: 0.8
 --- !u!114 &4454238260645424838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
-    volume: 0.05
+    volume: 0.01
 --- !u!114 &4624954798292995063
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 25
+  m_Time: 23.33333333333333
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: f7500a649d48ab94c8ac4abcb6802f34, type: 2}
@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 23
+  m_Time: 21.33333333333333
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 59fe4c9279c328247815feabb7e1350d, type: 2}

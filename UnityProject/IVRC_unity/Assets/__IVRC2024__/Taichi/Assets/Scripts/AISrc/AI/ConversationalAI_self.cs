@@ -103,7 +103,7 @@ public class ConversationalAI_self : MonoBehaviour
 
         Debug.Log("Full Conversation: " + fullConversation);
 
-        this.thinkingDotsTyper.StartTyping();
+        // this.thinkingDotsTyper.StartTyping();
         StartCoroutine(chatService.RequestChatResponse(this.systemMessage, fullConversation, OnChatResponseSuccess, OnError));
     }
 
