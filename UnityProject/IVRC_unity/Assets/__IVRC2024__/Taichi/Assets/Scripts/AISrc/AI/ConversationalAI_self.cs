@@ -218,9 +218,14 @@ public class ConversationalAI_self : MonoBehaviour
         {
             Debug.Log("Transcription is empty. Please try again.");
             this.currentMicInputCount--; // マイク入力回数を減らす
-            this.aiConversationManager.Reset3DText(false);
+            // this.aiConversationManager.Reset3DText(false);
 
-            OnChatResponseSuccess("I did not hear you. Please speak again.");
+            string cannotGetText = "聞き取れませんでした。";
+            if (englishmode)
+            {
+                cannotGetText = "I could not hear you.";
+            }
+            OnChatResponseSuccess(cannotGetText);
             return;
         }
         Debug.Log("Transcription: " + transcription);

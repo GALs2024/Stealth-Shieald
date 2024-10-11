@@ -34,6 +34,11 @@ public class TextMeshTyper : MonoBehaviour
         }
     }
 
+    public void SetColor(Color color)
+    {
+        this.textObject.color = color;
+    }
+
     public void ResetText()
     {
         this.textObject.text = "";

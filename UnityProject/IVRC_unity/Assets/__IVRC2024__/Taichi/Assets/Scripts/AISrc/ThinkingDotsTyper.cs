@@ -10,8 +10,8 @@ public class ThinkingDotsTyper : MonoBehaviour
     // 文字を表示する間隔（秒）
     public float typingSpeed = 0.5f;
 
-    // 基本テキスト（例：考え中）
-    private string baseText = "Please speak into the microphone.";
+    public bool isEnglishMode = false;
+    private string baseText = "もう一度話してください。";
 
     private int dotCount = 0;  // 現在のドットの数
 
@@ -21,6 +21,10 @@ public class ThinkingDotsTyper : MonoBehaviour
     // ドットが増えるコルーチンを開始
     public void StartTyping()
     {
+        if (this.isEnglishMode)
+        {
+            this.baseText = "Please speak into the microphone.";
+        }
         if (typingCoroutine == null)
         {
             typingCoroutine = StartCoroutine(UpdateDots());

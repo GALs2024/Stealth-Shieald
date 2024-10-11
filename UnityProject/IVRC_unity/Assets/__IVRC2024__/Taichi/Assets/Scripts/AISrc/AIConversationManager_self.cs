@@ -10,19 +10,16 @@ public class AIConversationManager_self : MonoBehaviour
     public string[] AISystemMessage;
     private int currentMassageIndex = 0;
     public TextMeshTyper AITextMeshTyper;
-    public TextMeshTyper UserTextMeshTyper;
-    // public AIMovieManager aiMovieManager;
-    // public GenFakeNews genFakeNews;
+    public GenFakeNews genFakeNews;
     // public GenImgFromConversation genImgFromConversation;
 
     public TimelineController timelineController;
 
     void Start()
     {
-        // string path = Path.Combine(Application.dataPath, @"__IVRC2024__/Taichi/Assets/Audio/User");
-        // WavUtility.DeleteAllFilesInDirectory(path);
-        // StartConversation();
-        this.timelineController.PlayTimeline();
+        string path = Path.Combine(Application.dataPath, @"__IVRC2024__/Taichi/Assets/Audio/User");
+        WavUtility.DeleteAllFilesInDirectory(path);
+        StartConversation();
     }
 
     public void StartConversation()
@@ -50,9 +47,8 @@ public class AIConversationManager_self : MonoBehaviour
         {
             Debug.Log("All audio clips have been played. Ending conversation.");
             // 必要なら会話終了後の処理をここに追加
-            // this.genFakeNews.Generate();
+            this.genFakeNews.Generate();
             // this.genImgFromConversation.Generate();
-            // this.aiMovieManager.StartMovie();
 
             if (this.timelineController)
             {
@@ -73,37 +69,25 @@ public class AIConversationManager_self : MonoBehaviour
 
     public void Reset3DText(bool is_ai)
     {
-        if (is_ai)
-        {
-            this.AITextMeshTyper.ResetText();
-        }
-        else
-        {
-            this.UserTextMeshTyper.ResetText();
-        }
+        this.AITextMeshTyper.ResetText();
     }
 
     public void Set3DText(bool is_ai, string text)
     {
         if (is_ai)
         {
-            this.AITextMeshTyper.SetText(text);
+            this.AITextMeshTyper.SetColor(Color.blue);
         }
         else
         {
-            this.UserTextMeshTyper.SetText(text);
+            this.AITextMeshTyper.SetColor(Color.red);
         }
+        this.AITextMeshTyper.SetText(text);
     }
 
     public void Display3DText(bool is_ai)
     {
-        if (is_ai)
-        {
-            this.AITextMeshTyper.StartTyping();
-        }
-        else
-        {
-            this.UserTextMeshTyper.StartTyping();
-        }
+        Reset3DText(is_ai);
+        this.AITextMeshTyper.StartTyping();
     }
 }
