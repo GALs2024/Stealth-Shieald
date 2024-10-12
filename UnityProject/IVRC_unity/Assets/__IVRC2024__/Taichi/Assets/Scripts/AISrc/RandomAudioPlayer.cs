@@ -12,7 +12,7 @@ public class RandomAudioPlayer : MonoBehaviour
     public float initDelay = 5.0f; // Init()を実行するまでの遅延時間（秒）
 
     private List<AudioClip> audioClips = new List<AudioClip>();
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     public float audioClipsVolume = 1.0f;
     public float fadeDuration = 5.0f; // フェードアウトの持続時間
@@ -23,7 +23,7 @@ public class RandomAudioPlayer : MonoBehaviour
 
     void Start()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();
+        // audioSource = gameObject.GetComponent<AudioSource>();
         if (playStart)
         {
             // 指定された時間後にInit()を実行
