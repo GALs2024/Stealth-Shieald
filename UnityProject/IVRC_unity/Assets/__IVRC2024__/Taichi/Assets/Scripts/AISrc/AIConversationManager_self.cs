@@ -92,4 +92,10 @@ public class AIConversationManager_self : MonoBehaviour
         }
         this.AITextMeshTyper.StartTyping();
     }
+
+    public void PlayTimeline()
+    {
+        this.timelineController.PlayTimeline();
+
+    }
 }

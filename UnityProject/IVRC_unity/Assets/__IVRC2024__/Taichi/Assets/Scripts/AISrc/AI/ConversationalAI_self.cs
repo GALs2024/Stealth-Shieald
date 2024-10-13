@@ -237,6 +237,8 @@ public class ConversationalAI_self : MonoBehaviour
     private void OnError(string error)
     {
         Debug.LogError("Error: " + error);
+        this.aiConversationManager.PlayTimeline();
+
     }
 
     public void ResetConversationHistory()
